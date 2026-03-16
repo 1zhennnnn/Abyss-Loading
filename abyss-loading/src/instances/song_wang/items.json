@@ -1,0 +1,106 @@
+{
+  "item_defs": {
+    "numbered_amulet": {
+      "item_id": "numbered_amulet",
+      "name": "編號令牌",
+      "icon_emoji": "🎴",
+      "rarity": "COMMON",
+      "item_type": "KEY",
+      "short_desc": "刻有數字的木製令牌，是某種資格憑證",
+      "lore_text": "令牌正面刻著「0411」，背面印有王爺廟的香火印記。\n持有者可在宵禁期間通行特定區域，無需接受盤查。",
+      "usable_in_scenes": ["curfew_zone"],
+      "use_effect": {
+        "consume_item": false,
+        "add_tags": ["has_pass"],
+        "dialogue_id": "amulet_shown_dialogue"
+      }
+    },
+    "bone_evidence": {
+      "item_id": "bone_evidence",
+      "name": "殘骨碎片",
+      "icon_emoji": "🦴",
+      "rarity": "RARE",
+      "item_type": "TOOL",
+      "short_desc": "從密窟中找到的人骨，身份不明",
+      "lore_text": "骨頭上殘留著被繩索捆綁的痕跡，以及某種儀式用的硃砂印記。\n這不是意外死亡——而是祭祀。",
+      "usable_in_scenes": ["temple_inner", "ritual_ground"],
+      "use_effect": {
+        "consume_item": false,
+        "add_tags": ["truth_exposed"],
+        "dialogue_id": "bone_revelation_dialogue",
+        "unlock_option_ids": ["opt_accuse_elder"]
+      }
+    },
+    "red_amulet": {
+      "item_id": "red_amulet",
+      "name": "鎮煞紅符",
+      "icon_emoji": "🧧",
+      "rarity": "EPIC",
+      "item_type": "RELIC",
+      "short_desc": "廟祝親書的辟邪符咒，護持一次死劫",
+      "lore_text": "以千年老硃砂書寫，廟祝在完成符咒的瞬間已白髮三寸。\n持有者遭遇死劫時，符咒將燃燒殆盡，換回一條命。",
+      "passive_effect": "持有時，遭遇死亡觸發時自動消耗，引導至復活場景。",
+      "is_revive": true
+    },
+    "cursed_watch": {
+      "item_id": "cursed_watch",
+      "name": "停滯懷錶",
+      "icon_emoji": "⌚",
+      "rarity": "CURSED",
+      "item_type": "FORBIDDEN",
+      "short_desc": "指針永遠停在子時，攜帶者每入一地便心生惡念",
+      "lore_text": "錶面玻璃裂成蛛網狀，指針在子時凝固。每次你踏入新的場所，錶中的怨靈便啃噬你一分業力。\n但在血書簽訂的那一刻，它的詛咒可以被用作武器。",
+      "passive_effect": "每進入場景，karma −1。",
+      "is_cursed": true,
+      "usable_in_scenes": ["day5_blood_contract"],
+      "use_effect": {
+        "consume_item": true,
+        "add_tags": ["contract_disrupted"],
+        "dialogue_id": "watch_curse_dialogue",
+        "unlock_option_ids": ["opt_break_contract"]
+      }
+    },
+    "blood_contract": {
+      "item_id": "blood_contract",
+      "name": "血書契約",
+      "icon_emoji": "📜",
+      "rarity": "RARE",
+      "item_type": "KEY",
+      "short_desc": "以血印簽訂的秘密契約，內容觸目驚心",
+      "lore_text": "契約上列明：每三年送王典禮前，須獻上三名「自願者」以穩定王爺的神格。\n最後一行用不同筆跡補充：「若無自願，則強取之。」",
+      "usable_in_scenes": ["ship_burning"],
+      "use_effect": {
+        "consume_item": false,
+        "add_tags": ["contract_revealed"],
+        "dialogue_id": "contract_shown_dialogue"
+      }
+    },
+    "heaven_scroll": {
+      "item_id": "heaven_scroll",
+      "name": "天師敕令",
+      "icon_emoji": "📋",
+      "rarity": "LEGENDARY",
+      "item_type": "RELIC",
+      "short_desc": "天師府的正式敕令，可解除一切邪法契約",
+      "lore_text": "敕令以金粉書寫，蓋有天師府的七星印。持有此物者，可在王爺面前宣讀，強制解除任何違背天理的血書契約。\n但宣讀之後，你的存在也將被神明注意。",
+      "usable_in_scenes": ["ship_burning", "ritual_ground"],
+      "use_effect": {
+        "consume_item": true,
+        "add_tags": ["heaven_decree_used"],
+        "dialogue_id": "heaven_decree_dialogue",
+        "unlock_option_ids": ["opt_invoke_heaven"]
+      }
+    }
+  },
+  "combinations": [
+    {
+      "combo_id": "forge_evidence_contract",
+      "ingredients": ["bone_evidence", "blood_contract"],
+      "result_item": "bone_evidence",
+      "consume_ingredients": false,
+      "req_scene_id": "temple_inner",
+      "dialogue_id": "evidence_combined_dialogue",
+      "fail_dialogue_id": "evidence_fail_dialogue"
+    }
+  ]
+}

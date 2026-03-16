@@ -1,0 +1,896 @@
+/* ═══════════════════════════════════════════════════════════
+   深淵加載中 — Global Design System
+   ═══════════════════════════════════════════════════════════ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Google Fonts 備援宣告（index.html 已加載） */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Share+Tech+Mono&display=swap');
+
+/* ── CSS Tokens ───────────────────────────────────────────── */
+:root {
+  /* 背景層 */
+  --bg-root:     #07070d;
+  --bg-panel:    #08080f;
+  --bg-surface:  rgba(7, 7, 13, 0.88);
+  --bg-raised:   rgba(12, 10, 22, 0.85);
+  --bg-hover:    rgba(18, 14, 34, 0.95);
+
+  /* 邊框（極細，統一 1px） */
+  --border-dim:    rgba(255,255,255,0.04);
+  --border-normal: rgba(255,255,255,0.07);
+  --border-accent: rgba(255,255,255,0.10);
+
+  /* 文字 */
+  --text-primary:   rgba(220, 212, 200, 0.92);
+  --text-body:      rgba(200, 192, 180, 0.85);
+  --text-secondary: rgba(170, 160, 140, 0.75);
+  --text-muted:     rgba(120, 110, 100, 0.6);
+  --text-ghost:     rgba(80, 75, 70, 0.5);
+  --mono-dim:       rgba(100, 90, 140, 0.5);
+  --mono-muted:     rgba(80, 70, 110, 0.6);
+
+  /* 語意色 */
+  --accent-purple: rgba(120, 80, 180, 0.8);
+  --accent-teal:   rgba(60, 140, 110, 0.7);
+  --accent-amber:  rgba(160, 120, 40, 0.8);
+  --accent-red:    rgba(180, 60, 60, 0.8);
+  --accent-blue:   rgba(60, 100, 180, 0.7);
+  --accent-divine: rgba(200, 160, 60, 0.9);
+
+  /* Atmosphere 動態 token（由 JS 注入） */
+  --atmo-bg-tint:     transparent;
+  --atmo-border-tint: rgba(255,255,255,0.07);
+  --atmo-hud-color:   rgba(100, 90, 140, 0.6);
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--bg-root);
+  color: var(--text-body);
+  font-family: 'Crimson Pro', Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  height: 100vh;
+}
+
+#root { height: 100vh; overflow: hidden; }
+
+/* ── 捲軸 ───────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(80,70,110,0.3); }
+
+/* ── 選取 ───────────────────────────────────────────────────── */
+::selection { background: rgba(100,70,160,0.25); }
+
+/* ════════════════════════════════════════════════════════════
+   主版面：VN 四層疊架構
+   ════════════════════════════════════════════════════════════ */
+.vn-root {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Crimson Pro', Georgia, serif;
+  background: var(--bg-root);
+}
+
+/* ── 層 1：背景圖層 ─────────────────────────────────────────── */
+.bg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.bg-layer img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.85;
+  transition: opacity 1.2s ease;
+}
+
+/* atmosphere tint overlay */
+.bg-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--atmo-bg-tint);
+  transition: background 0.8s ease;
+  pointer-events: none;
+}
+
+/* Fallback 漸層（無背景圖時） */
+.bg-fallback {
+  width: 100%; height: 100%;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(40,20,70,0.6) 0%, transparent 60%),
+    linear-gradient(160deg, #0d0a18 0%, #07050f 40%, #0a0810 100%);
+  transition: background 1.2s ease;
+}
+.vn-root.atmo-tense  .bg-fallback { background: radial-gradient(ellipse at 20% 50%, rgba(80,20,20,0.5) 0%, transparent 60%), linear-gradient(160deg,#150808 0%,#0d0505 40%,#100a0a 100%); }
+.vn-root.atmo-eerie  .bg-fallback { background: radial-gradient(ellipse at 60% 40%, rgba(40,15,80,0.6) 0%, transparent 60%), linear-gradient(160deg,#0c0818 0%,#08051a 40%,#0a0814 100%); }
+.vn-root.atmo-divine .bg-fallback { background: radial-gradient(ellipse at 50% 30%, rgba(100,70,10,0.4) 0%, transparent 60%), linear-gradient(160deg,#120f04 0%,#0e0c05 40%,#0f0e06 100%); }
+
+/* ── 層 2：HUD 頂條 ─────────────────────────────────────────── */
+.hud-strip {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 32px;
+  background: rgba(7, 7, 13, 0.82);
+  border-bottom: 1px solid var(--border-dim);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px 0 16px;
+  z-index: 20;
+  font-family: 'Share Tech Mono', 'Courier New', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  user-select: none;
+}
+.hud-instance { color: rgba(120, 100, 160, 0.65); }
+.hud-atmo {
+  padding: 2px 8px;
+  border: 1px solid var(--atmo-border-tint);
+  color: var(--atmo-hud-color);
+  letter-spacing: 0.15em;
+  transition: color 0.8s ease, border-color 0.8s ease;
+}
+.panel-toggle {
+  width: 26px; height: 26px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border-normal);
+  background: rgba(12, 10, 22, 0.8);
+  font-size: 13px;
+  color: rgba(140, 120, 180, 0.65);
+  transition: all 0.2s;
+  z-index: 21;
+}
+.panel-toggle:hover { background: var(--bg-hover); color: rgba(180, 160, 220, 1); }
+
+/* ── 層 2.5：右側滑出面板 ─────────────────────────────────── */
+.side-panel {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 220px;
+  background: rgba(8, 7, 16, 0.97);
+  border-left: 1px solid rgba(255,255,255,0.06);
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 40;
+  padding: 44px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+}
+.side-panel.open { transform: translateX(0); }
+.side-panel::-webkit-scrollbar { width: 2px; }
+
+.panel-sec-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 8px;
+  color: rgba(80, 70, 110, 0.65);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  margin-bottom: 6px;
+}
+
+.fortune-mini {
+  background: rgba(18, 12, 32, 0.8);
+  border: 1px solid rgba(80, 50, 120, 0.25);
+  padding: 8px 10px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.fortune-mini-header {
+  display: flex; align-items: center; gap: 8px;
+}
+.fortune-mini-name {
+  font-family: 'Crimson Pro', serif;
+  font-size: 12px;
+  color: rgba(200,185,220,0.9);
+}
+.fortune-mini-meta {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 8px;
+  color: rgba(80,70,100,0.5);
+  letter-spacing: 0.1em;
+}
+.fortune-mini-desc {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 11px;
+  color: rgba(140,130,110,0.55);
+  line-height: 1.5;
+}
+
+/* 數值條 */
+.stat-block { display: flex; flex-direction: column; gap: 8px; }
+.stat-row { display: flex; flex-direction: column; gap: 3px; }
+.stat-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+.stat-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 8px;
+  color: var(--mono-dim);
+  letter-spacing: 0.1em;
+}
+.stat-value {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  color: rgba(140,130,110,0.8);
+  transition: filter 0.2s;
+}
+.stat-value.flash { filter: brightness(2.5); }
+.stat-bar-bg {
+  height: 2px;
+  background: rgba(255,255,255,0.04);
+  overflow: hidden;
+}
+.stat-bar-fill {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+.stat-bar-fill.inspiration { background: rgba(100,70,160,0.7); }
+.stat-bar-fill.constitution { background: rgba(40,110,80,0.7); }
+.stat-bar-fill.karma { background: rgba(140,100,30,0.7); }
+
+/* 標籤 chip */
+.tag-chip {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 8px;
+  padding: 2px 5px;
+  border: 1px solid;
+  letter-spacing: 0.05em;
+  border-radius: 0;
+  display: inline-block;
+}
+.tag-chip.teal   { color: rgba(60,160,110,0.85);  border-color: rgba(40,120,80,0.3);  background: rgba(5,18,14,0.7); }
+.tag-chip.purple { color: rgba(130,90,190,0.85);  border-color: rgba(90,60,150,0.3);  background: rgba(14,8,28,0.7); }
+.tag-chip.amber  { color: rgba(170,130,50,0.85);  border-color: rgba(130,100,30,0.3); background: rgba(18,14,5,0.7); }
+
+/* 背包道具行 */
+.inv-section { display: flex; flex-direction: column; }
+.inv-item {
+  display: flex; align-items: center; gap: 6px;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  cursor: pointer;
+  transition: background 0.15s;
+  padding-left: 4px;
+}
+.inv-item:hover { background: rgba(18,14,28,0.6); }
+.inv-item-bar {
+  width: 2px; height: 20px; flex-shrink: 0;
+}
+.inv-item-bar.LEGENDARY { background: rgba(160,120,30,0.8); }
+.inv-item-bar.EPIC      { background: rgba(120,70,180,0.8); }
+.inv-item-bar.RARE      { background: rgba(60,100,180,0.8); }
+.inv-item-bar.COMMON    { background: rgba(70,70,70,0.5); }
+.inv-item-bar.CURSED    { background: rgba(160,40,40,0.8); animation: cursed-pulse 2s ease-in-out infinite; }
+.inv-item-name {
+  font-family: 'Crimson Pro', serif;
+  font-size: 12px;
+  color: rgba(190,182,168,0.82);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.inv-item.using { background: rgba(60,40,100,0.3); outline: 1px solid rgba(90,60,150,0.4); }
+.inv-item.cursed .inv-item-name { color: rgba(190,90,90,0.82); }
+
+@keyframes cursed-pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* ════════════════════════════════════════════════════════════
+   層 3：對話框
+   ════════════════════════════════════════════════════════════ */
+.dialogue-box {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  min-height: 25vh;
+  padding: 14px 36px 20px;
+  cursor: pointer;
+  z-index: 30;
+  background: rgba(7, 7, 13, 0.88);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.8s ease, border-color 0.8s ease;
+  user-select: none;
+}
+.dialogue-box.atmo-tense  { background: rgba(14,6,6,0.92);   border-top-color: rgba(140,50,50,0.25); }
+.dialogue-box.atmo-eerie  { background: rgba(8,5,18,0.94);   border-top-color: rgba(80,50,140,0.25); }
+.dialogue-box.atmo-divine { background: rgba(14,12,4,0.92);  border-top-color: rgba(160,120,30,0.25); }
+
+.speaker-row {
+  display: flex; align-items: baseline; gap: 0;
+  margin-bottom: 7px;
+  min-height: 20px;
+}
+.speaker-name {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border: 1px solid;
+  display: inline-block;
+}
+.sn-npc      { color: rgba(180,160,220,0.9);  border-color: rgba(120,90,180,0.3);  background: rgba(20,14,36,0.8); }
+.sn-narrator { color: rgba(140,130,110,0.7);  border-color: rgba(100,90,70,0.2);   background: transparent; font-style: italic; }
+.sn-system   { color: rgba(200,80,80,0.9);    border-color: rgba(180,50,50,0.4);   background: rgba(30,8,8,0.9); }
+.sn-player   { color: rgba(100,160,140,0.9);  border-color: rgba(60,120,100,0.3);  background: rgba(5,16,14,0.9); }
+
+.speaker-tone {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 8px; letter-spacing: 0.1em;
+  color: rgba(80,70,100,0.45);
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.speaker-tone.TENSE  { color: rgba(150,80,50,0.6); }
+.speaker-tone.EERIE  { color: rgba(100,70,160,0.6); }
+.speaker-tone.DIVINE { color: rgba(160,130,50,0.6); }
+.speaker-tone.ANGRY  { color: rgba(180,60,60,0.7); }
+.speaker-tone.CALM   { color: rgba(80,80,120,0.45); }
+
+.dialogue-text {
+  font-family: 'Crimson Pro', serif;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.82;
+  color: rgba(220, 212, 200, 0.9);
+  min-height: 56px;
+  white-space: pre-wrap;
+  animation: scene-enter 0.25s ease-out;
+}
+.dialogue-text.narrator-style {
+  font-style: italic;
+  color: rgba(170, 160, 140, 0.75);
+  font-size: 15px;
+  text-align: center;
+}
+.dialogue-text.system-style {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  color: rgba(200, 80, 80, 0.9);
+  animation: system-blink 1.2s step-end infinite;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 1px; height: 1em;
+  background: rgba(120,100,170,0.8);
+  vertical-align: text-bottom;
+  animation: cursor-blink 0.9s step-end infinite;
+  margin-left: 1px;
+}
+
+.dialogue-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.dialogue-progress {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  color: rgba(80,70,100,0.45);
+  letter-spacing: 0.1em;
+}
+.dialogue-continue {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  color: rgba(100,90,140,0.55);
+  letter-spacing: 0.15em;
+  animation: fade-pulse 1.8s ease-in-out infinite;
+}
+
+/* ════════════════════════════════════════════════════════════
+   層 4：選項覆蓋層
+   ════════════════════════════════════════════════════════════ */
+.choices-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 60px 48px;
+  z-index: 50;
+  background: rgba(7, 7, 13, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.choices-overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+.choice-prompt {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  color: rgba(100,90,130,0.5);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.choice-item {
+  width: 100%; max-width: 520px;
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(12, 10, 22, 0.85);
+  cursor: pointer;
+  transition: border-color 0.18s, background 0.18s;
+  animation: choice-slide-in 0.25s ease-out both;
+}
+.choice-item:hover { border-color: rgba(120,90,180,0.4); background: rgba(18,14,34,0.95); }
+.choice-item:hover .choice-label { color: rgba(240,232,220,1); }
+.choice-item.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.choice-num {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: rgba(80,70,110,0.55);
+  min-width: 20px;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+.choice-body { flex: 1; min-width: 0; }
+.choice-label {
+  font-family: 'Crimson Pro', serif;
+  font-size: 16px;
+  color: rgba(200,192,180,0.85);
+  transition: color 0.15s;
+  line-height: 1.4;
+  display: flex; align-items: center; flex-wrap: wrap; gap: 6px;
+}
+.choice-flavor {
+  font-family: 'Crimson Pro', serif;
+  font-size: 12px;
+  font-style: italic;
+  color: rgba(100,90,80,0.55);
+  margin-top: 4px;
+}
+.req-fail {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  color: rgba(170,70,60,0.65);
+  margin-top: 5px;
+  letter-spacing: 0.05em;
+}
+
+/* 條件 badge */
+.choice-badge {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 8px;
+  padding: 2px 5px;
+  border: 1px solid;
+  vertical-align: middle;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+.cb-puzzle   { color: rgba(130,85,190,0.8); border-color: rgba(90,55,140,0.3);  background: rgba(20,10,40,0.7); }
+.cb-dialogue { color: rgba(60,140,110,0.8); border-color: rgba(40,100,80,0.3);  background: rgba(5,18,14,0.7); }
+.cb-locked   { color: rgba(170,65,65,0.7);  border-color: rgba(120,40,40,0.3);  background: rgba(24,8,8,0.7); }
+.cb-death    { color: rgba(200,60,60,0.8);  border-color: rgba(160,40,40,0.35); background: rgba(28,5,5,0.8); }
+
+/* ════════════════════════════════════════════════════════════
+   SystemToast
+   ════════════════════════════════════════════════════════════ */
+.toast-container {
+  position: absolute;
+  top: 40px; right: 12px;
+  z-index: 60;
+  display: flex; flex-direction: column; gap: 4px;
+  pointer-events: none;
+}
+.toast {
+  max-width: 280px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 7px 12px;
+  border: 1px solid;
+  background: rgba(8, 7, 16, 0.95);
+  animation: toast-slide-in 0.3s ease-out;
+  pointer-events: all;
+  position: relative;
+  overflow: hidden;
+}
+.toast-progress {
+  position: absolute;
+  bottom: 0; left: 0; height: 1px;
+  transition: width 50ms linear;
+}
+.toast-buff    { color: rgba(60,160,120,0.9);  border-color: rgba(40,110,80,0.35); }
+.toast-buff    .toast-progress { background: rgba(40,110,80,0.6); }
+.toast-debuff  { color: rgba(180,120,50,0.9);  border-color: rgba(140,90,30,0.3); }
+.toast-debuff  .toast-progress { background: rgba(140,90,30,0.6); }
+.toast-danger  { color: rgba(200,70,70,0.9);   border-color: rgba(160,50,50,0.35); }
+.toast-danger  .toast-progress { background: rgba(160,50,50,0.6); }
+.toast-divine  { color: rgba(200,160,60,0.9);  border-color: rgba(160,120,30,0.35); }
+.toast-divine  .toast-progress { background: rgba(160,120,30,0.6); }
+.toast-warning { color: rgba(180,160,60,0.9);  border-color: rgba(140,120,30,0.3); }
+.toast-warning .toast-progress { background: rgba(140,120,30,0.6); }
+.toast-info    { color: rgba(120,110,160,0.9); border-color: rgba(80,70,120,0.3); }
+.toast-info    .toast-progress { background: rgba(80,70,120,0.6); }
+
+/* 保命全屏閃光 */
+.revive-overlay {
+  position: absolute; inset: 0; z-index: 70;
+  background: rgba(200, 160, 60, 1);
+  pointer-events: none;
+  animation: revive-flash 0.5s ease-out forwards;
+}
+
+/* ════════════════════════════════════════════════════════════
+   運勢儀式覆蓋
+   ════════════════════════════════════════════════════════════ */
+.ritual-overlay {
+  position: absolute; inset: 0; z-index: 80;
+  background: rgba(7, 7, 13, 0.96);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  overflow-y: auto; padding: 40px 20px;
+}
+.ritual-title {
+  font-family: 'Crimson Pro', serif;
+  font-size: 28px; font-weight: 300;
+  color: rgba(220, 212, 200, 0.85);
+  letter-spacing: 0.15em;
+  margin-bottom: 6px;
+  text-align: center;
+}
+.ritual-subtitle {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: rgba(100, 90, 140, 0.5);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 48px;
+}
+.ritual-confirm {
+  margin-top: 40px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: rgba(160, 140, 200, 0.75);
+  padding: 9px 24px;
+  border: 1px solid rgba(120, 90, 180, 0.3);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+.ritual-confirm:hover {
+  background: rgba(60, 40, 100, 0.35);
+  color: rgba(200, 180, 240, 0.9);
+  border-color: rgba(140, 100, 200, 0.5);
+}
+.ritual-confirm:disabled {
+  opacity: 0.35;
+  cursor: wait;
+}
+
+/* 謎題覆蓋 */
+.puzzle-overlay {
+  position: absolute; inset: 0; z-index: 45;
+  background: rgba(7,7,13,0.82);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.puzzle-card {
+  background: rgba(10,8,20,0.98);
+  border: 1px solid rgba(255,255,255,0.08);
+  width: 100%; max-width: 480px;
+  max-height: 88vh;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+.puzzle-header {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.puzzle-gate-badge {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  color: rgba(180,60,60,0.8);
+  border: 1px solid rgba(150,50,50,0.3);
+  padding: 1px 6px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+.puzzle-title {
+  font-family: 'Crimson Pro', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(220,212,200,0.9);
+  margin-bottom: 6px;
+}
+.puzzle-flavour {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(140,130,110,0.65);
+  line-height: 1.6;
+}
+.puzzle-hint-btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  color: rgba(140,110,40,0.7);
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  border: none; background: none; padding: 0;
+  margin-top: 10px;
+  display: flex; align-items: center; gap: 4px;
+  transition: color 0.15s;
+}
+.puzzle-hint-btn:hover { color: rgba(180,150,60,0.9); }
+.puzzle-hint-text {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 12px;
+  color: rgba(160,130,50,0.75);
+  background: rgba(20,15,5,0.7);
+  border: 1px solid rgba(120,95,25,0.2);
+  padding: 7px 10px;
+  margin-top: 6px;
+  line-height: 1.6;
+}
+.puzzle-body {
+  flex: 1; overflow-y: auto;
+  padding: 18px 20px;
+  display: flex; flex-direction: column; align-items: center;
+}
+.puzzle-footer {
+  padding: 12px 20px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.puzzle-btn-skip {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  color: rgba(100,90,120,0.55);
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  border: none; background: none; padding: 4px 8px;
+  transition: color 0.15s;
+}
+.puzzle-btn-skip:hover { color: rgba(140,130,160,0.8); }
+.puzzle-btn-confirm {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: rgba(160,140,200,0.85);
+  padding: 7px 20px;
+  border: 1px solid rgba(100,75,160,0.3);
+  background: rgba(20,14,36,0.8);
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.puzzle-btn-confirm:hover { background: rgba(40,28,70,0.9); border-color: rgba(120,90,190,0.5); }
+.puzzle-btn-confirm:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* 道具查看彈窗 */
+.item-modal-bg {
+  position: absolute; inset: 0; z-index: 55;
+  background: rgba(7,7,13,0.75);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+}
+.item-modal {
+  background: rgba(10,8,20,0.98);
+  border: 1px solid rgba(255,255,255,0.08);
+  width: 300px; max-height: 80vh;
+  overflow-y: auto;
+  padding: 20px;
+  position: relative;
+}
+.item-modal-close {
+  position: absolute; top: 10px; right: 12px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 14px; color: rgba(100,90,130,0.5);
+  cursor: pointer; border: none; background: none;
+  transition: color 0.15s;
+}
+.item-modal-close:hover { color: rgba(180,170,200,0.8); }
+.item-modal-icon { font-size: 40px; text-align: center; margin-bottom: 10px; }
+.item-modal-name {
+  font-family: 'Crimson Pro', serif;
+  font-size: 18px; font-weight: 600;
+  color: rgba(220,212,200,0.9);
+  text-align: center; margin-bottom: 4px;
+}
+.item-modal-rarity {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px; letter-spacing: 0.2em;
+  text-align: center; margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.rarity-COMMON    { color: rgba(120,110,100,0.7); }
+.rarity-RARE      { color: rgba(60,100,180,0.85); }
+.rarity-EPIC      { color: rgba(120,70,180,0.85); }
+.rarity-LEGENDARY { color: rgba(180,140,40,0.9); }
+.rarity-CURSED    { color: rgba(180,50,50,0.9); animation: cursed-pulse 2s infinite; }
+.item-modal-divider { height: 1px; background: rgba(255,255,255,0.05); margin: 10px 0; }
+.item-modal-lore {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic; font-size: 13px;
+  color: rgba(160,152,138,0.75);
+  line-height: 1.7; margin-bottom: 12px;
+}
+.item-modal-passive {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px; letter-spacing: 0.08em;
+  color: rgba(80,140,110,0.75);
+  background: rgba(5,16,12,0.7);
+  border: 1px solid rgba(40,100,70,0.2);
+  padding: 6px 8px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.item-modal-cursed-warn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px; letter-spacing: 0.08em;
+  color: rgba(200,70,70,0.9);
+  border: 1px solid rgba(160,50,50,0.3);
+  background: rgba(24,5,5,0.8);
+  padding: 6px 8px;
+  margin-bottom: 10px;
+  animation: cursed-pulse 2s infinite;
+}
+.item-modal-use-btn {
+  width: 100%; padding: 8px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(160,140,200,0.85);
+  border: 1px solid rgba(100,75,160,0.3);
+  background: rgba(20,14,36,0.8);
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.item-modal-use-btn:hover { background: rgba(40,28,70,0.9); }
+.item-modal-use-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* 死亡畫面 */
+.dead-screen {
+  position: absolute; inset: 0; z-index: 90;
+  background: #000;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.dead-icon { font-size: 80px; color: rgba(160,30,30,0.4); margin-bottom: 24px; }
+.dead-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 18px; letter-spacing: 0.3em;
+  color: rgba(100,80,80,0.7); margin-bottom: 10px;
+}
+.dead-sub {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic; font-size: 14px;
+  color: rgba(80,70,60,0.55); margin-bottom: 32px;
+}
+.dead-return {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em;
+  color: rgba(100,90,130,0.55);
+  padding: 8px 20px;
+  border: 1px solid rgba(80,70,100,0.25);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.dead-return:hover { color: rgba(160,150,190,0.8); border-color: rgba(120,100,160,0.4); }
+
+/* HUB 大廳 */
+.hub-root {
+  position: relative;
+  width: 100%; height: 100vh;
+  background: #050510;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.hub-title {
+  font-family: 'Crimson Pro', serif;
+  font-weight: 300; font-size: 42px;
+  letter-spacing: 0.2em;
+  color: rgba(200,190,220,0.8);
+  text-align: center; margin-bottom: 4px;
+}
+.hub-subtitle {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px; letter-spacing: 0.4em;
+  color: rgba(80,70,110,0.5);
+  text-transform: uppercase;
+  text-align: center; margin-bottom: 48px;
+}
+.hub-divider {
+  width: 180px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(100,80,140,0.4), transparent);
+  margin: 0 auto 40px;
+}
+.hub-list {
+  width: 100%; max-width: 480px;
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 0 24px;
+}
+.hub-entry {
+  padding: 14px 18px;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(10,8,20,0.7);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.hub-entry:hover { border-color: rgba(100,75,160,0.4); background: rgba(16,12,32,0.9); }
+.hub-entry.locked { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
+.hub-entry-name {
+  font-family: 'Crimson Pro', serif;
+  font-size: 16px; color: rgba(200,192,178,0.85);
+}
+.hub-entry-action {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px; letter-spacing: 0.15em;
+  color: rgba(80,70,110,0.55);
+}
+.hub-entry:hover .hub-entry-action { color: rgba(130,110,180,0.8); }
+.hub-entry-lock {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 8px; letter-spacing: 0.1em;
+  color: rgba(100,80,60,0.6);
+  border: 1px solid rgba(100,80,50,0.2);
+  padding: 2px 6px; margin-top: 4px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   Keyframes
+   ════════════════════════════════════════════════════════════ */
+@keyframes scene-enter {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes choice-slide-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes toast-slide-in {
+  from { transform: translateX(calc(100% + 20px)); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+@keyframes toast-slide-out {
+  from { transform: translateX(0); opacity: 1; }
+  to   { transform: translateX(calc(100% + 20px)); opacity: 0; }
+}
+@keyframes revive-flash {
+  0%   { opacity: 0; }
+  20%  { opacity: 0.15; }
+  40%  { opacity: 0; }
+  60%  { opacity: 0.12; }
+  80%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes system-blink { 0%,100%{opacity:1} 50%{opacity:0.6} }
+@keyframes fade-pulse { 0%,100%{opacity:0.4} 50%{opacity:0.9} }
+@keyframes cursor-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+@keyframes spin { to { transform: rotate(360deg); } }

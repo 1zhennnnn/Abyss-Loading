@@ -1,0 +1,84 @@
+{
+  "puzzle_mural_match": {
+    "puzzle_id": "puzzle_mural_match",
+    "puzzle_type": "SYMBOL_MATCH",
+    "title": "廟壁神像對應",
+    "flavour_text": "廟內石壁刻著三組神像，旁邊的香爐排列暗示了各自的配對。壁畫斑駁，但隱約仍能辨認。",
+    "is_gate": false,
+    "hint_tag": "see_hidden",
+    "hint_text": "洞見之眼看清了：生死配對、火水對應、山海相望——這是王爺體系的三組象徵。",
+    "on_solve": {
+      "add_items": ["bone_evidence"],
+      "add_tags": ["mural_decoded"]
+    },
+    "config": {
+      "puzzle_type": "SYMBOL_MATCH",
+      "clue_text": "香爐排列暗示：生死相依、火水相剋、山海相望。三組神像各有其對。",
+      "pairs": [
+        {
+          "pair_id": "life_death",
+          "symbol_a": { "label": "生神", "icon_emoji": "🌺" },
+          "symbol_b": { "label": "死神", "icon_emoji": "💀" }
+        },
+        {
+          "pair_id": "fire_water",
+          "symbol_a": { "label": "火神", "icon_emoji": "🔥" },
+          "symbol_b": { "label": "水神", "icon_emoji": "🌊" }
+        },
+        {
+          "pair_id": "mountain_sea",
+          "symbol_a": { "label": "山神", "icon_emoji": "⛰️" },
+          "symbol_b": { "label": "海神", "icon_emoji": "🐉" }
+        }
+      ]
+    }
+  },
+  "puzzle_curfew_code": {
+    "puzzle_id": "puzzle_curfew_code",
+    "puzzle_type": "CODE_INPUT",
+    "title": "宵禁通行密碼",
+    "flavour_text": "宵禁管制區的柵欄上嵌著一個數字鎖，需要輸入四位數字才能通過。鎮上某處的佈告欄曾貼過相關指示……",
+    "is_gate": true,
+    "max_attempts": 4,
+    "fail_scene": "curfew_fail",
+    "hint_tag": "see_hidden",
+    "hint_text": "洞見之眼在暗處看見了塗改過的字跡：「典禮日期逆序即為通行碼——壬寅年四月十一日」。",
+    "on_solve": {
+      "add_tags": ["curfew_passed"]
+    },
+    "config": {
+      "puzzle_type": "CODE_INPUT",
+      "answer": "0411",
+      "input_length": 4,
+      "input_type": "number",
+      "display_hint": "輸入四位數宵禁通行碼",
+      "case_sensitive": false
+    }
+  },
+  "puzzle_rune_sequence": {
+    "puzzle_id": "puzzle_rune_sequence",
+    "puzzle_type": "SEQUENCE",
+    "title": "王船封印排序",
+    "flavour_text": "王船的主艙門被五道封印符咒鎖死。港工說，正確的解封順序刻在某處石碑上，但石碑已被人為磨損。",
+    "is_gate": true,
+    "max_attempts": 3,
+    "fail_scene": "ship_explode",
+    "hint_tag": "mural_decoded",
+    "hint_text": "破解壁畫後，你記起了神像排列的象徵順序：請、迎、安、送、化——送王儀式的五個階段。",
+    "on_solve": {
+      "add_tags": ["ship_unsealed"]
+    },
+    "config": {
+      "puzzle_type": "SEQUENCE",
+      "display_hint": "依送王儀式順序排列五道封印符咒",
+      "items": [
+        { "item_id": "seal_qing",  "label": "請",  "icon_emoji": "🙏" },
+        { "item_id": "seal_ying",  "label": "迎",  "icon_emoji": "🏮" },
+        { "item_id": "seal_an",    "label": "安",  "icon_emoji": "🕊️" },
+        { "item_id": "seal_song",  "label": "送",  "icon_emoji": "⛵" },
+        { "item_id": "seal_hua",   "label": "化",  "icon_emoji": "🔥" }
+      ],
+      "correct_order": ["seal_qing", "seal_ying", "seal_an", "seal_song", "seal_hua"]
+    }
+  }
+}

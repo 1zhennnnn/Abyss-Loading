@@ -1,0 +1,867 @@
+{
+  "dialogue_arrival_welcome": {
+    "dialogue_id": "dialogue_arrival_welcome",
+    "lines": [
+      {
+        "line_id": "aw_01",
+        "speaker": "narrator",
+        "text": "你踏進永安鎮的那一刻，幾個鎮民立刻圍了上來。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "aw_02",
+        "speaker": "npc",
+        "speaker_name": "鎮民甲",
+        "avatar_side": "left",
+        "text": "外地來的客人！歡迎歡迎，今年趕上好時候了，王船遶境就在這幾天！",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "aw_03",
+        "speaker": "npc",
+        "speaker_name": "鎮民乙",
+        "avatar_side": "left",
+        "text": "是啊是啊，每七年才一次，有福氣喔。留下來，跟我們一起送王爺出海！",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "aw_04",
+        "speaker": "narrator",
+        "text": "他們的笑容很熱情。但不知道為什麼，你站在人群正中央，感覺比獨處時還要孤單。",
+        "voice_tone": "EERIE"
+      }
+    ]
+  },
+
+  "dialogue_inn_warning": {
+    "dialogue_id": "dialogue_inn_warning",
+    "lines": [
+      {
+        "line_id": "iw_01",
+        "speaker": "npc",
+        "speaker_name": "老闆娘",
+        "avatar_side": "left",
+        "text": "房間在二樓，左邊第二間。熱水有，毛巾自己拿。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "iw_02",
+        "speaker": "npc",
+        "speaker_name": "老闆娘",
+        "avatar_side": "left",
+        "text": "對了——",
+        "voice_tone": "CALM",
+        "pause_after_ms": 800
+      },
+      {
+        "line_id": "iw_03",
+        "speaker": "npc",
+        "speaker_name": "老闆娘",
+        "avatar_side": "left",
+        "text": "晚上不管外面有什麼聲音，不管有沒有人敲門，都不要開。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "iw_04",
+        "speaker": "narrator",
+        "text": "她說完就下樓了，沒有解釋，也沒有等你回應。",
+        "voice_tone": "EERIE"
+      }
+    ]
+  },
+
+  "dialogue_night_knock": {
+    "dialogue_id": "dialogue_night_knock",
+    "lines": [
+      {
+        "line_id": "nk_01",
+        "speaker": "narrator",
+        "text": "敲門聲第一下響起時，你以為是隔壁房間的動靜。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "nk_02",
+        "speaker": "narrator",
+        "text": "第二下，你確定聲音來自你的門。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "nk_03",
+        "speaker": "narrator",
+        "text": "第三下，你注意到地板縫隙裡，有海泥的氣息正在沁入。",
+        "voice_tone": "EERIE",
+        "pause_after_ms": 0
+      }
+    ]
+  },
+
+  "dialogue_mayor_tour": {
+    "dialogue_id": "dialogue_mayor_tour",
+    "lines": [
+      {
+        "line_id": "mt_01",
+        "speaker": "npc",
+        "speaker_name": "鎮長",
+        "avatar_side": "left",
+        "text": "歡迎歡迎！外地客人今年特別多，都是有緣人，王爺自有安排。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "mt_02",
+        "speaker": "npc",
+        "speaker_name": "鎮長",
+        "avatar_side": "left",
+        "text": "這座廟有三百年歷史了，每一磚每一瓦都是祖先心血。來來來，先看正殿，再帶你去看王船。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "mt_03",
+        "speaker": "narrator",
+        "text": "他說話的方式像是一個熟練的導覽員，每一句都在正確的地方停頓，每一個表情都恰到好處。\n\n太熟練了。",
+        "voice_tone": "EERIE"
+      }
+    ]
+  },
+
+  "dialogue_mural_awakening": {
+    "dialogue_id": "dialogue_mural_awakening",
+    "lines": [
+      {
+        "line_id": "ma_01",
+        "speaker": "narrator",
+        "text": "壁畫上的眼珠轉動了。\n\n不是你的錯覺。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "ma_02",
+        "speaker": "narrator",
+        "text": "那雙眼睛緩緩對焦到你身上，停住。整面壁畫的人物都在動，但只有那雙眼睛是靜止的——因為它一直在盯著你。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "ma_03",
+        "speaker": "narrator",
+        "text": "你的雙眼流下血淚。不痛，但你感覺某個你長久以來緊閉的東西，被什麼人從外面打開了。",
+        "voice_tone": "DIVINE",
+        "effect_on_display": {
+          "stat": { "stat": "constitution", "delta": -10 }
+        }
+      },
+      {
+        "line_id": "ma_04",
+        "speaker": "system",
+        "text": "【天靈反噬】已觸發。體質永久降低，天機的代價開始計算。",
+        "voice_tone": "TENSE"
+      }
+    ]
+  },
+
+  "dialogue_fortune_keeper": {
+    "dialogue_id": "dialogue_fortune_keeper",
+    "lines": [
+      {
+        "line_id": "fk_01",
+        "speaker": "npc",
+        "speaker_name": "廟公",
+        "avatar_side": "left",
+        "text": "王爺的意思是一樣的，一根籤說得清楚，何必要那麼多字。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "fk_02",
+        "speaker": "npc",
+        "speaker_name": "廟公",
+        "avatar_side": "left",
+        "text": "你問那麼多，是不相信王爺嗎？",
+        "voice_tone": "TENSE",
+        "pause_after_ms": 0
+      }
+    ]
+  },
+
+  "dialogue_mayor_ship": {
+    "dialogue_id": "dialogue_mayor_ship",
+    "lines": [
+      {
+        "line_id": "ms_01",
+        "speaker": "npc",
+        "speaker_name": "鎮長",
+        "avatar_side": "left",
+        "text": "我們的王船是全台灣最大的，你看那個龍頭，純手工雕的，一個師傅刻了三個月。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "ms_02",
+        "speaker": "npc",
+        "speaker_name": "鎮長",
+        "avatar_side": "left",
+        "text": "今年的添載也是最豐盛的，木料、紙人、供品……王爺一定滿意的。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "ms_03",
+        "speaker": "narrator",
+        "text": "他說「添載」這個詞的時候，停頓了一下，幾乎難以察覺。",
+        "voice_tone": "EERIE"
+      }
+    ]
+  },
+
+  "dialogue_shop_owner": {
+    "dialogue_id": "dialogue_shop_owner",
+    "lines": [
+      {
+        "line_id": "so_01",
+        "speaker": "npc",
+        "speaker_name": "紙紮店老闆",
+        "avatar_side": "left",
+        "text": "外地客人來幫忙，王爺會記得的。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "so_02",
+        "speaker": "npc",
+        "speaker_name": "紙紮店老闆",
+        "avatar_side": "left",
+        "text": "地下室比較涼，材料都在那邊。跟著我。",
+        "voice_tone": "CALM"
+      }
+    ]
+  },
+
+  "dialogue_red_thread": {
+    "dialogue_id": "dialogue_red_thread",
+    "lines": [
+      {
+        "line_id": "rt_01",
+        "speaker": "narrator",
+        "text": "有人輕輕碰了你的手。\n\n是鎮長的女兒，十七八歲的樣子，眼神裡有一種和這個鎮子格格不入的清醒。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "rt_02",
+        "speaker": "npc",
+        "speaker_name": "秀英",
+        "avatar_side": "right",
+        "text": "拿著。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "rt_03",
+        "speaker": "narrator",
+        "text": "她把一條紅絲線塞進你的手心，動作很快，沒有讓旁邊的人看見。紅絲線沾著某種溫熱的氣息，以及很淡的血腥味。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "rt_04",
+        "speaker": "npc",
+        "speaker_name": "秀英",
+        "avatar_side": "right",
+        "text": "我說不清楚它能做什麼。但我媽說，只有特別的人，它才會有用。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "rt_05",
+        "speaker": "narrator",
+        "text": "她轉身就走了，沒有再說話。\n\n紅絲線在你手心裡，溫度慢慢消失。",
+        "voice_tone": "CALM"
+      }
+    ]
+  },
+
+  "dialogue_bone_discovery": {
+    "dialogue_id": "dialogue_bone_discovery",
+    "lines": [
+      {
+        "line_id": "bd_01",
+        "speaker": "narrator",
+        "text": "骨頭。是人骨。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "bd_02",
+        "speaker": "narrator",
+        "text": "每一根竹條的核心，都是打磨過的人骨。不是隨便取用的，是精心挑選的、適合的尺寸，被切割、打磨，然後裹上竹皮，送進這個地下室。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "bd_03",
+        "speaker": "narrator",
+        "text": "這些紙人，從骨架開始，就已經是人了。",
+        "voice_tone": "TENSE",
+        "pause_after_ms": 0
+      }
+    ]
+  },
+
+  "dialogue_curfew_begins": {
+    "dialogue_id": "dialogue_curfew_begins",
+    "lines": [
+      {
+        "line_id": "cb_01",
+        "speaker": "system",
+        "text": "【廣播】代天巡狩吉時已到，全鎮居民請即刻返家，閉門熄燈，非必要請勿外出，謝謝配合。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "cb_02",
+        "speaker": "system",
+        "text": "【廣播】代天巡狩吉時已到，全鎮居民請即刻返家，閉門熄燈，非必要請勿外出，謝謝配合。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "cb_03",
+        "speaker": "narrator",
+        "text": "廣播播完第三遍，然後是絕對的安靜。\n\n不是夜晚的安靜，是一整個鎮子屏住呼吸的安靜。",
+        "voice_tone": "EERIE"
+      }
+    ]
+  },
+
+  "dialogue_npc_runs": {
+    "dialogue_id": "dialogue_npc_runs",
+    "lines": [
+      {
+        "line_id": "nr_01",
+        "speaker": "narrator",
+        "text": "你在窗邊守了很久，什麼都沒有。\n\n然後，你看見了那個商人。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "nr_02",
+        "speaker": "narrator",
+        "text": "他從客棧的大門衝出去，跌倒，爬起來，繼續跑。嘴裡喊著什麼，你隔著玻璃聽不清楚。\n\n他看了一眼你的窗，你們的眼神交會了不到一秒。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "nr_03",
+        "speaker": "narrator",
+        "text": "然後霧動了。",
+        "voice_tone": "TENSE",
+        "pause_after_ms": 0
+      }
+    ]
+  },
+
+  "dialogue_guanjianshou": {
+    "dialogue_id": "dialogue_guanjianshou",
+    "lines": [
+      {
+        "line_id": "gj_01",
+        "speaker": "narrator",
+        "text": "它走出霧的方式，不像任何活著的東西。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "gj_02",
+        "speaker": "narrator",
+        "text": "它把商人提起來，一隻手，毫不費力，像是提一個沒有重量的東西。商人的腳離開了地面，踢了幾下，然後停了。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "gj_03",
+        "speaker": "narrator",
+        "text": "它帶著他走回霧裡。地上遺留了那枚懷錶，逆時針的錶面在黑暗中發著冷光。",
+        "voice_tone": "EERIE",
+        "pause_after_ms": 0
+      }
+    ]
+  },
+
+  "dialogue_rage_awakening": {
+    "dialogue_id": "dialogue_rage_awakening",
+    "lines": [
+      {
+        "line_id": "ra_01",
+        "speaker": "narrator",
+        "text": "恐懼是有極限的。到了極限之後，剩下的只有憤怒。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "ra_02",
+        "speaker": "narrator",
+        "text": "你不知道自己在憤怒什麼。是這個荒謬的鎮子，是那些空洞的眼神，是你自己站在窗邊袖手旁觀的樣子。\n\n某根弦斷了。",
+        "voice_tone": "ANGRY"
+      },
+      {
+        "line_id": "ra_03",
+        "speaker": "system",
+        "text": "【煞氣失控】已觸發。靈感清零。肉體強度突破上限——破軍不需要思考，只需要前進。",
+        "voice_tone": "DANGER",
+        "effect_on_display": {
+          "stat": { "stat": "inspiration", "delta": -40 }
+        }
+      }
+    ]
+  },
+
+  "dialogue_keeper_blocks": {
+    "dialogue_id": "dialogue_keeper_blocks",
+    "lines": [
+      {
+        "line_id": "kb_01",
+        "speaker": "npc",
+        "speaker_name": "廟公",
+        "avatar_side": "left",
+        "text": "不能進去。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "kb_02",
+        "speaker": "narrator",
+        "text": "他說這三個字的時候，聲音很平靜，但手在顫抖。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "kb_03",
+        "speaker": "npc",
+        "speaker_name": "廟公",
+        "avatar_side": "left",
+        "text": "你已經知道太多了。繼續下去，沒有人能保護你。",
+        "voice_tone": "TENSE"
+      }
+    ]
+  },
+
+  "dialogue_keeper_yields": {
+    "dialogue_id": "dialogue_keeper_yields",
+    "lines": [
+      {
+        "line_id": "ky_01",
+        "speaker": "narrator",
+        "text": "你沒有說話，只是與他對視。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "ky_02",
+        "speaker": "narrator",
+        "text": "他的眼神第一次動搖了。然後是他的腳，膝蓋微微彎曲，像是在對抗某個向下的力量。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "ky_03",
+        "speaker": "npc",
+        "speaker_name": "廟公",
+        "avatar_side": "left",
+        "text": "你……你是什麼人。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "ky_04",
+        "speaker": "narrator",
+        "text": "他把鑰匙放在你面前，轉身，快步走向走廊另一端。他沒有回頭。",
+        "voice_tone": "CALM"
+      }
+    ]
+  },
+
+  "dialogue_keeper_negotiation": {
+    "dialogue_id": "dialogue_keeper_negotiation",
+    "lines": [
+      {
+        "line_id": "kn_01",
+        "speaker": "narrator",
+        "text": "你把你知道的都說了——骨頭、懷錶、壁畫，以及那份你還沒親眼看見但已經猜到的血契。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "kn_02",
+        "speaker": "narrator",
+        "text": "廟公聽著，一句話都沒有打斷你。等你說完，他沉默了很長時間。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "kn_03",
+        "speaker": "npc",
+        "speaker_name": "廟公",
+        "avatar_side": "left",
+        "text": "你說的那些，我都知道。我從小就知道。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "kn_04",
+        "speaker": "npc",
+        "speaker_name": "廟公",
+        "avatar_side": "left",
+        "text": "但有些事，知道和能做，是兩回事。",
+        "voice_tone": "TENSE"
+      }
+    ]
+  },
+
+  "dialogue_contract_found": {
+    "dialogue_id": "dialogue_contract_found",
+    "lines": [
+      {
+        "line_id": "cf_01",
+        "speaker": "narrator",
+        "text": "木匣上沒有鎖，但打開的瞬間，有一股說不清楚的氣息撲面而來——不是霉味，是某種更古老的東西，像是很多很多年前的血腥。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "cf_02",
+        "speaker": "narrator",
+        "text": "文書用毛筆書寫，字跡工整，至今仍清晰可辨。落款日期是三百年前，簽名的那個人姓許。\n\n和現任鎮長一樣的姓。",
+        "voice_tone": "TENSE"
+      }
+    ]
+  },
+
+  "dialogue_watch_revelation": {
+    "dialogue_id": "dialogue_watch_revelation",
+    "lines": [
+      {
+        "line_id": "wr_01",
+        "speaker": "narrator",
+        "text": "你把懷錶放在血契旁邊。\n\n錶背刻的「411」，和血契上記錄的次數，一模一樣。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "wr_02",
+        "speaker": "narrator",
+        "text": "你明白了。這不是第一次有外地人試圖打破這個輪迴。前面有四百一十個人，都失敗了，或者死了，或者帶著印記離開，讓輪迴繼續下去。",
+        "voice_tone": "DIVINE"
+      },
+      {
+        "line_id": "wr_03",
+        "speaker": "narrator",
+        "text": "懷錶傳遞了四百一十一次，才到你手裡。\n\n那個在玻璃內側刻字的人，知道總有一天會有人做到。",
+        "voice_tone": "DIVINE",
+        "pause_after_ms": 0
+      }
+    ]
+  },
+
+  "dialogue_truth_revealed": {
+    "dialogue_id": "dialogue_truth_revealed",
+    "lines": [
+      {
+        "line_id": "tr_01",
+        "speaker": "narrator",
+        "text": "血契寫得很清楚：每七年，永安鎮必須邀請外地人參與王船祭典。被選中者，將作為「添載」隨王船一同入海，獻祭給深淵之神。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "tr_02",
+        "speaker": "narrator",
+        "text": "作為交換，深淵之神保佑鎮民漁獲豐收，風調雨順，無病無災，世世代代。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "tr_03",
+        "speaker": "narrator",
+        "text": "三百年前的鎮長，用幾個外地陌生人的命，換來了全鎮人的永恆幸福。\n\n而每一個繼任的鎮長，都選擇繼續這份交易。",
+        "voice_tone": "DIVINE"
+      },
+      {
+        "line_id": "tr_04",
+        "speaker": "narrator",
+        "text": "你的名字，已經寫在今年的名單上了。",
+        "voice_tone": "TENSE",
+        "pause_after_ms": 0
+      }
+    ]
+  },
+
+  "dialogue_ceremony_chaos": {
+    "dialogue_id": "dialogue_ceremony_chaos",
+    "lines": [
+      {
+        "line_id": "cc_01",
+        "speaker": "narrator",
+        "text": "鑼鼓聲在黎明前響起，震動整個海灘。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "cc_02",
+        "speaker": "narrator",
+        "text": "上千個鎮民排成長龍，拉著粗繩把王船往岸邊移動。他們的動作整齊劃一，沒有任何號令。\n\n只有臉上那種相同的、空洞的表情，說明他們不是在自己做決定。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "cc_03",
+        "speaker": "narrator",
+        "text": "鎮長站在王船的最前方，手舉著香，臉上的笑容和第一天一樣，熱情，可掬，像是在歡迎你的到來。",
+        "voice_tone": "TENSE",
+        "pause_after_ms": 0
+      }
+    ]
+  },
+
+  "dialogue_hunted": {
+    "dialogue_id": "dialogue_hunted",
+    "lines": [
+      {
+        "line_id": "hu_01",
+        "speaker": "narrator",
+        "text": "鎮長放下香，平靜地說了一句話。\n\n你聽不見他說了什麼，但你看見三個官將首從人群後方走了出來。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "hu_02",
+        "speaker": "narrator",
+        "text": "它們沒有跑。它們走著，但你覺得不管你怎麼跑，它們都在你前面一步。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "hu_03",
+        "speaker": "narrator",
+        "text": "王船就在三十公尺外，火把已經點燃了。",
+        "voice_tone": "TENSE",
+        "pause_after_ms": 0
+      }
+    ]
+  },
+
+  "dialogue_blindspot_insight": {
+    "dialogue_id": "dialogue_blindspot_insight",
+    "lines": [
+      {
+        "line_id": "bi_01",
+        "speaker": "narrator",
+        "text": "你的眼睛看見了別人看不見的東西。",
+        "voice_tone": "DIVINE"
+      },
+      {
+        "line_id": "bi_02",
+        "speaker": "narrator",
+        "text": "官將首的陣型有一個死角，在它們移動軌跡的交叉點，有一個不到一秒的視覺盲區。\n\n一般人不可能看見它。",
+        "voice_tone": "DIVINE"
+      },
+      {
+        "line_id": "bi_03",
+        "speaker": "narrator",
+        "text": "你在那一秒，穿了過去。",
+        "voice_tone": "CALM"
+      }
+    ]
+  },
+
+  "dialogue_command_townsfolk": {
+    "dialogue_id": "dialogue_command_townsfolk",
+    "lines": [
+      {
+        "line_id": "ct_01",
+        "speaker": "narrator",
+        "text": "你喊了一聲。\n\n不是求救，不是呼叫，是某種更古老的聲音——帝星的語言，在命盤深處運轉了千年的那種。",
+        "voice_tone": "DIVINE"
+      },
+      {
+        "line_id": "ct_02",
+        "speaker": "narrator",
+        "text": "最靠近你的幾個鎮民停了下來。臉上的空洞裂開了一道縫，一種久違的東西從裂縫裡探出頭——不是記憶，但比記憶更深的什麼。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "ct_03",
+        "speaker": "narrator",
+        "text": "他們轉過身，擋在你面前。\n\n官將首碰上了他們，停下來了。你不知道為什麼，但你沒有停下腳步。",
+        "voice_tone": "DIVINE"
+      }
+    ]
+  },
+
+  "dialogue_brute_force_charge": {
+    "dialogue_id": "dialogue_brute_force_charge",
+    "lines": [
+      {
+        "line_id": "bf_01",
+        "speaker": "narrator",
+        "text": "官將首手裡的七星劍離你最近的那隻，舉起來，準備落下。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "bf_02",
+        "speaker": "narrator",
+        "text": "你沒有閃。你衝上去，用手抓住劍身——劍刃切入你的掌心，但你沒有鬆手。",
+        "voice_tone": "ANGRY"
+      },
+      {
+        "line_id": "bf_03",
+        "speaker": "narrator",
+        "text": "你把劍奪過來，往它的面具上砍去。\n\n它沒有臉。但它後退了一步。\n\n你衝進去的時候，另外兩個也後退了。",
+        "voice_tone": "TENSE",
+        "effect_on_display": {
+          "stat": { "stat": "constitution", "delta": -15 }
+        }
+      }
+    ]
+  },
+
+  "dialogue_desperate_run": {
+    "dialogue_id": "dialogue_desperate_run",
+    "lines": [
+      {
+        "line_id": "dr_01",
+        "speaker": "narrator",
+        "text": "你跑的時候，腦子裡什麼都沒有。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "dr_02",
+        "speaker": "narrator",
+        "text": "不是勇氣，不是計畫，只是某種更原始的東西，把你的腳踩向前方。",
+        "voice_tone": "EERIE"
+      }
+    ]
+  },
+
+  "dialogue_amulet_burns": {
+    "dialogue_id": "dialogue_amulet_burns",
+    "lines": [
+      {
+        "line_id": "ab_01",
+        "speaker": "narrator",
+        "text": "三叉戟貫穿了你的胸口。\n\n你低下頭，看著從傷口流出的不是血，是火。紅色的、細長的火焰，從紅絲線燃起，包裹住那一擊的衝力，然後燒盡。",
+        "voice_tone": "DIVINE"
+      },
+      {
+        "line_id": "ab_02",
+        "speaker": "narrator",
+        "text": "紅絲線化成了灰，飄散在海風裡。\n\n你的胸口完好無損。只是那個溫熱的、帶著某個人心意的重量，消失了。",
+        "voice_tone": "CALM"
+      }
+    ]
+  },
+
+  "dialogue_ending_s": {
+    "dialogue_id": "dialogue_ending_s",
+    "lines": [
+      {
+        "line_id": "es_01",
+        "speaker": "narrator",
+        "text": "釘子落下的瞬間，你聽見了一個聲音。\n\n不是爆炸，不是崩塌，是很多很多個聲音重疊在一起——三百年間所有的怨氣、所有的失敗、所有那些沒有人知道名字的祭品，在這一刻同時發聲。",
+        "voice_tone": "DIVINE"
+      },
+      {
+        "line_id": "es_02",
+        "speaker": "narrator",
+        "text": "王船從內部開始崩解，不是燃燒，是某種因果的反噬，把三百年的謊言從根基拆除。",
+        "voice_tone": "DIVINE"
+      },
+      {
+        "line_id": "es_03",
+        "speaker": "narrator",
+        "text": "你從裂縫裡爬出來，跌倒在沙灘上，抬起頭。\n\n霧散了。\n\n站在海灘上的每一個人，都在哭。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "es_04",
+        "speaker": "narrator",
+        "text": "不是悲傷，是某種更古老的、被壓了三百年終於釋放的東西。\n\n輪迴，結束了。",
+        "voice_tone": "DIVINE",
+        "pause_after_ms": 0
+      }
+    ]
+  },
+
+  "dialogue_ending_a": {
+    "dialogue_id": "dialogue_ending_a",
+    "lines": [
+      {
+        "line_id": "ea_01",
+        "speaker": "narrator",
+        "text": "你逃出來了。\n\n你跑過海灘，跑過那條路，跑到永安鎮消失在你身後的地平線上。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "ea_02",
+        "speaker": "narrator",
+        "text": "一個月後，你在鏡子裡看見了脖子上的印記。\n\n硃砂色，像是一個指紋，鮮紅而清晰，用任何東西都無法洗去。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "ea_03",
+        "speaker": "narrator",
+        "text": "你知道它是什麼。你知道它在等什麼。\n\n七年後，你又會收到一封邀請函。",
+        "voice_tone": "TENSE",
+        "pause_after_ms": 0
+      }
+    ]
+  },
+
+  "dialogue_ending_e": {
+    "dialogue_id": "dialogue_ending_e",
+    "lines": [
+      {
+        "line_id": "ee_01",
+        "speaker": "narrator",
+        "text": "你被綁在桅杆上的時候，還以為有機會掙脫。\n\n然後你看見了那些手——骨骼手指，紙人水手的，從四面八方纏了上來。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "ee_02",
+        "speaker": "narrator",
+        "text": "火從船底燒起來。你看著鎮民的臉，他們回望著你，臉上是那種你在這幾天裡見過無數次的表情——空洞，虔誠，以及某種讓你無法理解的安慰。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "ee_03",
+        "speaker": "narrator",
+        "text": "在最後一刻，你低下頭，看見懷錶從你的口袋裡滑落，掉入火中。\n\n錶背的數字，在焰中清晰可見，已經自動變成了「412」。",
+        "voice_tone": "TENSE",
+        "pause_after_ms": 0
+      }
+    ]
+  },
+
+  "scroll_read_dialogue": {
+    "dialogue_id": "scroll_read_dialogue",
+    "lines": [
+      {
+        "line_id": "sr_01",
+        "speaker": "narrator",
+        "text": "你展開天機卷軸，文字密密麻麻，是某種你不認識的古文字。\n\n但你認識它。不知道為什麼，你就是認識它。",
+        "voice_tone": "DIVINE"
+      },
+      {
+        "line_id": "sr_02",
+        "speaker": "narrator",
+        "text": "卷軸記載了王船儀式中的一個漏洞——深淵之神的契約有一條但書：若血契被封印者以因果之力反噬，契約無效。\n\n反噬的方式，是將血契釘回它最初被簽署的地方。",
+        "voice_tone": "DIVINE"
+      },
+      {
+        "line_id": "sr_03",
+        "speaker": "narrator",
+        "text": "王船的龍骨，三百年前許氏的書房，是同一個地方。",
+        "voice_tone": "TENSE",
+        "effect_on_display": {
+          "add_tags": ["scroll_read"]
+        }
+      }
+    ],
+    "on_complete": {
+      "unlock_option_id": "opt_nail_contract"
+    }
+  },
+
+  "forge_success_dialogue": {
+    "dialogue_id": "forge_success_dialogue",
+    "lines": [
+      {
+        "line_id": "fs_01",
+        "speaker": "narrator",
+        "text": "殘缺的鑰匙與古舊的鎖芯在你手中緩緩融合，發出一聲輕響。\n\n符文在鑰齒上顯現，然後固定。",
+        "voice_tone": "DIVINE"
+      },
+      {
+        "line_id": "fs_02",
+        "speaker": "narrator",
+        "text": "萬能鑰匙，成了。",
+        "voice_tone": "CALM"
+      }
+    ]
+  },
+
+  "forge_fail_dialogue": {
+    "dialogue_id": "forge_fail_dialogue",
+    "lines": [
+      {
+        "line_id": "ff_01",
+        "speaker": "narrator",
+        "text": "什麼都沒有發生。\n\n也許不是在這裡，也許需要別的條件。",
+        "voice_tone": "CALM"
+      }
+    ]
+  }
+}

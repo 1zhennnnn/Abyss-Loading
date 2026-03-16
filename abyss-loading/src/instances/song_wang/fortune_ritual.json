@@ -1,0 +1,89 @@
+{
+  "ritual_style": "COIN_DIVINATION",
+  "ritual_title": "擲筊問王",
+  "ritual_subtitle": "在王爺面前，以三枚銅板卜問此行命格",
+  "confirm_label": "虔誠擲筊",
+  "draw_count": 2,
+  "player_choice": false,
+  "cards": [
+    {
+      "fortune_id": "yang_clarity",
+      "name": "陽聖·洞見",
+      "icon_emoji": "☀️",
+      "rarity": "RARE",
+      "description": "王爺應允，賜你一雙能透視遮蔽之眼。藏匿於幕後的真相，將在你面前現形。",
+      "grant_tags": ["see_hidden"],
+      "stat_modifier": [{ "stat": "inspiration", "delta": 15 }],
+      "system_msg": "洞見開啟：隱藏選項與線索對你可見。",
+      "system_msg_type": "BUFF"
+    },
+    {
+      "fortune_id": "wolf_star",
+      "name": "煞星·狼魅",
+      "icon_emoji": "🐺",
+      "rarity": "RARE",
+      "description": "狼星臨身，你散發出難以捉摸的氣場。迷信之人見你，心生敬畏，不敢輕舉妄動。",
+      "grant_tags": ["wolf_charm"],
+      "stat_modifier": [{ "stat": "constitution", "delta": 10 }],
+      "system_msg": "狼魅加身：特定 NPC 對你態度轉為服從。",
+      "system_msg_type": "BUFF"
+    },
+    {
+      "fortune_id": "break_seal",
+      "name": "破封·強闖",
+      "icon_emoji": "⚡",
+      "rarity": "EPIC",
+      "description": "王爺賜你破除封印的氣魄。凡宵禁、封鎖、結界——皆可強行突破，但代價由你承擔。",
+      "grant_tags": ["break_barrier"],
+      "stat_modifier": [{ "stat": "constitution", "delta": 20 }],
+      "system_msg": "破封之力：可強闖封鎖區域，但可能觸發危機。",
+      "system_msg_type": "BUFF"
+    },
+    {
+      "fortune_id": "command_spirit",
+      "name": "令旗·號令",
+      "icon_emoji": "🚩",
+      "rarity": "EPIC",
+      "description": "王爺旗令在手，地方神鬼皆需聽從。召喚陰兵或驅使鬼差，不再是遙不可及的事。",
+      "grant_tags": ["npc_command"],
+      "stat_modifier": [{ "stat": "karma", "delta": 20 }],
+      "system_msg": "令旗感應：特定場景可驅使靈媒或陰差行事。",
+      "system_msg_type": "BUFF"
+    },
+    {
+      "fortune_id": "yin_shadow",
+      "name": "陰爻·幽影",
+      "icon_emoji": "🌑",
+      "rarity": "CURSED",
+      "description": "王爺不應，陰爻連出。你的業力已被陰世注意，此行每一步都有無形目光跟隨。",
+      "grant_tags": ["shadow_marked"],
+      "stat_modifier": [{ "stat": "karma", "delta": -25 }],
+      "system_msg": "警告：陰世印記降下，某些 NPC 將對你充滿敵意。",
+      "system_msg_type": "DANGER"
+    },
+    {
+      "fortune_id": "plague_blessing",
+      "name": "瘟王·賜福",
+      "icon_emoji": "🏮",
+      "rarity": "LEGENDARY",
+      "description": "千歲爺親自降臨賜福，你身上的煞氣被瘟王化解，此行諸邪辟易，百鬼退散。",
+      "grant_tags": ["plague_ward"],
+      "stat_modifier": [
+        { "stat": "karma", "delta": 30 },
+        { "stat": "constitution", "delta": 10 }
+      ],
+      "system_msg": "瘟王賜福：最強護符，陰煞之物對你失效。",
+      "system_msg_type": "DIVINE"
+    },
+    {
+      "fortune_id": "incense_path",
+      "name": "香煙指引",
+      "icon_emoji": "🪷",
+      "rarity": "COMMON",
+      "description": "香煙裊裊升向正確的方向，指引你找到此行關鍵之物。直覺將帶你走向真相。",
+      "stat_modifier": [{ "stat": "inspiration", "delta": 25 }],
+      "system_msg": "靈感大增，你對環境的感知變得異常敏銳。",
+      "system_msg_type": "BUFF"
+    }
+  ]
+}

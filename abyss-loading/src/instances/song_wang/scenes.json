@@ -1,0 +1,948 @@
+{
+  "day1_arrival": {
+    "id": "day1_arrival",
+    "title": "煙霧中的永安鎮",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "EERIE",
+    "description": "長途跋涉後，你終於看見了路牌——「永安鎮」三個字漆得鮮紅，像是剛剛補上去的。\n\n鎮口的榕樹老得出奇，樹根爬滿了褪色的平安符。幾個鎮民站在遠處打量你，臉上帶著說不清是熱情還是憐憫的笑。\n\n空氣裡瀰漫著奇怪的甜腥氣息。",
+    "entry_dialogue": "dialogue_arrival_welcome",
+    "options": [
+      {
+        "id": "opt_ask_smell",
+        "label": "詢問那股奇怪的氣味",
+        "flavor_text": "甜中帶腥，像是鮮花與腐肉的混合。",
+        "next_scene": "day1_arrival_smell"
+      },
+      {
+        "id": "opt_observe_amulets",
+        "label": "仔細觀察樹上的平安符",
+        "flavor_text": "數量多得不尋常，而且全是新的。",
+        "next_scene": "day1_arrival_amulets"
+      },
+      {
+        "id": "opt_head_to_inn",
+        "label": "直接前往客棧",
+        "next_scene": "day1_inn"
+      }
+    ]
+  },
+  "day1_arrival_smell": {
+    "id": "day1_arrival_smell",
+    "title": "氣味的來源",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "EERIE",
+    "description": "你向鎮民追問那股氣味，對方只是笑著說：「王爺廟在辦事，正常正常。」\n\n轉過頭，你注意到榕樹根部有一灘深色的泥濘，形狀有些像一隻腳印——但只有一個，沒有另一隻。",
+    "options": [
+      {
+        "id": "opt_note_footprint",
+        "label": "記下腳印的位置",
+        "effect_add_tags": [
+          "noticed_footprint"
+        ],
+        "next_scene": "day1_inn"
+      },
+      {
+        "id": "opt_ignore_footprint",
+        "label": "不去想那麼多，先找地方落腳",
+        "next_scene": "day1_inn"
+      }
+    ]
+  },
+  "day1_arrival_amulets": {
+    "id": "day1_arrival_amulets",
+    "title": "平安符的數字",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "EERIE",
+    "description": "你走近細看。平安符背面並不是常見的祈福文字——每張符的右下角都用極細的墨水寫著一個數字。\n\n最舊的一張寫著「408」，往後是 409、410……最新的一批，寫著「411」。\n\n你不明白這代表什麼。",
+    "options": [
+      {
+        "id": "opt_take_amulet",
+        "label": "悄悄取下一張「411」的符",
+        "effect_add_items": [
+          "numbered_amulet"
+        ],
+        "effect_add_tags": [
+          "has_clue_411"
+        ],
+        "next_scene": "day1_inn"
+      },
+      {
+        "id": "opt_leave_amulets",
+        "label": "原封不動地離開",
+        "next_scene": "day1_inn"
+      }
+    ]
+  },
+  "day1_inn": {
+    "id": "day1_inn",
+    "title": "平安客棧",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "NORMAL",
+    "description": "客棧比你想像的熱鬧。老闆娘是個五十來歲的婦人，動作俐落，笑容溫暖，但眼睛裡有什麼東西讓你覺得不太自在。\n\n她把你帶到二樓的房間，在離開前轉身說了一句話，語氣輕描淡寫，卻重如千斤。",
+    "entry_dialogue": "dialogue_inn_warning",
+    "options": [
+      {
+        "id": "opt_ask_why",
+        "label": "追問為什麼不能開門",
+        "next_scene": "day1_inn_detail"
+      },
+      {
+        "id": "opt_agree_silently",
+        "label": "沉默地點頭",
+        "next_scene": "day1_inn_room"
+      }
+    ]
+  },
+  "day1_inn_detail": {
+    "id": "day1_inn_detail",
+    "title": "老闆娘的話",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "TENSE",
+    "description": "老闆娘看了你很久，最後只說了八個字：\n\n「王爺的事，少問為妙。」\n\n她下樓的腳步聲很輕，輕得像是沒有踩在地板上。",
+    "options": [
+      {
+        "id": "opt_go_to_room",
+        "label": "回房間休息",
+        "next_scene": "day1_inn_room"
+      }
+    ]
+  },
+  "day1_inn_room": {
+    "id": "day1_inn_room",
+    "title": "客房・深夜",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "TENSE",
+    "description": "你剛閉上眼睛，腳步聲就從門外傳來。\n\n不對——不是腳步聲。是某種濕潤的、黏稠的聲響，每一下都帶著細微的拖拽感，像是什麼沉重的東西正在移動。\n\n然後是敲門聲。三下。緩慢的、均勻的、沒有任何人類該有的節奏感。",
+    "entry_dialogue": "dialogue_night_knock",
+    "options": [
+      {
+        "id": "opt_open_door",
+        "label": "開門",
+        "flavor_text": "老闆娘說不能開。但你還是想知道。",
+        "is_death_trigger": true,
+        "survive_scene_id": "day1_door_survived",
+        "next_scene": "day7_ending_e"
+      },
+      {
+        "id": "opt_stay_still",
+        "label": "一動不動，屏住呼吸",
+        "next_scene": "day1_night_survived"
+      },
+      {
+        "id": "opt_peek_window",
+        "label": "從窗縫往外窺視",
+        "next_scene": "day1_night_peek"
+      }
+    ]
+  },
+  "day1_door_survived": {
+    "id": "day1_door_survived",
+    "title": "命盤庇護",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "DIVINE",
+    "description": "門在你手上打開了一條縫。\n\n你看見的東西讓你的大腦瞬間停止運作——不是恐懼，是某種更原始的反應，像是你的神經系統主動決定拒絕儲存這段記憶。\n\n護符在胸口碎裂成光，命盤的星力將你的意識強行拉回。\n\n你站在緊閉的門前，手心全是汗。門，從來沒有被打開過。",
+    "options": [
+      {
+        "id": "opt_survive_to_bed",
+        "label": "退回床邊，等待天亮",
+        "next_scene": "day2_temple"
+      }
+    ]
+  },
+  "day1_night_peek": {
+    "id": "day1_night_peek",
+    "title": "窗縫所見",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "EERIE",
+    "description": "你趴在窗邊，從縫隙往外看。\n\n街道上什麼都沒有。只有海泥留下的痕跡，從門口一路延伸向遠方，消失在霧裡。\n\n痕跡只有單向的——從遠方，走到你的門前。沒有離開的足跡。",
+    "options": [
+      {
+        "id": "opt_note_wet_tracks",
+        "label": "記住這件事",
+        "effect_add_tags": [
+          "saw_wet_tracks"
+        ],
+        "next_scene": "day1_night_survived"
+      }
+    ]
+  },
+  "day1_night_survived": {
+    "id": "day1_night_survived",
+    "title": "第一夜・倖存",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "NORMAL",
+    "description": "敲門聲在黎明前停止了。\n\n你不知道自己有沒有睡著。天光從窗縫透進來，鳥叫聲讓這個鎮子又變回了一個普通的南方小鎮。\n\n但你知道，它不是。",
+    "options": [
+      {
+        "id": "opt_day2_start",
+        "label": "起身，前往王爺廟",
+        "next_scene": "day2_temple"
+      }
+    ]
+  },
+  "day2_temple": {
+    "id": "day2_temple",
+    "title": "王爺廟正殿",
+    "background_key": "song_wang_temple_shrine",
+    "atmosphere": "NORMAL",
+    "description": "王爺廟比你想像的更壯觀。紅牆金瓦，香火鼎盛，進進出出的鎮民臉上都帶著虔誠的神情。\n\n鎮長親自在門口迎接你——一個看起來六十多歲、笑容可掬的老人，把你當貴客一樣帶著參觀，介紹著王爺廟的歷史，說得頭頭是道。\n\n一切都太正常了。",
+    "entry_dialogue": "dialogue_mayor_tour",
+    "options": [
+      {
+        "id": "opt_examine_mural",
+        "label": "仔細觀看天井壁畫",
+        "next_scene": "day2_mural"
+      },
+      {
+        "id": "opt_draw_fortune",
+        "label": "到籤筒抽籤",
+        "next_scene": "day2_fortune"
+      },
+      {
+        "id": "opt_go_beach",
+        "label": "跟鎮長前往海灘看王船",
+        "next_scene": "day2_beach"
+      }
+    ]
+  },
+  "day2_mural": {
+    "id": "day2_mural",
+    "title": "天井壁畫",
+    "background_key": "song_wang_temple_shrine",
+    "atmosphere": "EERIE",
+    "description": "壁畫畫得極為精細。一群衣著光鮮的信徒，在神明的指引下，一個個跳入熊熊燃燒的火海。\n\n那個「神明」的形象很奇怪——沒有五官，只有一個巨大的、深不見底的口腔，裡面密密麻麻地排列著不屬於任何生物的牙齒。\n\n你盯著它看了很久。",
+    "options": [
+      {
+        "id": "opt_mural_vision",
+        "label": "壁畫上的眼珠，正在看你",
+        "req_tags": [
+          "see_hidden"
+        ],
+        "flavor_text": "只有你才看得見。",
+        "trigger_dialogue": "dialogue_mural_awakening",
+        "effect_add_tags": [
+          "mural_witnessed"
+        ],
+        "next_scene": "day2_mural_aftermath"
+      },
+      {
+        "id": "opt_mural_puzzle",
+        "label": "研究壁畫上的圖案對應關係",
+        "trigger_puzzle": "puzzle_mural_match",
+        "next_scene": "day2_mural_aftermath",
+        "flavor_text": "壁畫右側的銘文寫道：「王迎送，神實食；船燃盡，祭始成；輪迴轉，契永固。」\n三句話，三對關係——把對應的符號配成一對，就能解讀壁畫的秘密。"
+      },
+      {
+        "id": "opt_mural_normal",
+        "label": "不過是一幅壁畫，離開",
+        "next_scene": "day2_mural_normal"
+      }
+    ],
+    "puzzle_context": "\n\n─────────────────────────────\n📜 謎題解鎖：壁畫符文配對\n三組符號，各有對應。右側銘文是你唯一的線索。"
+  },
+  "day2_mural_normal": {
+    "id": "day2_mural_normal",
+    "title": "平靜的壁畫",
+    "background_key": "song_wang_temple_shrine",
+    "atmosphere": "NORMAL",
+    "description": "你轉移了視線。也許只是光線的問題，也許你昨晚沒睡好。壁畫就是一幅壁畫。",
+    "options": [
+      {
+        "id": "opt_to_fortune",
+        "label": "去抽籤",
+        "next_scene": "day2_fortune"
+      },
+      {
+        "id": "opt_to_beach",
+        "label": "去看王船",
+        "next_scene": "day2_beach"
+      }
+    ]
+  },
+  "day2_mural_aftermath": {
+    "id": "day2_mural_aftermath",
+    "title": "真相的碎片",
+    "background_key": "song_wang_temple_shrine",
+    "atmosphere": "TENSE",
+    "description": "你從壁畫前退開，脫力地靠在廊柱上。\n\n腦子裡多了一些什麼，像是某種不應該被人類知道的知識碎片，正在往記憶的縫隙裡嵌入。\n\n燒王船，不是在送走瘟神。是在餵什麼東西。",
+    "options": [
+      {
+        "id": "opt_mural_to_fortune",
+        "label": "整理心情，去抽籤",
+        "next_scene": "day2_fortune"
+      },
+      {
+        "id": "opt_mural_to_beach",
+        "label": "跟上鎮長，去看王船",
+        "next_scene": "day2_beach"
+      }
+    ]
+  },
+  "day2_fortune": {
+    "id": "day2_fortune",
+    "title": "籤筒的秘密",
+    "background_key": "song_wang_temple_shrine",
+    "atmosphere": "TENSE",
+    "description": "你搖動籤筒，取出一根竹籤。\n\n籤上的字印著血紅色的「祭」。你放回去，再搖，再取——每一根都是「祭」。你把整個籤筒倒出來，鋪滿地板的全是同一個字。\n\n廟公從遠處看著你，沒有走過來，只是笑了笑。",
+    "options": [
+      {
+        "id": "opt_ask_fortune_keeper",
+        "label": "質問廟公這是什麼意思",
+        "next_scene": "day2_fortune_confront"
+      },
+      {
+        "id": "opt_leave_quietly",
+        "label": "悄悄把籤放回去，若無其事離開",
+        "effect_add_tags": [
+          "knows_fortune_secret"
+        ],
+        "next_scene": "day2_beach"
+      }
+    ]
+  },
+  "day2_fortune_confront": {
+    "id": "day2_fortune_confront",
+    "title": "廟公的回答",
+    "background_key": "song_wang_temple_shrine",
+    "atmosphere": "TENSE",
+    "entry_dialogue": "dialogue_fortune_keeper",
+    "description": "廟公慢慢走過來，把地板上的籤一根根撿起，動作從容，就像在做最日常的事。\n\n「王爺的意思是一樣的，一根籤說得清楚，何必要那麼多字。」\n\n他說完就走了。你不知道該說什麼。",
+    "options": [
+      {
+        "id": "opt_to_beach_after_fortune",
+        "label": "去看王船",
+        "next_scene": "day2_beach"
+      }
+    ]
+  },
+  "day2_beach": {
+    "id": "day2_beach",
+    "title": "王船建造海灘",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "NORMAL",
+    "description": "王船停在海灘上，規模比你想像的大得多。紅黑相間的船身，桅杆上掛滿了符紙，幾十個工匠正在忙碌地做最後的修整。\n\n鎮長一一介紹細節，言語間充滿驕傲，就像在展示一件藝術品。\n\n你注意到船底的艙口焊得很嚴實——比正常的船底要嚴實得多。",
+    "entry_dialogue": "dialogue_mayor_ship",
+    "options": [
+      {
+        "id": "opt_ask_hull",
+        "label": "詢問為什麼船底艙口焊得這麼嚴",
+        "next_scene": "day2_beach_hull"
+      },
+      {
+        "id": "opt_watch_workers",
+        "label": "觀察工匠的工作情況",
+        "next_scene": "day2_beach_workers"
+      },
+      {
+        "id": "opt_back_to_inn",
+        "label": "返回客棧休息",
+        "next_scene": "day3_shop"
+      }
+    ]
+  },
+  "day2_beach_hull": {
+    "id": "day2_beach_hull",
+    "title": "船底之謎",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "TENSE",
+    "description": "鎮長的笑容沒有變，但眼神變了。\n\n「傳統，傳統。三百年前留下來的做法，我們一直照著辦。」\n\n他換了個話題，帶你去看船頭的雕刻。你沒有繼續追問，但你已經把這件事記在心裡了。",
+    "options": [
+      {
+        "id": "opt_note_hull",
+        "label": "記住艙口的位置",
+        "effect_add_tags": [
+          "knows_hull_location"
+        ],
+        "next_scene": "day3_shop"
+      }
+    ]
+  },
+  "day2_beach_workers": {
+    "id": "day2_beach_workers",
+    "title": "工匠的眼神",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "EERIE",
+    "description": "你繞著王船走了一圈，細看工匠的臉。\n\n他們幹活，但沒有交談，沒有人抬頭，只有工具敲擊木材的聲音機械地重複著。\n\n你在一個工匠面前蹲下，對他說了一句話。他緩緩抬起頭——你看見他眼睛裡有什麼東西不見了。\n\n不是神智渙散。是某種更根本的東西，在很久以前就消失了。",
+    "options": [
+      {
+        "id": "opt_workers_note",
+        "label": "這些鎮民，是自願的嗎",
+        "effect_add_tags": [
+          "doubts_townsfolk"
+        ],
+        "next_scene": "day3_shop"
+      }
+    ]
+  },
+  "day3_shop": {
+    "id": "day3_shop",
+    "title": "紙紮店",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "NORMAL",
+    "description": "第三天早上，鎮長派人來通知，說今天需要外地訪客幫忙製作王船的「添載」——紙人水手。\n\n這是傳統，不去是不禮貌的。\n\n紙紮店開在鎮子的邊緣，老闆是個沉默的中年男人，他把你帶到店後面，推開一扇往下走的門。",
+    "entry_dialogue": "dialogue_shop_owner",
+    "options": [
+      {
+        "id": "opt_go_basement",
+        "label": "走下去",
+        "next_scene": "day3_basement"
+      },
+      {
+        "id": "opt_refuse_basement",
+        "label": "找藉口推辭",
+        "next_scene": "day3_basement_forced"
+      }
+    ]
+  },
+  "day3_basement_forced": {
+    "id": "day3_basement_forced",
+    "title": "沒有拒絕的餘地",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "TENSE",
+    "description": "老闆看著你，眼神裡沒有惡意，也沒有通融的空間。\n\n「王爺的事，外地人幫忙是積德。不幫……」他停頓了一下，「不幫也沒關係，只是以後可能諸事不順。」\n\n你聽懂了他話裡的意思。",
+    "options": [
+      {
+        "id": "opt_go_basement_2",
+        "label": "算了，下去吧",
+        "next_scene": "day3_basement"
+      }
+    ]
+  },
+  "day3_basement": {
+    "id": "day3_basement",
+    "title": "地下室",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "EERIE",
+    "description": "地下室比你想像的大。昏黃的燈光照著整排的竹架，幾個鎮民已經在默默編織，沒有人說話。\n\n你拿起一根竹條，開始依照示範做紙人的骨架。工作進行到一半，你的手指割破了——竹條的切口像刀一樣鋒利。\n\n但流出來的不是你的血。竹條本身在滲血，黑紅色，從截面緩緩沁出。你用指甲刮開表面，看見了白色的東西。",
+    "options": [
+      {
+        "id": "opt_red_thread",
+        "label": "有人悄悄靠近了你",
+        "req_tags": [
+          "wolf_charm"
+        ],
+        "flavor_text": "鎮長的女兒趁亂站到你身邊。",
+        "trigger_dialogue": "dialogue_red_thread",
+        "effect_add_items": [
+          "red_amulet"
+        ],
+        "effect_add_tags": [
+          "has_red_amulet"
+        ],
+        "next_scene": "day3_bone"
+      },
+      {
+        "id": "opt_bone_examine",
+        "label": "繼續刮，看個清楚",
+        "next_scene": "day3_bone"
+      },
+      {
+        "id": "opt_bone_ignore",
+        "label": "放下竹條，不想知道",
+        "next_scene": "day3_basement_leave"
+      }
+    ]
+  },
+  "day3_bone": {
+    "id": "day3_bone",
+    "title": "竹條之下",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "TENSE",
+    "entry_dialogue": "dialogue_bone_discovery",
+    "description": "是骨頭。不是動物的骨頭。\n\n骨頭的形狀你認得，那是人類指骨的截面，打磨得非常光滑，像是一種精心的工藝品。\n\n你環視四周，所有人都低著頭在工作，沒有人注意到你。每一根竹架，每一根竹條——",
+    "options": [
+      {
+        "id": "opt_take_bone_evidence",
+        "label": "悄悄帶走一根竹條作為證據",
+        "effect_add_items": [
+          "bone_evidence"
+        ],
+        "next_scene": "day3_basement_leave"
+      },
+      {
+        "id": "opt_confront_locals",
+        "label": "質問旁邊的鎮民",
+        "next_scene": "day3_bone_confront"
+      },
+      {
+        "id": "opt_leave_bone",
+        "label": "放下，若無其事地離開",
+        "next_scene": "day3_basement_leave"
+      }
+    ]
+  },
+  "day3_bone_confront": {
+    "id": "day3_bone_confront",
+    "title": "鎮民的回答",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "TENSE",
+    "description": "旁邊的鎮民停下手，轉頭看你。\n\n那雙眼睛，和你在海灘上看到的工匠一樣，裡面空空的。\n\n「哪裡的竹條不是骨頭。」他說，語氣平靜得像是在討論今天的天氣，然後低下頭繼續工作。",
+    "options": [
+      {
+        "id": "opt_after_confront_leave",
+        "label": "離開這裡",
+        "next_scene": "day3_basement_leave"
+      }
+    ]
+  },
+  "day3_basement_leave": {
+    "id": "day3_basement_leave",
+    "title": "地上的陽光",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "NORMAL",
+    "description": "你走上樓梯，推開門，呼吸到外面的空氣。\n\n陽光照在臉上，一切看起來那麼正常。旁邊的鄰居在晾衣服，小孩在追一隻貓，有人在遠處喊吃飯了。\n\n你不確定自己看到的是不是真的。但你知道，你看到了。",
+    "options": [
+      {
+        "id": "opt_day4_start",
+        "label": "等待第四天的到來",
+        "next_scene": "day4_curfew"
+      }
+    ]
+  },
+  "day4_curfew": {
+    "id": "day4_curfew",
+    "title": "代天巡狩・宵禁",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "TENSE",
+    "entry_dialogue": "dialogue_curfew_begins",
+    "description": "第四天黃昏，廣播響了。\n\n「代天巡狩吉時已到，全鎮居民請即刻返家，閉門熄燈。」\n\n廣播循環播了三次，然後鎮子變得完全安靜。一個行人都沒有，就連貓都消失了。\n\n你趴在窗邊，窗外什麼都看不見，只有濃重的霧。",
+    "options": [
+      {
+        "id": "opt_watch_window",
+        "label": "繼續守在窗邊觀察",
+        "next_scene": "day4_witness"
+      },
+      {
+        "id": "opt_find_basement_key",
+        "label": "趁機搜查客棧",
+        "trigger_puzzle": "puzzle_curfew_code",
+        "next_scene": "day4_curfew_after_puzzle",
+        "flavor_text": "客棧地下室有一道數字鎖。老闆娘曾說密碼藏在籤詩裡，\n而你在鎮口平安符上見過某個反覆出現的數字……"
+      }
+    ],
+    "puzzle_context": "\n\n─────────────────────────────\n🔒 謎題解鎖：數字鎖密碼\n三位數密碼。你在鎮口的符上見過它，籤詩裡也有它的影子。"
+  },
+  "day4_curfew_after_puzzle": {
+    "id": "day4_curfew_after_puzzle",
+    "title": "宵禁中的發現",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "EERIE",
+    "description": "你把地下室的發現揣進懷裡，回到房間繼續盯著窗外。\n\n霧在移動。不是風吹的那種移動，而是有目的性的，像是某種龐大的生命體在其中緩緩呼吸。",
+    "options": [
+      {
+        "id": "opt_to_witness",
+        "label": "繼續觀察窗外",
+        "next_scene": "day4_witness"
+      }
+    ]
+  },
+  "day4_witness": {
+    "id": "day4_witness",
+    "title": "窗縫之外",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "EERIE",
+    "entry_dialogue": "dialogue_npc_runs",
+    "description": "你看見一個人跑出來了。\n\n是昨天在客棧大廳見過的外地商人，他跌跌撞撞地衝上街道，嘴裡喊著什麼，聲音隔著玻璃聽不清楚。\n\n然後霧動了。",
+    "options": [
+      {
+        "id": "opt_watch_horror",
+        "label": "看下去",
+        "next_scene": "day4_horror"
+      },
+      {
+        "id": "opt_look_away",
+        "label": "閉上眼睛",
+        "next_scene": "day4_look_away"
+      }
+    ]
+  },
+  "day4_horror": {
+    "id": "day4_horror",
+    "title": "官將首",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "TENSE",
+    "entry_dialogue": "dialogue_guanjianshou",
+    "description": "從霧裡走出來的東西穿著官將首的戲服——高大的帽子，誇張的臉譜。\n\n但臉譜底下沒有臉。\n\n它的移動方式不像任何活著的東西，每一步都不對，像是有人在操縱一個不熟悉人體構造的玩偶。\n\n它把商人提起來，帶回了霧中。地上遺留了一枚懷錶，逆時針的錶面在黑暗中發著微光。",
+    "options": [
+      {
+        "id": "opt_rage_awakening",
+        "label": "恐懼到極點，某根弦斷了",
+        "req_tags": [
+          "break_barrier"
+        ],
+        "flavor_text": "不是你選擇憤怒，是憤怒選擇了你。",
+        "trigger_dialogue": "dialogue_rage_awakening",
+        "effect_stat": [
+          {
+            "stat": "constitution",
+            "delta": 15
+          }
+        ],
+        "effect_add_tags": [
+          "rage_awakened"
+        ],
+        "next_scene": "day4_watch"
+      },
+      {
+        "id": "opt_horror_noted",
+        "label": "記住它的行走方式",
+        "effect_add_tags": [
+          "studied_guanjianshou"
+        ],
+        "next_scene": "day4_watch"
+      }
+    ]
+  },
+  "day4_look_away": {
+    "id": "day4_look_away",
+    "title": "不看，不聽",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "TENSE",
+    "description": "你不知道窗外發生了什麼。聲音停了，然後是很長的沉默。\n\n天亮以後，商人的房間空了，行李還在。",
+    "options": [
+      {
+        "id": "opt_to_watch",
+        "label": "去找那枚懷錶",
+        "next_scene": "day4_watch"
+      }
+    ]
+  },
+  "day4_watch": {
+    "id": "day4_watch",
+    "title": "輪迴懷錶",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "NORMAL",
+    "description": "天亮後，你到街上找到了那枚懷錶。\n\n拿在手裡沉甸甸的，指針逆時針走著，分針一圈一圈不停歇。錶背刻著一行字：「第 411 次輪迴」\n\n你翻過來，看見錶面玻璃內側有人用極細的針刻了幾個字：「找到廟裡的契。」",
+    "options": [
+      {
+        "id": "opt_take_watch",
+        "label": "收好懷錶",
+        "effect_add_items": [
+          "cursed_watch"
+        ],
+        "next_scene": "day5_infiltrate"
+      }
+    ]
+  },
+  "day5_infiltrate": {
+    "id": "day5_infiltrate",
+    "title": "潛入前的籌備",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "TENSE",
+    "description": "第五天。明天就是遷船遶境的正日，今晚是最後機會。\n\n廟宇內殿在平時有廟公守著，但今天下午有活動，人員會外出，留下一個空隙。\n\n你要決定怎麼進去。",
+    "options": [
+      {
+        "id": "opt_enter_temple",
+        "label": "趁下午進入王爺廟",
+        "next_scene": "day5_temple_inner"
+      }
+    ]
+  },
+  "day5_temple_inner": {
+    "id": "day5_temple_inner",
+    "title": "內殿走廊",
+    "background_key": "song_wang_temple_shrine",
+    "atmosphere": "EERIE",
+    "description": "你穿過正殿，往禁止進入的內殿走廊走去。\n\n走廊很長，兩側掛著歷任鎮長的肖像，每一張都有同樣的眼神——那種空洞，你在鎮民身上見過太多次了。\n\n走到盡頭，有一道上鎖的門，也有一個人在等你。",
+    "options": [
+      {
+        "id": "opt_meet_keeper",
+        "label": "面對廟公",
+        "next_scene": "day5_temple_keeper"
+      }
+    ]
+  },
+  "day5_temple_keeper": {
+    "id": "day5_temple_keeper",
+    "title": "廟公攔路",
+    "background_key": "song_wang_temple_shrine",
+    "atmosphere": "TENSE",
+    "entry_dialogue": "dialogue_keeper_blocks",
+    "description": "廟公站在門前，手裡拿著一把鑰匙。\n\n他比你想像的年輕，三十出頭，眼神裡不是那種空洞——是真實的恐懼，和某種幾乎被壓制住的憐憫。\n\n你知道他在考慮一個問題：殺人，還是讓人死。",
+    "options": [
+      {
+        "id": "opt_command_keeper",
+        "label": "與他對視，一個字都不說",
+        "req_tags": [
+          "npc_command"
+        ],
+        "flavor_text": "帝星的威壓，不需要語言。",
+        "trigger_dialogue": "dialogue_keeper_yields",
+        "effect_add_tags": [
+          "keeper_yielded"
+        ],
+        "next_scene": "day5_blood_contract"
+      },
+      {
+        "id": "opt_break_door",
+        "label": "管他，直接破門",
+        "req_tags": [
+          "break_barrier"
+        ],
+        "flavor_text": "門算什麼。",
+        "effect_stat": [
+          {
+            "stat": "constitution",
+            "delta": -10
+          }
+        ],
+        "next_scene": "day5_blood_contract"
+      },
+      {
+        "id": "opt_negotiate_keeper",
+        "label": "試著說服他",
+        "next_scene": "day5_keeper_negotiate"
+      }
+    ]
+  },
+  "day5_keeper_negotiate": {
+    "id": "day5_keeper_negotiate",
+    "title": "廟公的選擇",
+    "background_key": "song_wang_temple_shrine",
+    "atmosphere": "TENSE",
+    "entry_dialogue": "dialogue_keeper_negotiation",
+    "description": "你說了很多。他聽著，眼神變了幾次。\n\n最後，他把鑰匙放在地上，走向走廊另一端，背對著你。\n\n「我什麼都沒看見。你自己想辦法。」",
+    "options": [
+      {
+        "id": "opt_take_key",
+        "label": "拿起鑰匙，開門",
+        "next_scene": "day5_blood_contract"
+      }
+    ]
+  },
+  "day5_blood_contract": {
+    "id": "day5_blood_contract",
+    "title": "神龕後的秘密",
+    "background_key": "song_wang_temple_shrine",
+    "atmosphere": "DIVINE",
+    "entry_dialogue": "dialogue_contract_found",
+    "description": "內殿的神龕比正殿的更大，王爺的金身在燭光裡威嚴地俯視著你。\n\n神龕後面的暗格你找了一刻鐘才找到。拉開來，裡面放著一個木匣，木匣裡放著一份泛黃的文書。\n\n你打開它，看見了三百年前的字跡，以及那個你一直沒有說破的真相。",
+    "options": [
+      {
+        "id": "opt_use_watch_here",
+        "label": "拿出懷錶，與血契對照",
+        "req_item": "cursed_watch",
+        "trigger_dialogue": "dialogue_watch_revelation",
+        "effect_add_tags": [
+          "knows_cycle"
+        ],
+        "next_scene": "day5_truth"
+      },
+      {
+        "id": "opt_read_contract",
+        "label": "仔細閱讀血契",
+        "next_scene": "day5_truth"
+      }
+    ]
+  },
+  "day5_truth": {
+    "id": "day5_truth",
+    "title": "三百年的交易",
+    "background_key": "song_wang_temple_shrine",
+    "atmosphere": "DIVINE",
+    "entry_dialogue": "dialogue_truth_revealed",
+    "description": "燒王船，不是在送瘟神離開。\n\n是在餵它。每七年一次，鎮外的人被邀請進來，成為王船上的「添載」——不是紙紮，是活的。被燒掉的，不只是船。\n\n三百年前的第一任鎮長，用全鎮人的性命，換來了永遠的漁獲豐收。代價是，每七年一次，必須送幾個陌生的靈魂。\n\n而你，就是這次的名單之一。",
+    "options": [
+      {
+        "id": "opt_take_contract",
+        "label": "把血契帶走",
+        "effect_add_items": [
+          "blood_contract"
+        ],
+        "next_scene": "day6_beach_chaos"
+      }
+    ]
+  },
+  "day6_beach_chaos": {
+    "id": "day6_beach_chaos",
+    "title": "遷船遶境",
+    "background_key": "song_wang_ship_burning",
+    "atmosphere": "TENSE",
+    "entry_dialogue": "dialogue_ceremony_chaos",
+    "description": "第六天，天還沒亮，整個鎮子已經在移動。\n\n鑼鼓聲震天響，上千個鎮民沿著海灘排成長龍，拉著粗繩把王船往岸邊移動。每個人的臉上都帶著相同的、空洞的虔誠。\n\n你在人群外圍，知道自己必須在王船點火之前，衝進船底的艙口。\n\n然後，他們看見了你。",
+    "options": [
+      {
+        "id": "opt_hunted",
+        "label": "他們發現了你的意圖",
+        "next_scene": "day6_hunted"
+      }
+    ]
+  },
+  "day6_hunted": {
+    "id": "day6_hunted",
+    "title": "獵殺開始",
+    "background_key": "song_wang_ship_burning",
+    "atmosphere": "TENSE",
+    "entry_dialogue": "dialogue_hunted",
+    "description": "三個官將首從霧裡走出來，這一次，目標是你。\n\n海灘上沒有任何可以躲藏的地方，船還在三十公尺外，火把已經點燃了。\n\n你只有一個方向：往前。",
+    "options": [
+      {
+        "id": "opt_blind_spot",
+        "label": "你看見了它們看不見的死角",
+        "req_tags": [
+          "see_hidden"
+        ],
+        "flavor_text": "月之眼在這一刻發揮了它的用途。",
+        "trigger_dialogue": "dialogue_blindspot_insight",
+        "next_scene": "day6_ship_hull"
+      },
+      {
+        "id": "opt_human_wall",
+        "label": "喝令鎮民擋在你面前",
+        "req_tags": [
+          "npc_command"
+        ],
+        "flavor_text": "你的聲音裡有某種東西，連空洞的人都聽得見。",
+        "trigger_dialogue": "dialogue_command_townsfolk",
+        "next_scene": "day6_ship_hull"
+      },
+      {
+        "id": "opt_red_amulet_use",
+        "label": "走位失誤，三叉戟貫穿了你",
+        "req_item": "red_amulet",
+        "flavor_text": "紅絲線在這一刻燃燒。",
+        "is_death_trigger": true,
+        "survive_scene_id": "day6_amulet_survived",
+        "next_scene": "day7_ending_e"
+      },
+      {
+        "id": "opt_brute_force",
+        "label": "奪劍，硬衝防線",
+        "req_tags": [
+          "break_barrier"
+        ],
+        "req_stat": {
+          "stat": "constitution",
+          "min": 80
+        },
+        "flavor_text": "七星劍在它手裡，然後在你手裡。",
+        "trigger_dialogue": "dialogue_brute_force_charge",
+        "next_scene": "day6_ship_hull"
+      },
+      {
+        "id": "opt_desperate_run",
+        "label": "什麼都沒有，只能跑",
+        "flavor_text": "或許速度夠快。或許。",
+        "next_scene": "day6_desperate"
+      }
+    ]
+  },
+  "day6_desperate": {
+    "id": "day6_desperate",
+    "title": "孤注一擲",
+    "background_key": "song_wang_ship_burning",
+    "atmosphere": "TENSE",
+    "entry_dialogue": "dialogue_desperate_run",
+    "description": "你跑。全力地跑，不管後面追來的聲音，不管那個不屬於任何活物的呼吸聲越來越近。\n\n二十公尺。十五。十。\n\n你撞上了船底的木板，用盡最後的力氣找到艙口，往裡爬。",
+    "options": [
+      {
+        "id": "opt_barely_made_it",
+        "label": "差一點，但進去了",
+        "effect_stat": [
+          {
+            "stat": "constitution",
+            "delta": -25
+          }
+        ],
+        "next_scene": "day6_ship_hull"
+      }
+    ]
+  },
+  "day6_amulet_survived": {
+    "id": "day6_amulet_survived",
+    "title": "紅絲線燃燒",
+    "background_key": "song_wang_ship_burning",
+    "atmosphere": "DIVINE",
+    "entry_dialogue": "dialogue_amulet_burns",
+    "description": "三叉戟貫穿了你的胸口。\n\n不對。貫穿了某樣東西，但不是你。紅絲線在你胸前燃燒成灰，消耗殆盡——帶走了那一擊本該帶走的東西。\n\n你跌倒，爬起來，往船衝去。",
+    "options": [
+      {
+        "id": "opt_to_hull",
+        "label": "衝進船底艙口",
+        "next_scene": "day6_ship_hull"
+      }
+    ]
+  },
+  "day6_ship_hull": {
+    "id": "day6_ship_hull",
+    "title": "王船底艙",
+    "background_key": "song_wang_ship_burning",
+    "atmosphere": "DIVINE",
+    "description": "你爬進艙口，把後面的通道塞上。\n\n底艙很黑，只有縫隙間透進來的火光。艙底鋪滿了三百年的積物——灰塵、符咒，和某種你不願意仔細看的暗褐色污漬。\n\n龍骨就在最深處，刻滿了看不懂的符文，粗如成人手臂。\n\n你把血契展開，把釘子對準龍骨。",
+    "options": [
+      {
+        "id": "opt_nail_contract",
+        "label": "釘下去",
+        "req_item": "blood_contract",
+        "trigger_puzzle": "puzzle_rune_sequence",
+        "next_scene": "day7_ending_s",
+        "flavor_text": "血契背面刻著六個封印古符，順序就是契約被打破的咒文：\n象徵「起源」的在前，「終結」的在後。\n若持有輪迴懷錶，錶盤停針處正是正確順序的提示。"
+      },
+      {
+        "id": "opt_escape_only",
+        "label": "不管血契，先找到逃生口",
+        "next_scene": "day7_ending_a"
+      }
+    ],
+    "puzzle_context": "\n\n─────────────────────────────\n⛓️ 謎題解鎖：龍骨封印序列\n六個古符必須依正確順序排列。血契、懷錶，都是線索。"
+  },
+  "day7_ending_s": {
+    "id": "day7_ending_s",
+    "title": "真結局：第 411 次，最後一次",
+    "background_key": "song_wang_ship_burning",
+    "atmosphere": "DIVINE",
+    "entry_dialogue": "dialogue_ending_s",
+    "description": "血契釘入龍骨的瞬間，整個世界靜止了。\n\n然後是聲音——三百年積壓的怨氣，從龍骨向外蔓延，像是一道裂縫貫穿了整個謊言。\n\n你從崩塌的船底爬出來。海灘上的人群全部停下，臉上的空洞在這一刻碎裂，眼神裡出現了某種久違的東西——困惑，和記憶。\n\n霧散了。遠處的海，第一次露出了它真實的顏色。\n\n第 411 次輪迴，在這一天，終止了。",
+    "options": [
+      {
+        "id": "opt_credits_s",
+        "label": "離開永安鎮",
+        "effect_add_tags": [
+          "cleared_yongan_truth"
+        ],
+        "next_scene": "ending_credits"
+      }
+    ]
+  },
+  "day7_ending_a": {
+    "id": "day7_ending_a",
+    "title": "普通結局：帶著印記離開",
+    "background_key": "song_wang_ship_burning",
+    "atmosphere": "EERIE",
+    "entry_dialogue": "dialogue_ending_a",
+    "description": "你從船的另一側鑿開一個洞，在火燒到你之前爬了出去。\n\n你跑，一直跑，跑過海灘，跑過那條通往鎮外的路，跑到腳軟為止。\n\n一個月後，你在某個城市的洗手間看鏡子，看見了脖子上的硃砂印記，像是一個指紋，鮮紅而清晰。\n\n它不會消失。它在等下一次。",
+    "options": [
+      {
+        "id": "opt_credits_a",
+        "label": "繼續生活，帶著印記",
+        "effect_add_tags": [
+          "cleared_yongan_escaped"
+        ],
+        "next_scene": "ending_credits"
+      }
+    ]
+  },
+  "day7_ending_e": {
+    "id": "day7_ending_e",
+    "title": "死亡結局：第 412 次",
+    "background_key": "song_wang_ship_burning",
+    "atmosphere": "EERIE",
+    "entry_dialogue": "dialogue_ending_e",
+    "description": "你被綁在王船的桅杆上。\n\n不是繩子。是那些紙人水手，它們的骨骼手指纏繞著你，比任何束縛都牢固。\n\n火從船底燒起來。你看著鎮民的臉，他們回望著你，臉上全是那種空洞而虔誠的表情。\n\n在最後一刻，你看見懷錶從你的口袋落入火中。錶背的數字，已經自動變成了「412」。",
+    "options": [
+      {
+        "id": "opt_restart_from_e",
+        "label": "這不是終點",
+        "next_scene": "ending_credits"
+      }
+    ]
+  },
+  "ending_credits": {
+    "id": "ending_credits",
+    "title": "永安鎮",
+    "background_key": "song_wang_ship_burning",
+    "atmosphere": "NORMAL",
+    "description": "副本結束。",
+    "options": []
+  }
+}
