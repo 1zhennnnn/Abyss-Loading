@@ -5,7 +5,6 @@ import { OptionButton } from './OptionButton';
 import { DialogueBox } from './DialogueBox';
 import { PuzzleOverlay } from './puzzle/PuzzleOverlay';
 import { FortuneRitual } from './ritual/FortuneRitual';
-import { PlayerPanel } from './PlayerPanel';
 import { ItemInspectModal } from './ItemInspectModal';
 import { SystemToast } from './SystemToast';
 import type { FortuneCard, FortuneRitualDef } from '../types/game.types';
