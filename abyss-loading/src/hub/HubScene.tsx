@@ -56,7 +56,7 @@ export default function HubScene() {
   });
 
   const { globalTags, globalInventory, loadInstance,
-          stats, instanceFortune, localTags,
+          stats, localTags,
           clearedInstances, itemRegistry, resetSave } = useGameStore();
 
   // inject CSS

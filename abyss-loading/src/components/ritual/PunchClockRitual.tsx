@@ -12,15 +12,6 @@ interface RitualProps {
 
 type Phase = 'idle' | 'scanning' | 'result';
 
-const SCAN_MSGS = [
-  'READY',
-  'SCANNING...',
-  'ID: --------',
-  'PROCESSING',
-  'IDENTIFYING',
-  'RESULT:',
-];
-
 export const PunchClockRitual: React.FC<RitualProps> = ({ ritualDef, onComplete }) => {
   const { cards, confirm_label } = ritualDef;
   const [phase, setPhase] = useState<Phase>('idle');
