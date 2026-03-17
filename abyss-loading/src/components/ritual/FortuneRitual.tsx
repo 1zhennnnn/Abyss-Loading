@@ -4,6 +4,7 @@ import { StarChartRitual } from './StarChartRitual';
 import { OmikujiRitual } from './OmikujiRitual';
 import { TarotRitual } from './TarotRitual';
 import { CoinDivinationRitual } from './CoinDivinationRitual';
+import { PunchClockRitual } from './PunchClockRitual';
 
 export interface RitualProps {
   ritualDef: FortuneRitualDef;
@@ -16,6 +17,7 @@ const ritualMap: Record<RitualStyle, React.FC<RitualProps>> = {
   OMIKUJI:         OmikujiRitual,
   TAROT:           TarotRitual,
   COIN_DIVINATION: CoinDivinationRitual,
+  PUNCH_CLOCK:     PunchClockRitual,
 };
 
 export const FortuneRitual: React.FC<RitualProps> = ({ ritualDef, onComplete }) => {

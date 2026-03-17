@@ -1,0 +1,65 @@
+{
+  "ritual_style": "PUNCH_CLOCK",
+  "ritual_title": "按指紋打卡",
+  "ritual_subtitle": "系統正在配對你的職場人格",
+  "confirm_label": "打卡上班",
+  "draw_count": 1,
+  "player_choice": true,
+  "cards": [
+    {
+      "fortune_id": "corporate_drone",
+      "name": "空降部隊",
+      "icon_emoji": "💼",
+      "rarity": "RARE",
+      "description": "你穿著全新的西裝，手拿名牌手提包，頭銜比資歷長。\n你看不見求救訊號，因為你不需要看見，那些都是背景雜訊。",
+      "grant_tags": ["corporate_drone", "npc_command"],
+      "stat_modifier": [
+        { "stat": "constitution", "delta": 20 },
+        { "stat": "inspiration", "delta": -20 }
+      ],
+      "system_msg": "向上管理啟動。主管無法直接攻擊你。你對同事求救訊號免疫——包括你原本不想無視的那種。",
+      "system_msg_type": "WARNING"
+    },
+    {
+      "fortune_id": "see_hidden",
+      "name": "爆肝救火隊",
+      "icon_emoji": "☕",
+      "rarity": "RARE",
+      "description": "你的眼袋垂到下巴，身上全是咖啡味，你一眼就能看出來哪裡要崩。\n問題是你的身體也快崩了。",
+      "grant_tags": ["see_hidden"],
+      "stat_modifier": [
+        { "stat": "inspiration", "delta": 30 },
+        { "stat": "constitution", "delta": -25 }
+      ],
+      "system_msg": "Bug 預測啟動。隱藏線索、陷阱、便利貼背面的字對你可見。體質極低，謹慎行動。",
+      "system_msg_type": "BUFF"
+    },
+    {
+      "fortune_id": "intern_mode",
+      "name": "快玩壞的實習生",
+      "icon_emoji": "📎",
+      "rarity": "COMMON",
+      "description": "你是最透明的，也是最自由的。\n系統沒把你算進去，所以規則對你是選配。",
+      "grant_tags": ["intern_mode"],
+      "stat_modifier": [
+        { "stat": "constitution", "delta": -15 },
+        { "stat": "karma", "delta": -20 }
+      ],
+      "system_msg": "暴力離職啟動。障礙物可強行破壞。你的合約存活值在倒數，時間有限。",
+      "system_msg_type": "DANGER"
+    },
+    {
+      "fortune_id": "low_presence",
+      "name": "邊緣薪水小偷",
+      "icon_emoji": "🎧",
+      "rarity": "COMMON",
+      "description": "你永遠戴著耳機，躲在隔板角落。\n沒有人知道你在，沒有人記得你的名字。",
+      "grant_tags": ["low_presence"],
+      "stat_modifier": [
+        { "stat": "karma", "delta": -15 }
+      ],
+      "system_msg": "存在感歸零啟動。主管與怪物自動無視你。無法正常取用關鍵道具，需要偷。",
+      "system_msg_type": "WARNING"
+    }
+  ]
+}

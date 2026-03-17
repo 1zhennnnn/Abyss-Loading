@@ -826,7 +826,7 @@
         "text": "王船的龍骨，三百年前許氏的書房，是同一個地方。",
         "voice_tone": "TENSE",
         "effect_on_display": {
-          "add_tags": ["scroll_read"]
+          "add_tags": ["讀過卷軸"]
         }
       }
     ],
@@ -861,6 +861,134 @@
         "speaker": "narrator",
         "text": "什麼都沒有發生。\n\n也許不是在這裡，也許需要別的條件。",
         "voice_tone": "CALM"
+      }
+    ]
+  },
+
+  "dialogue_taboo_warning": {
+    "dialogue_id": "dialogue_taboo_warning",
+    "lines": [
+      {
+        "line_id": "tw_01",
+        "speaker": "narrator",
+        "text": "你靠近幾個廟公，裝作在看王船，豎起耳朵聽。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "tw_02",
+        "speaker": "npc",
+        "speaker_name": "廟公",
+        "avatar_side": "left",
+        "text": "王爺出行，三不可犯——不可喧嘩，不可橫攔，不可回頭。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "tw_03",
+        "speaker": "npc",
+        "speaker_name": "廟公",
+        "avatar_side": "left",
+        "text": "尤其是那最後一條。送王離境，回頭者，凶。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "tw_04",
+        "speaker": "narrator",
+        "text": "一個工匠悄聲問：「為什麼不能回頭？」\n\n廟公沉默了很長一段時間，才說：「因為送出去的東西，有時候還在看你。」",
+        "voice_tone": "EERIE",
+        "pause_after_ms": 0
+      }
+    ]
+  },
+
+  "dialogue_taboo_noise_death": {
+    "dialogue_id": "dialogue_taboo_noise_death",
+    "lines": [
+      {
+        "line_id": "tn_01",
+        "speaker": "narrator",
+        "text": "你的聲音在海灘上炸開的瞬間，鑼鼓聲停了。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "tn_02",
+        "speaker": "narrator",
+        "text": "不是因為你的聲音夠響，是因為有什麼東西，在那一刻，把你的聲音記住了。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "tn_03",
+        "speaker": "narrator",
+        "text": "官將首轉過頭，不再看向別處。它一步一步地走向你，沒有任何猶豫。\n\n王爺的規矩不允許喧嘩。你的聲音，為你畫了一個靶心。",
+        "voice_tone": "TENSE",
+        "pause_after_ms": 0
+      }
+    ]
+  },
+
+  "dialogue_ending_taboo": {
+    "dialogue_id": "dialogue_ending_taboo",
+    "lines": [
+      {
+        "line_id": "et_01",
+        "speaker": "narrator",
+        "text": "你回頭了。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "et_02",
+        "speaker": "narrator",
+        "text": "在火光裡，王船正在崩解，黑煙和橘紅色的火焰遮住了整片天空。\n\n但在那片混沌的核心，有一雙眼睛，正在看你。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "et_03",
+        "speaker": "narrator",
+        "text": "它不是王爺，不是深淵之神，是某種更古老的東西，在每一次輪迴的縫隙裡等待著，等著某個愚蠢的、好奇的、以為自己已經勝利的人——\n\n回頭看。",
+        "voice_tone": "DIVINE",
+        "pause_after_ms": 0
+      }
+    ]
+  },
+
+  "dialogue_aftermath_phone": {
+    "dialogue_id": "dialogue_aftermath_phone",
+    "lines": [
+      {
+        "line_id": "ap_01",
+        "speaker": "narrator",
+        "text": "你接了電話，沒有說話。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "ap_02",
+        "speaker": "npc",
+        "speaker_name": "陌生人",
+        "avatar_side": "left",
+        "text": "你從永安鎮出來了。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "ap_03",
+        "speaker": "npc",
+        "speaker_name": "陌生人",
+        "avatar_side": "left",
+        "text": "你知道嗎，在你之前，已經有四百一十個人沒能出來。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "ap_04",
+        "speaker": "narrator",
+        "text": "你問他是誰。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "ap_05",
+        "speaker": "npc",
+        "speaker_name": "陌生人",
+        "avatar_side": "left",
+        "text": "是下一個找到懷錶的人。\n\n輪迴結束了，但深淵還在。下一個地方，已經開始等人了。",
+        "voice_tone": "TENSE",
+        "pause_after_ms": 0
       }
     ]
   }

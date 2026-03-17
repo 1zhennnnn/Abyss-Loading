@@ -37,7 +37,7 @@
         "id": "opt_note_footprint",
         "label": "記下腳印的位置",
         "effect_add_tags": [
-          "noticed_footprint"
+          "注意到腳印"
         ],
         "next_scene": "day1_inn"
       },
@@ -62,7 +62,7 @@
           "numbered_amulet"
         ],
         "effect_add_tags": [
-          "has_clue_411"
+          "持有411線索"
         ],
         "next_scene": "day1_inn"
       },
@@ -160,7 +160,7 @@
         "id": "opt_note_wet_tracks",
         "label": "記住這件事",
         "effect_add_tags": [
-          "saw_wet_tracks"
+          "見過濕泥痕跡"
         ],
         "next_scene": "day1_night_survived"
       }
@@ -214,14 +214,11 @@
     "options": [
       {
         "id": "opt_mural_vision",
-        "label": "壁畫上的眼珠，正在看你",
-        "req_tags": [
-          "see_hidden"
-        ],
+        "label": "【洞見之眼】壁畫上的眼珠，正在看你",
         "flavor_text": "只有你才看得見。",
         "trigger_dialogue": "dialogue_mural_awakening",
         "effect_add_tags": [
-          "mural_witnessed"
+          "目睹壁畫異象"
         ],
         "next_scene": "day2_mural_aftermath"
       },
@@ -294,7 +291,7 @@
         "id": "opt_leave_quietly",
         "label": "悄悄把籤放回去，若無其事離開",
         "effect_add_tags": [
-          "knows_fortune_secret"
+          "知曉籤詩秘密"
         ],
         "next_scene": "day2_beach"
       }
@@ -334,6 +331,14 @@
         "next_scene": "day2_beach_workers"
       },
       {
+        "id": "opt_observe_ceremony_prep",
+        "label": "偷聽廟公向工匠交代的儀式規矩",
+        "flavor_text": "他們說了什麼，讓幾個工匠臉色大變。",
+        "trigger_dialogue": "dialogue_taboo_warning",
+        "effect_add_tags": ["知曉禁忌規則"],
+        "next_scene": "day3_shop"
+      },
+      {
         "id": "opt_back_to_inn",
         "label": "返回客棧休息",
         "next_scene": "day3_shop"
@@ -351,7 +356,7 @@
         "id": "opt_note_hull",
         "label": "記住艙口的位置",
         "effect_add_tags": [
-          "knows_hull_location"
+          "記住艙口位置"
         ],
         "next_scene": "day3_shop"
       }
@@ -368,7 +373,7 @@
         "id": "opt_workers_note",
         "label": "這些鎮民，是自願的嗎",
         "effect_add_tags": [
-          "doubts_townsfolk"
+          "懷疑鎮民意志"
         ],
         "next_scene": "day3_shop"
       }
@@ -419,7 +424,7 @@
         "id": "opt_red_thread",
         "label": "有人悄悄靠近了你",
         "req_tags": [
-          "wolf_charm"
+          "狼符護命"
         ],
         "flavor_text": "鎮長的女兒趁亂站到你身邊。",
         "trigger_dialogue": "dialogue_red_thread",
@@ -427,7 +432,7 @@
           "red_amulet"
         ],
         "effect_add_tags": [
-          "has_red_amulet"
+          "持有紅絲護符"
         ],
         "next_scene": "day3_bone"
       },
@@ -517,7 +522,7 @@
         "label": "趁機搜查客棧",
         "trigger_puzzle": "puzzle_curfew_code",
         "next_scene": "day4_curfew_after_puzzle",
-        "flavor_text": "客棧地下室有一道數字鎖。老闆娘曾說密碼藏在籤詩裡，\n而你在鎮口平安符上見過某個反覆出現的數字……"
+        "flavor_text": "客棧地下室有一道數字鎖。老闆娘曾說密碼藏在籤詩裡，\n而你在鎮口平安符上見過某個反覆出現的數字……\n💡 持有「411號平安符」可在謎題中獲得直接提示。"
       }
     ],
     "puzzle_context": "\n\n─────────────────────────────\n🔒 謎題解鎖：數字鎖密碼\n三位數密碼。你在鎮口的符上見過它，籤詩裡也有它的影子。"
@@ -568,7 +573,7 @@
         "id": "opt_rage_awakening",
         "label": "恐懼到極點，某根弦斷了",
         "req_tags": [
-          "break_barrier"
+          "破界之力"
         ],
         "flavor_text": "不是你選擇憤怒，是憤怒選擇了你。",
         "trigger_dialogue": "dialogue_rage_awakening",
@@ -579,7 +584,7 @@
           }
         ],
         "effect_add_tags": [
-          "rage_awakened"
+          "怒火覺醒"
         ],
         "next_scene": "day4_watch"
       },
@@ -587,7 +592,7 @@
         "id": "opt_horror_noted",
         "label": "記住它的行走方式",
         "effect_add_tags": [
-          "studied_guanjianshou"
+          "研究過官將首"
         ],
         "next_scene": "day4_watch"
       }
@@ -662,23 +667,17 @@
     "options": [
       {
         "id": "opt_command_keeper",
-        "label": "與他對視，一個字都不說",
-        "req_tags": [
-          "npc_command"
-        ],
+        "label": "【帝星威壓】與他對視，一個字都不說",
         "flavor_text": "帝星的威壓，不需要語言。",
         "trigger_dialogue": "dialogue_keeper_yields",
         "effect_add_tags": [
-          "keeper_yielded"
+          "廟公已讓步"
         ],
         "next_scene": "day5_blood_contract"
       },
       {
         "id": "opt_break_door",
-        "label": "管他，直接破門",
-        "req_tags": [
-          "break_barrier"
-        ],
+        "label": "【破界之力】管他，直接破門",
         "flavor_text": "門算什麼。",
         "effect_stat": [
           {
@@ -691,7 +690,17 @@
       {
         "id": "opt_negotiate_keeper",
         "label": "試著說服他",
+        "flavor_text": "你有足夠的理由，但說服需要時間和代價。",
+        "effect_stat": [
+          { "stat": "constitution", "delta": -5 }
+        ],
         "next_scene": "day5_keeper_negotiate"
+      },
+      {
+        "id": "opt_find_side_entry",
+        "label": "放棄正面接觸，繞去側殿另尋入口",
+        "flavor_text": "廟裡一定有其他進去的辦法，只是需要時間找。",
+        "next_scene": "day5_side_entry"
       }
     ]
   },
@@ -710,6 +719,23 @@
       }
     ]
   },
+  "day5_side_entry": {
+    "id": "day5_side_entry",
+    "title": "側殿的縫隙",
+    "background_key": "song_wang_temple_shrine",
+    "atmosphere": "EERIE",
+    "description": "你繞到廟的東側，找到一扇半掩的木窗。窗框腐朽，用力一頂就鬆開了。\n\n你從縫隙擠進去，劃破了手臂，衣服也掛破了一道口子。裡面的走廊很黑，但你認得方向——右轉，再直走，就是內殿。\n\n你花了比預期更長的時間，但最終站在了那扇門前。",
+    "options": [
+      {
+        "id": "opt_side_entry_proceed",
+        "label": "進入內殿",
+        "effect_stat": [
+          { "stat": "constitution", "delta": -10 }
+        ],
+        "next_scene": "day5_blood_contract"
+      }
+    ]
+  },
   "day5_blood_contract": {
     "id": "day5_blood_contract",
     "title": "神龕後的秘密",
@@ -724,7 +750,7 @@
         "req_item": "cursed_watch",
         "trigger_dialogue": "dialogue_watch_revelation",
         "effect_add_tags": [
-          "knows_cycle"
+          "知曉輪迴真相"
         ],
         "next_scene": "day5_truth"
       },
@@ -765,6 +791,12 @@
         "id": "opt_hunted",
         "label": "他們發現了你的意圖",
         "next_scene": "day6_hunted"
+      },
+      {
+        "id": "opt_shout_in_ceremony",
+        "label": "大聲嘶吼，試圖打亂祭典的進行",
+        "flavor_text": "也許製造混亂能轉移他們的注意力。",
+        "next_scene": "day6_taboo_death_noise"
       }
     ]
   },
@@ -778,22 +810,34 @@
     "options": [
       {
         "id": "opt_blind_spot",
-        "label": "你看見了它們看不見的死角",
-        "req_tags": [
-          "see_hidden"
-        ],
+        "label": "【洞見之眼】你看見了它們看不見的死角",
         "flavor_text": "月之眼在這一刻發揮了它的用途。",
         "trigger_dialogue": "dialogue_blindspot_insight",
         "next_scene": "day6_ship_hull"
       },
       {
-        "id": "opt_human_wall",
-        "label": "喝令鎮民擋在你面前",
-        "req_tags": [
-          "npc_command"
+        "id": "opt_risky_dash",
+        "label": "拚命尋找陣型空隙，賭一把衝過去",
+        "flavor_text": "你看不清楚，但你必須嘗試。",
+        "effect_stat": [
+          { "stat": "constitution", "delta": -15 }
         ],
+        "next_scene": "day6_ship_hull"
+      },
+      {
+        "id": "opt_human_wall",
+        "label": "【帝星威壓】喝令鎮民擋在你面前",
         "flavor_text": "你的聲音裡有某種東西，連空洞的人都聽得見。",
         "trigger_dialogue": "dialogue_command_townsfolk",
+        "next_scene": "day6_ship_hull"
+      },
+      {
+        "id": "opt_brute_push",
+        "label": "徒手推開前方的鎮民，強行穿過人牆",
+        "flavor_text": "他們的身體是真實的，但裡面已經不是人了。",
+        "effect_stat": [
+          { "stat": "constitution", "delta": -20 }
+        ],
         "next_scene": "day6_ship_hull"
       },
       {
@@ -804,20 +848,6 @@
         "is_death_trigger": true,
         "survive_scene_id": "day6_amulet_survived",
         "next_scene": "day7_ending_e"
-      },
-      {
-        "id": "opt_brute_force",
-        "label": "奪劍，硬衝防線",
-        "req_tags": [
-          "break_barrier"
-        ],
-        "req_stat": {
-          "stat": "constitution",
-          "min": 80
-        },
-        "flavor_text": "七星劍在它手裡，然後在你手裡。",
-        "trigger_dialogue": "dialogue_brute_force_charge",
-        "next_scene": "day6_ship_hull"
       },
       {
         "id": "opt_desperate_run",
@@ -875,8 +905,8 @@
         "label": "釘下去",
         "req_item": "blood_contract",
         "trigger_puzzle": "puzzle_rune_sequence",
-        "next_scene": "day7_ending_s",
-        "flavor_text": "血契背面刻著六個封印古符，順序就是契約被打破的咒文：\n象徵「起源」的在前，「終結」的在後。\n若持有輪迴懷錶，錶盤停針處正是正確順序的提示。"
+        "next_scene": "day7_escape_run",
+        "flavor_text": "血契背面刻著五個封印古符，必須依正確順序排列才能解封龍骨。\n💡 持有「輪迴懷錶」可在謎題中獲得明確的排列提示。"
       },
       {
         "id": "opt_escape_only",
@@ -898,7 +928,7 @@
         "id": "opt_credits_s",
         "label": "離開永安鎮",
         "effect_add_tags": [
-          "cleared_yongan_truth"
+          "終止永安輪迴"
         ],
         "next_scene": "ending_credits"
       }
@@ -916,9 +946,9 @@
         "id": "opt_credits_a",
         "label": "繼續生活，帶著印記",
         "effect_add_tags": [
-          "cleared_yongan_escaped"
+          "帶印逃離永安"
         ],
-        "next_scene": "ending_credits"
+        "next_scene": "day7_aftermath"
       }
     ]
   },
@@ -933,6 +963,101 @@
       {
         "id": "opt_restart_from_e",
         "label": "這不是終點",
+        "next_scene": "ending_credits"
+      }
+    ]
+  },
+  "day6_taboo_death_noise": {
+    "id": "day6_taboo_death_noise",
+    "title": "禁忌：喧嘩",
+    "background_key": "song_wang_ship_burning",
+    "atmosphere": "TENSE",
+    "entry_dialogue": "dialogue_taboo_noise_death",
+    "description": "你的聲音在海灘上炸開，鑼鼓聲驟然停止。\n\n上千個鎮民同時轉過頭，臉上的空洞表情沒有任何變化，但那種靜止本身，已經是一種回應。\n\n祭典的規則，不允許任何雜音打斷王爺的出行。\n\n你違反了禁忌。",
+    "options": [
+      {
+        "id": "opt_taboo_noise_condemned",
+        "label": "一切都太晚了",
+        "next_scene": "day7_ending_e"
+      }
+    ]
+  },
+  "day7_escape_run": {
+    "id": "day7_escape_run",
+    "title": "逃離燃燒的王船",
+    "background_key": "song_wang_ship_burning",
+    "atmosphere": "DIVINE",
+    "entry_dialogue": "dialogue_ending_s",
+    "description": "王船的底艙在你身後崩解，三百年的怨氣從龍骨向外蔓延。\n\n你從裂縫爬出，跌倒在沙灘上。遠處，上千個鎮民同時停下腳步，臉上的空洞在這一刻碎裂，眼神裡出現了久違的困惑與記憶。\n\n霧，開始散了。\n\n你要跑了。前方是那條通往鎮外的路。\n\n但你忍不住——想最後看一眼。",
+    "options": [
+      {
+        "id": "opt_look_back",
+        "label": "回頭，看一眼燃燒的王船",
+        "flavor_text": "你想確認它真的結束了，那個吞噬了四百一十一個靈魂的東西。",
+        "is_death_trigger": true,
+        "survive_scene_id": "day7_look_back_survived",
+        "next_scene": "day7_ending_e_taboo"
+      },
+      {
+        "id": "opt_dont_look_back",
+        "label": "頭也不回地跑",
+        "flavor_text": "你記得廟公交代過的話——送王離境，回頭者凶。",
+        "req_tags": ["知曉禁忌規則"],
+        "effect_add_global_tags": ["respected_taboo"],
+        "next_scene": "day7_aftermath"
+      },
+      {
+        "id": "opt_dont_look_back_instinct",
+        "label": "本能地往前衝，不去想其他",
+        "next_scene": "day7_aftermath"
+      }
+    ]
+  },
+  "day7_look_back_survived": {
+    "id": "day7_look_back_survived",
+    "title": "禁忌：回眸",
+    "background_key": "song_wang_ship_burning",
+    "atmosphere": "EERIE",
+    "entry_dialogue": "dialogue_ending_taboo",
+    "description": "你活下來了。\n\n但你看見了它——在火光中，某個龐大的、深不見底的存在，最後一次注視著你，把你的臉刻進了某種古老的記憶裡。\n\n印記，從此跟著你。",
+    "options": [
+      {
+        "id": "opt_look_back_stagger",
+        "label": "跌跌撞撞地繼續跑",
+        "effect_add_global_tags": ["taboo_broken_look_back"],
+        "effect_stat": [
+          { "stat": "karma", "delta": -5 }
+        ],
+        "next_scene": "day7_aftermath"
+      }
+    ]
+  },
+  "day7_ending_e_taboo": {
+    "id": "day7_ending_e_taboo",
+    "title": "死亡結局：回眸者的代價",
+    "background_key": "song_wang_ship_burning",
+    "atmosphere": "EERIE",
+    "entry_dialogue": "dialogue_ending_taboo",
+    "description": "你回頭了。\n\n在火光中，某個龐大的黑影回望著你，把你的名字，刻進了那份永恆的名冊裡。\n\n王船的怨氣散了，但你留下來了。\n\n以另一種形式。",
+    "options": [
+      {
+        "id": "opt_taboo_death_end",
+        "label": "成為永安的一部分",
+        "next_scene": "ending_credits"
+      }
+    ]
+  },
+  "day7_aftermath": {
+    "id": "day7_aftermath",
+    "title": "一個月後",
+    "background_key": "song_wang_town_alley",
+    "atmosphere": "NORMAL",
+    "entry_dialogue": "dialogue_aftermath_phone",
+    "description": "一個月後，你坐在某個城市的咖啡店裡，第一次覺得可以好好呼吸。\n\n脖子上有一個硃砂色的指紋印記，洗不掉，但它不再灼熱。\n\n手機震動了，一個陌生號碼。",
+    "options": [
+      {
+        "id": "opt_aftermath_end",
+        "label": "掛掉電話，繼續生活",
         "next_scene": "ending_credits"
       }
     ]

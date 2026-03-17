@@ -1,0 +1,257 @@
+{
+  "dialogue_entry_welcome": {
+    "dialogue_id": "dialogue_entry_welcome",
+    "lines": [
+      {
+        "line_id": "ew_01",
+        "speaker": "system",
+        "text": "【打卡系統】\n員工編號：——\n到來時間：——:——\n狀態：正常",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "ew_02",
+        "speaker": "narrator",
+        "text": "打卡機吐出了一張收據，上面只有寥寥幾行字。",
+        "voice_tone": "EERIE"
+      }
+    ]
+  },
+
+  "dialogue_desk_arrive": {
+    "dialogue_id": "dialogue_desk_arrive",
+    "lines": [
+      {
+        "line_id": "da_01",
+        "speaker": "narrator",
+        "text": "電腦自動偵測到你的存在，螢幕亮起來。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "da_02",
+        "speaker": "system",
+        "text": "【系統提示】你有 47 封未讀信件。3 個等待辦理。2 個逾期任務。",
+        "voice_tone": "TENSE"
+      }
+    ]
+  },
+
+  "dialogue_pantry_coworker": {
+    "dialogue_id": "dialogue_pantry_coworker",
+    "lines": [
+      {
+        "line_id": "pc_01",
+        "speaker": "narrator",
+        "text": "那個人聽到你進來，沒有轉頭，繼續在嚼。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "pc_02",
+        "speaker": "npc",
+        "speaker_name": "同事",
+        "avatar_side": "left",
+        "text": "嗯。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "pc_03",
+        "speaker": "narrator",
+        "text": "你等他說下去。",
+        "voice_tone": "CALM"
+      }
+    ]
+  },
+
+  "dialogue_coworker_talk": {
+    "dialogue_id": "dialogue_coworker_talk",
+    "lines": [
+      {
+        "line_id": "ct_01",
+        "speaker": "npc",
+        "speaker_name": "同事",
+        "avatar_side": "left",
+        "text": "你要走啊？",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "ct_02",
+        "speaker": "narrator",
+        "text": "你沒說要走。你只是來喝水解渴而已。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "ct_03",
+        "speaker": "npc",
+        "speaker_name": "同事",
+        "avatar_side": "left",
+        "text": "那個 Excel 可以幫我跑一下嗎？我還有兩頁要看，我要先走。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "ct_04",
+        "speaker": "narrator",
+        "text": "他把手機轉過來，螢幕上顯示一張照片，他說是他老婆。\n\n照片是一張白紙。",
+        "voice_tone": "EERIE"
+      }
+    ]
+  },
+
+  "dialogue_manager_welcome": {
+    "dialogue_id": "dialogue_manager_welcome",
+    "lines": [
+      {
+        "line_id": "mw_01",
+        "speaker": "npc",
+        "speaker_name": "課長",
+        "avatar_side": "left",
+        "text": "來了！來了！好。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "mw_02",
+        "speaker": "npc",
+        "speaker_name": "課長",
+        "avatar_side": "left",
+        "text": "我們今天來講一個很重要的事，就是關於我們整個 family 的未來。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "mw_03",
+        "speaker": "narrator",
+        "text": "坐在你旁邊的人開始鼓掌。你跟他之間隔了不到一個座位，你沒有鼓掌。",
+        "voice_tone": "EERIE"
+      }
+    ]
+  },
+
+  "dialogue_meeting_content": {
+    "dialogue_id": "dialogue_meeting_content",
+    "lines": [
+      {
+        "line_id": "mc_01",
+        "speaker": "npc",
+        "speaker_name": "課長",
+        "avatar_side": "left",
+        "text": "其實我知道大家最近都很辛苦，我也很辛苦。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "mc_02",
+        "speaker": "npc",
+        "speaker_name": "課長",
+        "avatar_side": "left",
+        "text": "但是我要跟大家說，辛苦是有意義的。這個案子做完，我跟老闆說好了，大家去沖繩。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "mc_03",
+        "speaker": "narrator",
+        "text": "掌聲，一下一下。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "mc_04",
+        "speaker": "npc",
+        "speaker_name": "課長",
+        "avatar_side": "left",
+        "text": "公司是 family。大家辛苦了。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "mc_05",
+        "speaker": "narrator",
+        "text": "掌聲，一下一下。",
+        "voice_tone": "TENSE"
+      }
+    ]
+  },
+
+  "dialogue_manager_truth": {
+    "dialogue_id": "dialogue_manager_truth",
+    "lines": [
+      {
+        "line_id": "mt_01",
+        "speaker": "npc",
+        "speaker_name": "課長",
+        "avatar_side": "left",
+        "text": "你知道為什麼沒有人離職成功嗎？",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "mt_02",
+        "speaker": "narrator",
+        "text": "你沒有回答。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "mt_03",
+        "speaker": "npc",
+        "speaker_name": "課長",
+        "avatar_side": "left",
+        "text": "因為他們在最後都忘了帶自己走。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "mt_04",
+        "speaker": "npc",
+        "speaker_name": "課長",
+        "avatar_side": "left",
+        "text": "離職申請表填的是你的名字，但你要帶走的是你這個人，不只是名字。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "mt_05",
+        "speaker": "narrator",
+        "text": "他轉過頭去，繼續看著白板，不再看你。",
+        "voice_tone": "CALM"
+      }
+    ]
+  },
+
+  "dialogue_ending_s": {
+    "dialogue_id": "dialogue_ending_s",
+    "lines": [
+      {
+        "line_id": "es_01",
+        "speaker": "narrator",
+        "text": "電梯往下的瞬間，你看著自己在電梯鏡面裡的倒影。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "es_02",
+        "speaker": "narrator",
+        "text": "你還是你。",
+        "voice_tone": "CALM"
+      },
+      {
+        "line_id": "es_03",
+        "speaker": "narrator",
+        "text": "這件事在這裡好像還需要確認一下。",
+        "voice_tone": "EERIE"
+      }
+    ]
+  },
+
+  "dialogue_ending_a": {
+    "dialogue_id": "dialogue_ending_a",
+    "lines": [
+      {
+        "line_id": "ea_01",
+        "speaker": "narrator",
+        "text": "你答應了一個禮拜交接。",
+        "voice_tone": "TENSE"
+      },
+      {
+        "line_id": "ea_02",
+        "speaker": "narrator",
+        "text": "你不確定那個禮拜有沒有結束，還是你只是某天突然走出電梯，發現自己在大廳。",
+        "voice_tone": "EERIE"
+      },
+      {
+        "line_id": "ea_03",
+        "speaker": "narrator",
+        "text": "走出去的時候，你回頭看了一眼。\n\n12F 的窗戶亮著。\n\n你想，算了。",
+        "voice_tone": "CALM"
+      }
+    ]
+  }
+}

@@ -15,6 +15,33 @@ function tagChipClass(tag: string): string {
   return classes[(tag.charCodeAt(0) ?? 0) % classes.length];
 }
 
+// 標籤中文對照表
+const TAG_LABEL_ZH: Record<string, string> = {
+  parachute_boss:    '空降主管',
+  npc_command:       '指揮低階',
+  firefighter:       '救火待命',
+  see_collapse:      '崩潰預視',
+  disposable_intern: '免洗人力',
+  break_objects:     '暴力開路',
+  office_ghost:      '茶水間幽靈',
+  stealth_shadow:    '陰影潛行',
+  identity_questioned: '身份疑雲',
+  found_resignation:   '找到辭職書',
+  knows_schedule:      '知曉排程',
+  knows_warning:       '知曉警示',
+  seen_too_much:       '見過太多了',
+  knows_exit_method:   '知曉出路',
+  knows_maze_pattern:  '識破迷宮規律',
+  knows_history:       '知曉歷史',
+  has_archive_hint:    '持有檔案提示',
+  clean_exit:          '乾淨離場',
+  honest_resignation:    '誠實辭職',
+  silent_resignation:    '沉默辭職',
+  cleared_office_clean:   'S結局達成',
+  cleared_office_escaped: 'A結局達成',
+  cleared_office_ghost:   '靜默結局達成',
+};
+
 // 數值條
 const StatRow: React.FC<{ stat: keyof PlayerStats; value: number }> = ({ stat, value }) => {
   const [flash, setFlash] = useState(false);
@@ -162,7 +189,7 @@ export const PlayerPanel: React.FC<PlayerPanelProps> = ({ open, onClose }) => {
           <div className="panel-sec-title">TAGS</div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
             {localTags.map((tag) => (
-              <span key={tag} className={`tag-chip ${tagChipClass(tag)}`}>{tag}</span>
+              <span key={tag} className={`tag-chip ${tagChipClass(tag)}`}>{TAG_LABEL_ZH[tag] ?? tag}</span>
             ))}
           </div>
         </div>

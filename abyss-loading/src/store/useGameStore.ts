@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 import type {
   GameState,
   PlayerStats,
@@ -55,6 +56,7 @@ interface ExtendedState extends GameState {
   ritualDef: FortuneRitualDef | null;
   entryScene: string | null;
   instanceHook: InstanceHook | null;
+  _currentManifest: InstanceManifest | null;
 }
 
 // ─── 初始狀態 ──────────────────────────────────────────
@@ -64,6 +66,7 @@ const initialState: ExtendedState = {
   localInventory: [],
   globalInventory: [],
   globalTags: [],
+  clearedInstances: {},
 
   instanceFortune: null,
   fortuneIsReversed: false,
@@ -94,12 +97,14 @@ const initialState: ExtendedState = {
   ritualDef: null,
   entryScene: null,
   instanceHook: null,
+  _currentManifest: null,
 };
 
 // ─── 介面定義 ──────────────────────────────────────────
 interface GameActions {
   loadInstance: (manifest: InstanceManifest) => void;
   exitInstance: () => void;
+  patchScene: (sceneId: string, patch: Partial<import('../types/game.types').SceneNode>) => void;
 
   drawFortune: (card: FortuneCard, isReversed?: boolean) => void;
 
@@ -124,16 +129,40 @@ interface GameActions {
 
   pushLog: (message: string, type: SystemLog['type']) => void;
   clearLogs: () => void;
+
+  resetSave: () => void;
 }
 
+// ─── 結局標籤 → 副本紀錄對照表 ─────────────────────────
+const ENDING_TAG_MAP: Record<string, { instanceId: string; ending: string }> = {
+  cleared_yongan_truth:   { instanceId: 'song_wang',     ending: 'S結局 · 輪迴終止' },
+  cleared_yongan_escaped: { instanceId: 'song_wang',     ending: 'A結局 · 帶著印記離開' },
+  cleared_yongan_e:       { instanceId: 'song_wang',     ending: '死亡結局 · 第412次' },
+  cleared_office_clean:   { instanceId: 'gan_ku_office', ending: 'S結局 · 帶自己走' },
+  cleared_office_escaped: { instanceId: 'gan_ku_office', ending: 'A結局 · 多一個禮拜' },
+  cleared_office_ghost:   { instanceId: 'gan_ku_office', ending: '靜默結局 · 什麼都沒說' },
+};
+
 // ─── Store ─────────────────────────────────────────────
-export const useGameStore = create<ExtendedState & GameActions>()((set, get) => ({
+export const useGameStore = create<ExtendedState & GameActions>()(
+  persist(
+  (set, get) => ({
   ...initialState,
 
   // ══════════════════════════════════════════════════
   // 副本載入
   // ══════════════════════════════════════════════════
+  patchScene: (sceneId, patch) => {
+    set((state) => ({
+      sceneRegistry: {
+        ...state.sceneRegistry,
+        [sceneId]: { ...state.sceneRegistry[sceneId], ...patch },
+      },
+    }));
+  },
+
   loadInstance: (manifest) => {
+    manifest.onLoad?.();
     set({
       // 清空所有 local 狀態
       localTags: [],
@@ -163,12 +192,14 @@ export const useGameStore = create<ExtendedState & GameActions>()((set, get) => 
       entryScene: manifest.entry_scene,
       ritualDef: manifest.fortune_ritual,
       instanceHook: manifest.hook ?? null,
+      _currentManifest: manifest,
       // 強制進入儀式畫面
       gamePhase: 'RITUAL',
     });
   },
 
   exitInstance: () => {
+    get()._currentManifest?.onUnload?.();
     set({
       localTags: [],
       localInventory: [],
@@ -194,6 +225,7 @@ export const useGameStore = create<ExtendedState & GameActions>()((set, get) => 
       ritualDef: null,
       entryScene: null,
       instanceHook: null,
+      _currentManifest: null,
       gamePhase: 'HUB',
     });
   },
@@ -250,17 +282,38 @@ export const useGameStore = create<ExtendedState & GameActions>()((set, get) => 
       }
     }
 
-    set({
-      currentSceneId: sceneId,
-      pendingNextScene: null,
-      stats: nextStats,
-      gamePhase: 'PLAYING',
-      usingItemId: null,
-      // 清除任何殘留的對話狀態，讓 GameEngine 的 phase 機制重新接管
-      dialogueQueue: [],
-      activeDialogueId: null,
-      dialogueTotalLines: 0,
-    });
+    // 場景入場效果（effect_add_tags / effect_stat）
+    if (scene.effect_add_tags) {
+      const cur = get().localTags;
+      nextStats = scene.effect_stat
+        ? applyStatEffects(nextStats, scene.effect_stat)
+        : nextStats;
+      set({
+        currentSceneId: sceneId,
+        pendingNextScene: null,
+        stats: nextStats,
+        gamePhase: 'PLAYING',
+        usingItemId: null,
+        dialogueQueue: [],
+        activeDialogueId: null,
+        dialogueTotalLines: 0,
+        localTags: [...new Set([...cur, ...scene.effect_add_tags])],
+      });
+    } else {
+      if (scene.effect_stat) {
+        nextStats = applyStatEffects(nextStats, scene.effect_stat);
+      }
+      set({
+        currentSceneId: sceneId,
+        pendingNextScene: null,
+        stats: nextStats,
+        gamePhase: 'PLAYING',
+        usingItemId: null,
+        dialogueQueue: [],
+        activeDialogueId: null,
+        dialogueTotalLines: 0,
+      });
+    }
 
     // 副本 hook：onEnterScene
     const hook = get().instanceHook;
@@ -278,6 +331,27 @@ export const useGameStore = create<ExtendedState & GameActions>()((set, get) => 
   // ══════════════════════════════════════════════════
   applyOption: (option) => {
     const state = get();
+
+    // 0. 前置條件防呆（OptionButton 已鎖定，此處為雙重保險）
+    if (option.req_tags?.some((t: string) => !state.localTags.includes(t))) {
+      const missing = option.req_tags!.filter((t: string) => !state.localTags.includes(t));
+      get().pushLog(`缺少命格：${missing.join('、')}`, 'WARNING');
+      return;
+    }
+    if (option.req_item && !state.localInventory.includes(option.req_item)) {
+      const def = state.itemRegistry[option.req_item];
+      get().pushLog(`缺少道具：${def?.name ?? option.req_item}`, 'WARNING');
+      return;
+    }
+    if (option.req_stat) {
+      const { stat, min } = option.req_stat;
+      const cur = state.stats[stat as keyof typeof state.stats] ?? 0;
+      if (min !== undefined && cur < min) {
+        const label: Record<string, string> = { inspiration: '靈感', constitution: '體質', karma: '因果' };
+        get().pushLog(`需要 ${label[stat] ?? stat} ≥ ${min}（目前 ${cur}）`, 'WARNING');
+        return;
+      }
+    }
 
     // 1. 死亡觸發判斷
     if (option.is_death_trigger) {
@@ -325,6 +399,23 @@ export const useGameStore = create<ExtendedState & GameActions>()((set, get) => 
       );
     }
 
+    let nextGlobalTags = [...state.globalTags];
+    if (option.effect_add_global_tags) {
+      nextGlobalTags = [...new Set([...nextGlobalTags, ...option.effect_add_global_tags])];
+      // 結局偵測：若加入的 global tag 對應到結局，寫入副本紀錄
+      for (const tag of option.effect_add_global_tags) {
+        const rec = ENDING_TAG_MAP[tag];
+        if (rec) {
+          set((s) => ({
+            clearedInstances: {
+              ...s.clearedInstances,
+              [rec.instanceId]: { ending: rec.ending, clearedAt: new Date().toISOString() },
+            },
+          }));
+        }
+      }
+    }
+
     let nextLocalInventory = [...state.localInventory];
     if (option.effect_add_items) {
       nextLocalInventory = [
@@ -340,6 +431,7 @@ export const useGameStore = create<ExtendedState & GameActions>()((set, get) => 
     set({
       stats: nextStats,
       localTags: nextLocalTags,
+      globalTags: nextGlobalTags,
       localInventory: nextLocalInventory,
     });
 
@@ -716,7 +808,27 @@ export const useGameStore = create<ExtendedState & GameActions>()((set, get) => 
   clearLogs: () => {
     set({ systemLogs: [] });
   },
-}));
+
+  // ══════════════════════════════════════════════════
+  // 存檔管理
+  // ══════════════════════════════════════════════════
+  resetSave: () => {
+    set({
+      globalTags:       [],
+      globalInventory:  [],
+      clearedInstances: {},
+    });
+  },
+  }),
+  {
+    name: 'abyss-loading-save',
+    partialize: (state) => ({
+      globalTags:       state.globalTags,
+      globalInventory:  state.globalInventory,
+      clearedInstances: state.clearedInstances,
+    }),
+  }
+));
 
 // 讓 Engine 以外的程式碼可直接取得快照
 export default useGameStore;

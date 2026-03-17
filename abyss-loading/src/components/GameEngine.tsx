@@ -110,22 +110,63 @@ function useTypewriter(text: string, speed = 22) {
   return { displayed, done, skip };
 }
 
+// ── 標籤中文對照表 ────────────────────────────────────────────────────────────
+const TAG_LABEL_ZH: Record<string, string> = {
+  // 肝苦辦公室：命格標籤
+  parachute_boss:    '空降主管',
+  npc_command:       '指揮低階',
+  firefighter:       '救火待命',
+  see_collapse:      '崩潰預視',
+  disposable_intern: '免洗人力',
+  break_objects:     '暴力開路',
+  office_ghost:      '茶水間幽靈',
+  stealth_shadow:    '陰影潛行',
+  // 肝苦辦公室：進度標籤
+  identity_questioned: '身份疑雲',
+  found_resignation:   '找到辭職書',
+  knows_schedule:      '知曉排程',
+  knows_warning:       '知曉警示',
+  seen_too_much:       '見過太多了',
+  knows_exit_method:   '知曉出路',
+  knows_maze_pattern:  '識破迷宮規律',
+  knows_history:       '知曉歷史',
+  has_archive_hint:    '持有檔案提示',
+  clean_exit:          '乾淨離場',
+  // 肝苦辦公室：結局標籤
+  honest_resignation:    '誠實辭職',
+  silent_resignation:    '沉默辭職',
+  cleared_office_clean:   'S結局達成',
+  cleared_office_escaped: 'A結局達成',
+  cleared_office_ghost:   '靜默結局達成',
+};
+
 // ── 天數入場全螢幕畫面 ────────────────────────────────────────────────────────
 const DAY_LABELS: Record<number, string> = {
   1: '第一天', 2: '第二天', 3: '第三天', 4: '第四天',
   5: '第五天', 6: '第六天', 7: '第七天',
 };
-const DAY_SUBTITLES: Record<number, string> = {
-  1: '異鄉人踏進了不該踏進的地方',
-  2: '廟宇不說謊，但它沉默',
-  3: '骨頭不是竹條',
-  4: '宵禁，代天巡狩',
-  5: '在他們察覺之前',
-  6: '王船即將啟航',
-  7: '最後一天',
+const DAY_SUBTITLES: Record<string, Record<number, string>> = {
+  song_wang: {
+    1: '異鄉人踏進了不該踏進的地方',
+    2: '廟宇不說謊，但它沉默',
+    3: '骨頭不是竹條',
+    4: '宵禁，代天巡狩',
+    5: '在他們察覺之前',
+    6: '王船即將啟航',
+    7: '最後一天',
+  },
+  gan_ku_office: {
+    1: '你不確定你怎麼到了這裡',
+    2: '你記得昨天發生的事嗎',
+    3: '茶水間的咖啡還是那麼難喝',
+    4: '你的識別證還掛在胸前嗎',
+    5: '再過幾天就週末了',
+    6: '系統排程：明日凌晨例行維護',
+    7: '你不確定今天是第幾天',
+  },
 };
 
-const DayCard: React.FC<{ day: number; onDone: () => void }> = ({ day, onDone }) => {
+const DayCard: React.FC<{ day: number; instanceId: string | null; onDone: () => void }> = ({ day, instanceId, onDone }) => {
   useEffect(() => {
     // 自動 2.8 秒後結束，也可以點擊跳過
     const t = setTimeout(onDone, 2800);
@@ -172,21 +213,24 @@ const DayCard: React.FC<{ day: number; onDone: () => void }> = ({ day, onDone })
       </motion.div>
 
       {/* 副標題 */}
-      {DAY_SUBTITLES[day] && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9, duration: 0.6 }}
-          style={{
-            marginTop: 16,
-            fontFamily: "'Share Tech Mono', monospace",
-            fontSize: 11, letterSpacing: '.25em',
-            color: 'rgba(160,145,115,.45)',
-          }}
-        >
-          {DAY_SUBTITLES[day]}
-        </motion.div>
-      )}
+      {(() => {
+        const subtitle = (DAY_SUBTITLES[instanceId ?? ''] ?? DAY_SUBTITLES.song_wang)[day];
+        return subtitle ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+            style={{
+              marginTop: 16,
+              fontFamily: "'Share Tech Mono', monospace",
+              fontSize: 11, letterSpacing: '.25em',
+              color: 'rgba(160,145,115,.45)',
+            }}
+          >
+            {subtitle}
+          </motion.div>
+        ) : null;
+      })()}
 
       {/* 橫線 */}
       <motion.div
@@ -295,7 +339,7 @@ const StatusSidebar: React.FC<{ open: boolean; onClose: () => void }> = ({ open,
             <div style={{ fontSize: 8, letterSpacing: '.2em', color: 'rgba(160,145,200,.32)', marginBottom: 7, textTransform: 'uppercase' }}>命格標籤</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
               {localTags.map(tag => (
-                <span key={tag} style={{ fontSize: 8, letterSpacing: '.06em', padding: '2px 7px', border: '1px solid rgba(100,180,130,.28)', color: 'rgba(100,200,145,.72)', background: 'rgba(0,20,12,.55)' }}>{tag}</span>
+                <span key={tag} style={{ fontSize: 8, letterSpacing: '.06em', padding: '2px 7px', border: '1px solid rgba(100,180,130,.28)', color: 'rgba(100,200,145,.72)', background: 'rgba(0,20,12,.55)' }}>{TAG_LABEL_ZH[tag] ?? tag}</span>
               ))}
             </div>
           </div>
@@ -436,7 +480,8 @@ export const GameEngine: React.FC = () => {
     setDescPhase('typing');
 
     const m = currentSceneId.match(/^day(\d+)/);
-    const day = m ? parseInt(m[1], 10) : null;
+    const sceneForDay = useGameStore.getState().sceneRegistry[currentSceneId];
+    const day = m ? parseInt(m[1], 10) : (sceneForDay?.day_number ?? null);
 
     if (day !== null && day !== currentDay) {
       setCurrentDay(day);
@@ -504,6 +549,21 @@ export const GameEngine: React.FC = () => {
     }
   }, [currentSceneId, gamePhase, exitInstance]);
 
+  // ── wrapNavigateTo：副本自訂場景切換攔截器 ─────────────────────────────────
+  useEffect(() => {
+    if (!currentInstanceId) return;
+    const manifest = (useGameStore.getState() as { _currentManifest: import('../types/game.types').InstanceManifest | null })._currentManifest;
+    if (!manifest?.wrapNavigateTo) return;
+
+    const originalNavigateTo = useGameStore.getState().navigateTo;
+    const wrapped = manifest.wrapNavigateTo(originalNavigateTo);
+    useGameStore.setState({ navigateTo: wrapped } as never);
+
+    return () => {
+      useGameStore.setState({ navigateTo: originalNavigateTo } as never);
+    };
+  }, [currentInstanceId]); // eslint-disable-line
+
   const choicesVisible = descPhase === 'choices' && gamePhase === 'PLAYING' && Boolean(scene);
 
   // ── 儀式畫面 ──────────────────────────────────────────────────────────────
@@ -536,7 +596,7 @@ export const GameEngine: React.FC = () => {
       {/* 2. 天數入場全螢幕卡片 */}
       <AnimatePresence>
         {showDayCard && dayCardNum !== null && (
-          <DayCard key={`daycard-${dayCardNum}`} day={dayCardNum} onDone={handleDayCardDone} />
+          <DayCard key={`daycard-${dayCardNum}`} day={dayCardNum} instanceId={currentInstanceId} onDone={handleDayCardDone} />
         )}
       </AnimatePresence>
 
@@ -555,10 +615,11 @@ export const GameEngine: React.FC = () => {
             exit={{ opacity: 0, transition: { duration: 0.25 } }}
             style={{
               position: 'absolute',
-              top: 32, left: 0, right: 0, bottom: '25vh',
+              top: 32, left: 0, right: 0, bottom: 'calc(25vh + 60px)',
               display: 'flex', flexDirection: 'column',
               alignItems: 'center', justifyContent: 'center',
               padding: '24px 80px',
+              overflowY: 'auto',
               zIndex: 10,
               // 打字中可點擊跳過
               pointerEvents: descPhase === 'typing' ? 'auto' : 'none',

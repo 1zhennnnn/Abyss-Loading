@@ -15,6 +15,7 @@ export const PuzzleOverlay: React.FC = () => {
   const activePuzzle       = useGameStore((s) => s.activePuzzle);
   const puzzleRegistry     = useGameStore((s) => s.puzzleRegistry);
   const localTags          = useGameStore((s) => s.localTags);
+  const localInventory     = useGameStore((s) => s.localInventory);
   const submitPuzzleAnswer = useGameStore((s) => s.submitPuzzleAnswer);
   const skipPuzzle         = useGameStore((s) => s.skipPuzzle);
 
@@ -30,6 +31,11 @@ export const PuzzleOverlay: React.FC = () => {
     puzzle.hint_tag &&
     puzzle.hint_text &&
     localTags.includes(puzzle.hint_tag);
+
+  // 道具提示：有 hint_item 且持有 → 進階提示；否則顯示基本提示
+  const itemHintText = puzzle.hint_item && localInventory.includes(puzzle.hint_item)
+    ? (puzzle.hint_text_with_item ?? null)
+    : (puzzle.hint_text_without_item ?? null);
 
   const canSkip = !puzzle.is_gate;
 
@@ -113,6 +119,32 @@ export const PuzzleOverlay: React.FC = () => {
               onAnswerChange={setPendingAnswer}
             />
           </div>
+
+          {/* 道具提示區塊 */}
+          {itemHintText && (
+            <div style={{
+              margin: '0 0 12px',
+              padding: '8px 14px',
+              background: puzzle.hint_item && localInventory.includes(puzzle.hint_item)
+                ? 'rgba(200,170,60,.08)'
+                : 'rgba(7,5,16,.6)',
+              border: `1px solid ${
+                puzzle.hint_item && localInventory.includes(puzzle.hint_item)
+                  ? 'rgba(200,170,60,.25)'
+                  : 'rgba(180,165,220,.1)'
+              }`,
+              fontFamily: "'Share Tech Mono', monospace",
+              fontSize: 10,
+              color: puzzle.hint_item && localInventory.includes(puzzle.hint_item)
+                ? 'rgba(210,185,100,.75)'
+                : 'rgba(160,148,195,.5)',
+              letterSpacing: '.1em',
+              lineHeight: 1.7,
+            }}>
+              {puzzle.hint_item && localInventory.includes(puzzle.hint_item) ? '💡 ' : '◌ '}
+              {itemHintText}
+            </div>
+          )}
 
           {/* Footer */}
           <div className="puzzle-footer">

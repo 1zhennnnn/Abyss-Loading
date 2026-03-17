@@ -5,11 +5,13 @@
     "title": "廟壁神像對應",
     "flavour_text": "廟內石壁刻著三組神像，旁邊的香爐排列暗示了各自的配對。壁畫斑駁，但隱約仍能辨認。",
     "is_gate": false,
-    "hint_tag": "see_hidden",
+    "hint_tag": "洞見之眼",
     "hint_text": "洞見之眼看清了：生死配對、火水對應、山海相望——這是王爺體系的三組象徵。",
+    "hint_item": null,
+    "hint_text_without_item": "右側銘文是線索：生死相依、火水相剋、山海相望。試著把同一句話裡的兩個神配成一對。",
     "on_solve": {
       "add_items": ["bone_evidence"],
-      "add_tags": ["mural_decoded"]
+      "add_tags": ["破解壁畫密語"]
     },
     "config": {
       "puzzle_type": "SYMBOL_MATCH",
@@ -41,10 +43,13 @@
     "is_gate": true,
     "max_attempts": 4,
     "fail_scene": "curfew_fail",
-    "hint_tag": "see_hidden",
+    "hint_tag": "洞見之眼",
     "hint_text": "洞見之眼在暗處看見了塗改過的字跡：「典禮日期逆序即為通行碼——壬寅年四月十一日」。",
+    "hint_item": "numbered_amulet",
+    "hint_text_with_item": "你手中的平安符背面寫著「411」——這就是密碼。四位數，直接輸入。",
+    "hint_text_without_item": "四位數密碼。回想你在鎮口見過的東西——那些符上反覆出現的數字。",
     "on_solve": {
-      "add_tags": ["curfew_passed"]
+      "add_tags": ["通過宵禁"]
     },
     "config": {
       "puzzle_type": "CODE_INPUT",
@@ -63,10 +68,13 @@
     "is_gate": true,
     "max_attempts": 3,
     "fail_scene": "ship_explode",
-    "hint_tag": "mural_decoded",
+    "hint_tag": "破解壁畫密語",
     "hint_text": "破解壁畫後，你記起了神像排列的象徵順序：請、迎、安、送、化——送王儀式的五個階段。",
+    "hint_item": "cursed_watch",
+    "hint_text_with_item": "懷錶的指針在五個刻度上依序停頓：請、迎、安、送、化——這就是正確的解封順序。",
+    "hint_text_without_item": "送王儀式有五個階段，順序從「迎接」到「化送」。血契背面的圖案是另一條線索。",
     "on_solve": {
-      "add_tags": ["ship_unsealed"]
+      "add_tags": ["王船封印已解"]
     },
     "config": {
       "puzzle_type": "SEQUENCE",

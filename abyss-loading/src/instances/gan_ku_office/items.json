@@ -1,0 +1,78 @@
+{
+  "item_defs": {
+    "leftover_coffee": {
+      "item_id": "leftover_coffee",
+      "name": "別人喝剩的咖啡",
+      "icon_emoji": "☕",
+      "rarity": "COMMON",
+      "item_type": "CONSUMABLE",
+      "short_desc": "剩三分之一，還是溫的",
+      "lore_text": "便利貼說是你的。你不記得你買過。",
+      "passive_effect": "持有時體質緩慢回升，靈感緩慢消耗。"
+    },
+    "warning_sticky": {
+      "item_id": "warning_sticky",
+      "name": "最底下那張便利貼",
+      "icon_emoji": "🗒️",
+      "rarity": "RARE",
+      "item_type": "KEY",
+      "short_desc": "4點清場，文件室，不要去開會",
+      "lore_text": "字跡和你自己的一樣，但你不記得你寫過這些。"
+    },
+    "attendance_record": {
+      "item_id": "attendance_record",
+      "name": "出勤紀錄表",
+      "icon_emoji": "📋",
+      "rarity": "RARE",
+      "item_type": "KEY",
+      "short_desc": "去年一月到現在，每天九點進凌晨出",
+      "lore_text": "沒有一天休假。你沒有印象。"
+    },
+    "extra_excel": {
+      "item_id": "extra_excel",
+      "name": "別人的 Excel",
+      "icon_emoji": "📊",
+      "rarity": "COMMON",
+      "item_type": "TOOL",
+      "short_desc": "你答應幫忙跑的那份",
+      "lore_text": "你打開來看，裡面是空的。"
+    },
+    "blank_paper": {
+      "item_id": "blank_paper",
+      "name": "課長口袋裡的紙",
+      "icon_emoji": "📄",
+      "rarity": "RARE",
+      "item_type": "KEY",
+      "short_desc": "正面空白，背面有字",
+      "lore_text": "「文件室，第三排左四。」"
+    },
+    "old_resignation_form": {
+      "item_id": "old_resignation_form",
+      "name": "六個月前你填的那份",
+      "icon_emoji": "📝",
+      "rarity": "EPIC",
+      "item_type": "KEY",
+      "short_desc": "你的名字，六個月前的日期，最後一格空的",
+      "lore_text": "你不記得你填過這份表。但這確實是你的字跡。"
+    },
+    "completed_form": {
+      "item_id": "completed_form",
+      "name": "填好的離職申請單",
+      "icon_emoji": "✍️",
+      "rarity": "LEGENDARY",
+      "item_type": "KEY",
+      "short_desc": "姓名、日期、原因、簽名",
+      "lore_text": "這張紙比你在這裡的所有工時都重要。"
+    },
+    "shredded_paper": {
+      "item_id": "shredded_paper",
+      "name": "碎紙機吐出來的碎片",
+      "icon_emoji": "🗃️",
+      "rarity": "COMMON",
+      "item_type": "TOOL",
+      "short_desc": "三月、績效、已處理",
+      "lore_text": "你只能拼湊出這幾個字。其他的已經太碎了。"
+    }
+  },
+  "combinations": []
+}

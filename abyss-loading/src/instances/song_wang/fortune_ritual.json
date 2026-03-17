@@ -12,7 +12,7 @@
       "icon_emoji": "☀️",
       "rarity": "RARE",
       "description": "王爺應允，賜你一雙能透視遮蔽之眼。藏匿於幕後的真相，將在你面前現形。",
-      "grant_tags": ["see_hidden"],
+      "grant_tags": ["洞見之眼"],
       "stat_modifier": [{ "stat": "inspiration", "delta": 15 }],
       "system_msg": "洞見開啟：隱藏選項與線索對你可見。",
       "system_msg_type": "BUFF"
@@ -23,7 +23,7 @@
       "icon_emoji": "🐺",
       "rarity": "RARE",
       "description": "狼星臨身，你散發出難以捉摸的氣場。迷信之人見你，心生敬畏，不敢輕舉妄動。",
-      "grant_tags": ["wolf_charm"],
+      "grant_tags": ["狼符護命"],
       "stat_modifier": [{ "stat": "constitution", "delta": 10 }],
       "system_msg": "狼魅加身：特定 NPC 對你態度轉為服從。",
       "system_msg_type": "BUFF"
@@ -34,7 +34,7 @@
       "icon_emoji": "⚡",
       "rarity": "EPIC",
       "description": "王爺賜你破除封印的氣魄。凡宵禁、封鎖、結界——皆可強行突破，但代價由你承擔。",
-      "grant_tags": ["break_barrier"],
+      "grant_tags": ["破界之力"],
       "stat_modifier": [{ "stat": "constitution", "delta": 20 }],
       "system_msg": "破封之力：可強闖封鎖區域，但可能觸發危機。",
       "system_msg_type": "BUFF"
@@ -45,7 +45,7 @@
       "icon_emoji": "🚩",
       "rarity": "EPIC",
       "description": "王爺旗令在手，地方神鬼皆需聽從。召喚陰兵或驅使鬼差，不再是遙不可及的事。",
-      "grant_tags": ["npc_command"],
+      "grant_tags": ["帝星威壓"],
       "stat_modifier": [{ "stat": "karma", "delta": 20 }],
       "system_msg": "令旗感應：特定場景可驅使靈媒或陰差行事。",
       "system_msg_type": "BUFF"
@@ -56,7 +56,7 @@
       "icon_emoji": "🌑",
       "rarity": "CURSED",
       "description": "王爺不應，陰爻連出。你的業力已被陰世注意，此行每一步都有無形目光跟隨。",
-      "grant_tags": ["shadow_marked"],
+      "grant_tags": ["暗影標記"],
       "stat_modifier": [{ "stat": "karma", "delta": -25 }],
       "system_msg": "警告：陰世印記降下，某些 NPC 將對你充滿敵意。",
       "system_msg_type": "DANGER"
@@ -67,7 +67,7 @@
       "icon_emoji": "🏮",
       "rarity": "LEGENDARY",
       "description": "千歲爺親自降臨賜福，你身上的煞氣被瘟王化解，此行諸邪辟易，百鬼退散。",
-      "grant_tags": ["plague_ward"],
+      "grant_tags": ["疫靈辟除"],
       "stat_modifier": [
         { "stat": "karma", "delta": 30 },
         { "stat": "constitution", "delta": 10 }

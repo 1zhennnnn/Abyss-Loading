@@ -1,0 +1,1076 @@
+{
+  "office_entry": {
+    "id": "office_entry",
+    "title": "12F",
+    "background_key": "office_corridor",
+    "atmosphere": "EERIE",
+    "description": "電梯門打開的時候，你還以為自己按錯了。\n\n「12F」這個按鈕，你記得它不存在。\n\n走廊很長，兩排日光燈，其中一管在滋滋響。地板是那種辦公室標配的灰色地毯，有幾個地方磨出了深色的印記——來回太多次的同一個人走出來的軌跡。\n\n走廊盡頭放著一台碎紙機，紅燈亮著，待機中。\n\n計時打卡機貼在右邊牆上。你的打卡卡就插在最上面那個槽位，像是有人替你留位置一樣。",
+    "visit_variants": [
+      {
+        "min_visit": 2,
+        "description": "電梯門打開。\n\n走廊。日光燈。碎紙機，紅燈，待機中。\n\n你的卡還插在打卡機上面。\n\n你不記得你有把它拔走。"
+      },
+      {
+        "min_visit": 3,
+        "description": "電梯門打開。\n\n你站在走廊入口，看著那台打卡機。\n\n你的卡插在那裡。\n\n地毯上的深色印記，你現在看出來了，是你的鞋子的尺寸。"
+      },
+      {
+        "min_visit": 4,
+        "description": "電梯門打開。\n\n你已經不用看了。你知道這裡是什麼樣子。\n\n打卡機在右邊。你的卡在上面。碎紙機在走廊盡頭，紅燈。\n\n你直接走過去打卡。"
+      }
+    ],
+    "entry_dialogue": "dialogue_entry_welcome",
+    "options": [
+      {
+        "id": "opt_clock_in",
+        "label": "打卡",
+        "flavor_text": "反正來都來了。",
+        "next_scene": "office_desk"
+      },
+      {
+        "id": "opt_check_elevator",
+        "label": "回頭確認電梯",
+        "next_scene": "office_elevator_gone",
+        "max_visits": 1
+      }
+    ]
+  },
+
+  "office_elevator_gone": {
+    "id": "office_elevator_gone",
+    "title": "12F",
+    "background_key": "office_corridor",
+    "atmosphere": "EERIE",
+    "description": "電梯門已經關上了。\n\n你按了下行鍵。燈亮了一下，熄掉。\n\n再按。沒有反應。\n\n按鈕面板上，11F 下面直接跳 B1，中間沒有 12F。\n\n走廊另一頭，碎紙機的待機燈還是紅的。",
+    "options": [
+      {
+        "id": "opt_accept_and_clock",
+        "label": "去打卡",
+        "next_scene": "office_desk"
+      }
+    ]
+  },
+
+  "office_desk": {
+    "id": "office_desk",
+    "title": "你的座位",
+    "background_key": "office_desk",
+    "atmosphere": "NORMAL",
+    "description": "你的座位在第三排靠窗，但窗外什麼都看不見，只有白色的霧。\n\n辦公椅是那種用了很多年、坐下去就會叫的款式，廠牌貼紙撕掉一半，剩下一個「力」字。\n\n桌上有三個不同顏色的便利貼：\n\n黃色：「陳協理說邏輯要改，看他什麼時候有空說清楚他要什麼」\n粉色：「9/3 跟統振的報告，明早八點」\n藍色：「共體時艱 :)」\n\n你的電腦已經開機了，螢幕上有 47 封未讀 Email，最新一封主旨是「Re: Re: Re: Re: 緊急」，寄件時間是今天凌晨 3:42。\n\n你不記得你是什麼時候來的。",
+    "visit_variants": [
+      {
+        "min_visit": 2,
+        "description": "你的座位在第三排靠窗。\n\n48 封未讀 Email。\n\n桌上那杯咖啡是溫的。你不記得你買過咖啡。"
+      },
+      {
+        "min_visit": 3,
+        "description": "你的座位。\n\n49 封未讀 Email。\n\n椅子已經調好了你習慣的高度。你不知道你什麼時候調的。\n\n便利貼還在。藍色那張，「共體時艱」後面那個笑臉，你覺得它的角度和上次不一樣。"
+      },
+      {
+        "min_visit": 4,
+        "description": "你的座位。50 封。\n\n你坐下去，椅子沒有叫。\n\n你不知道這是什麼意思，但你覺得它有意思。"
+      },
+      {
+        "min_visit": 5,
+        "description": "你的座位。\n\n你沒有數 Email。\n\n你把手放在鍵盤上，然後你意識到你的手指自動對準了正確的 Home Row。\n\n你坐在這裡很久了。"
+      }
+    ],
+    "entry_dialogue": "dialogue_desk_arrive",
+    "options": [
+      {
+        "id": "opt_read_email",
+        "label": "打開最新那封信",
+        "next_scene": "office_email",
+        "max_visits": 2
+      },
+      {
+        "id": "opt_check_sticky_notes",
+        "label": "仔細看便利貼",
+        "next_scene": "office_sticky_notes",
+        "max_visits": 1
+      },
+      {
+        "id": "opt_go_pantry",
+        "label": "先去茶水間",
+        "next_scene": "office_pantry"
+      },
+      {
+        "id": "opt_just_sit",
+        "label": "坐著，什麼都不做",
+        "min_visits": 3,
+        "next_scene": "office_desk_sit"
+      }
+    ]
+  },
+
+  "office_desk_sit": {
+    "id": "office_desk_sit",
+    "title": "你的座位",
+    "background_key": "office_desk",
+    "atmosphere": "EERIE",
+    "description": "你坐著。\n\n日光燈在響。\n\n過了一段時間，你意識到你不知道過了多久。你也不確定你有沒有眨眼。\n\n然後你的電腦螢幕亮起一個彈窗：「您已閒置超過 15 分鐘，請確認您仍在線上。」\n\n確認按鈕在右邊，取消按鈕在左邊。\n\n你不確定取消會發生什麼事。",
+    "options": [
+      {
+        "id": "opt_confirm_present",
+        "label": "按確認",
+        "next_scene": "office_pantry"
+      },
+      {
+        "id": "opt_cancel_presence",
+        "label": "按取消",
+        "next_scene": "office_desk_cancelled"
+      }
+    ]
+  },
+
+  "office_desk_cancelled": {
+    "id": "office_desk_cancelled",
+    "title": "你的座位",
+    "background_key": "office_desk_dark",
+    "atmosphere": "TENSE",
+    "description": "什麼都沒有發生。\n\n彈窗消失了。\n\n電腦還在，燈還在，你還在。\n\n只是你的名牌從桌上消失了。你不確定它什麼時候在那裡，也不確定它什麼時候消失。",
+    "effect_add_tags": ["identity_questioned"],
+    "options": [
+      {
+        "id": "opt_after_cancel",
+        "label": "繼續",
+        "next_scene": "office_pantry"
+      }
+    ]
+  },
+
+  "office_email": {
+    "id": "office_email",
+    "title": "Re: Re: Re: Re: 緊急",
+    "background_key": "office_desk",
+    "atmosphere": "TENSE",
+    "description": "信很長，但內容很短。\n\n整封信是同一句話複製貼上了 312 次：\n\n「麻煩看一下，謝謝。」\n\n寄件人是「系統管理員」，沒有姓名，沒有分機，收件人只有你。\n\n你往下拉，想找原始信件，但引用的每一層都是同一句話，一直到信件結尾，那裡有一個附件：\n\n📎 離職申請單_final_v23_這次真的是最後版.docx\n\n附件 0KB。",
+    "visit_variants": [
+      {
+        "min_visit": 2,
+        "description": "同一封信。313 次。\n\n附件還是 0KB。\n\n你往下拉。\n\n今天多了一層引用，最底層那封的寄件時間是 1970/01/01 00:00。"
+      }
+    ],
+    "options": [
+      {
+        "id": "opt_download_attachment",
+        "label": "下載附件",
+        "effect_add_tags": ["found_resignation"],
+        "next_scene": "office_email_error"
+      },
+      {
+        "id": "opt_close_email",
+        "label": "關掉視窗",
+        "next_scene": "office_desk_after_email"
+      }
+    ]
+  },
+
+  "office_email_error": {
+    "id": "office_email_error",
+    "title": "錯誤",
+    "background_key": "office_desk",
+    "atmosphere": "TENSE",
+    "description": "「檔案損毀，無法開啟。」\n\n你關掉視窗。\n\n然後視窗自己又打開了。\n\n「麻煩看一下，謝謝。」\n「麻煩看一下，謝謝。」\n「麻煩看一下，謝謝。」",
+    "options": [
+      {
+        "id": "opt_unplug_computer",
+        "label": "直接拔掉電源",
+        "req_tags": ["intern_mode"],
+        "flavor_text": "反正不是你的電腦。",
+        "next_scene": "office_blackout"
+      },
+      {
+        "id": "opt_force_quit",
+        "label": "強制關機",
+        "next_scene": "office_desk_dark"
+      }
+    ]
+  },
+
+  "office_sticky_notes": {
+    "id": "office_sticky_notes",
+    "title": "便利貼",
+    "background_key": "office_desk",
+    "atmosphere": "EERIE",
+    "description": "你把三張便利貼都翻過來，背面也有字。\n\n黃色背面：「已經問了六次了。」\n粉色背面：「這份報告從來沒被看過。」\n藍色背面：「是誰在共體時艱？」\n\n你看了看隔板上，還有更多便利貼，你之前沒注意到的。密密麻麻地貼了好幾層，最底下那些已經泛黃。\n\n你試著撕下一張，下面還有一張，再撕，還有一張。\n\n你停下來，因為最新那張上面寫的是你的名字。",
+    "options": [
+      {
+        "id": "opt_keep_peeling",
+        "label": "繼續撕",
+        "req_tags": ["see_hidden"],
+        "flavor_text": "你眼袋垂到下巴，但眼睛還清楚。",
+        "next_scene": "office_sticky_truth"
+      },
+      {
+        "id": "opt_stop_peeling",
+        "label": "停下來，假裝沒看到",
+        "next_scene": "office_desk"
+      }
+    ]
+  },
+
+  "office_sticky_truth": {
+    "id": "office_sticky_truth",
+    "title": "最下面那張",
+    "background_key": "office_desk",
+    "atmosphere": "EERIE",
+    "description": "你一張一張撕，數了大概三十幾張之後，你看到了最底下那一張。\n\n便利貼已經很舊了，黏性幾乎消失，輕輕一碰就掉下來。\n\n上面的字跡和其他的不一樣，是用原子筆寫的，字很小：\n\n「碎紙機在 4 點清場，你在 3:59 之前必須離開。\n離職申請單在文件室，不在這層。\n不要去開會，那個不是課長。\n不要喝飲水機的水。\n你不是第一個。」\n\n沒有日期，沒有署名。",
+    "effect_add_tags": ["knows_schedule", "knows_warning"],
+    "options": [
+      {
+        "id": "opt_pocket_note",
+        "label": "把便利貼收起來",
+        "effect_add_items": ["warning_sticky"],
+        "next_scene": "office_pantry"
+      }
+    ]
+  },
+
+  "office_desk_after_email": {
+    "id": "office_desk_after_email",
+    "title": "你的座位",
+    "background_key": "office_desk",
+    "atmosphere": "NORMAL",
+    "description": "你關掉視窗。\n\n電腦恢復正常，桌面只有一個資料夾，標籤是「待完成」。\n\n你不打開它。",
+    "options": [
+      {
+        "id": "opt_go_pantry_2",
+        "label": "去茶水間",
+        "next_scene": "office_pantry"
+      },
+      {
+        "id": "opt_explore_floor",
+        "label": "去看看這層樓有什麼",
+        "next_scene": "office_corridor_explore"
+      }
+    ]
+  },
+
+  "office_desk_dark": {
+    "id": "office_desk_dark",
+    "title": "當機",
+    "background_key": "office_desk_dark",
+    "atmosphere": "TENSE",
+    "description": "電腦螢幕黑掉了。\n\n過了幾秒，螢幕亮起來，進了鎖定畫面。密碼提示是「你的員工編號」。\n\n你不記得你的員工編號。",
+    "options": [
+      {
+        "id": "opt_try_password",
+        "label": "試著猜密碼",
+        "next_scene": "office_password_fail"
+      },
+      {
+        "id": "opt_leave_desk",
+        "label": "離開座位",
+        "next_scene": "office_pantry"
+      }
+    ]
+  },
+
+  "office_password_fail": {
+    "id": "office_password_fail",
+    "title": "密碼錯誤",
+    "background_key": "office_desk_dark",
+    "atmosphere": "TENSE",
+    "description": "「密碼錯誤，剩餘 2 次嘗試機會。」\n\n你試了生日，不對。你試了 123456，不對。\n\n「密碼錯誤，帳號已鎖定。請聯絡 IT 部門，分機 502。」\n\n你撥了分機 502。\n\n對方接起來，沉默了五秒，然後說：「這支分機沒有人負責了。」然後掛掉。",
+    "options": [
+      {
+        "id": "opt_give_up_computer",
+        "label": "算了",
+        "next_scene": "office_pantry"
+      }
+    ]
+  },
+
+  "office_pantry": {
+    "id": "office_pantry",
+    "title": "茶水間",
+    "background_key": "office_pantry",
+    "atmosphere": "EERIE",
+    "description": "茶水間很小，放了一台飲水機、一台微波爐、一台冰箱。\n\n飲水機出水口是黑的。不是髒，是純粹的黑，像是出水口通往另一個地方。\n\n冰箱裡有五個便當，每個都貼著名字：\n\n劉○維的（9/1）、陳美○的（8/28）、張○豪的（9/4）、林○婷的（8/15）、你的名字的（今天日期）。\n\n你的便當旁邊放了一罐已經喝到剩三分之一的超商咖啡，上面有一個便利貼：「你的」。\n\n茶水間角落有個人站著，背對著你，對著空牆壁嚼東西。",
+    "visit_variants": [
+      {
+        "min_visit": 2,
+        "description": "茶水間。飲水機出水口還是黑的。\n\n冰箱裡那個你名字的便當，日期還是今天。\n\n角落那個人還在嚼。\n\n你注意到他的鞋子——右腳和左腳不是一雙的。"
+      },
+      {
+        "min_visit": 3,
+        "description": "茶水間。\n\n那罐咖啡又回來了，還是剩三分之一。\n\n角落那個人轉過來，他沒有說話，他用看你的方式看著你，就是那種很普通的、辦公室裡隨時都會發生的對視，然後他轉回去繼續嚼。\n\n你覺得這比任何事情都可怕。"
+      }
+    ],
+    "entry_dialogue": "dialogue_pantry_coworker",
+    "options": [
+      {
+        "id": "opt_take_coffee",
+        "label": "拿走那罐咖啡",
+        "effect_add_items": ["leftover_coffee"],
+        "effect_stat": [{ "stat": "constitution", "delta": 15 }, { "stat": "inspiration", "delta": -10 }],
+        "next_scene": "office_pantry_after"
+      },
+      {
+        "id": "opt_check_fridge",
+        "label": "打開冰箱拿自己的便當",
+        "next_scene": "office_fridge"
+      },
+      {
+        "id": "opt_talk_to_coworker",
+        "label": "叫那個人",
+        "next_scene": "office_coworker"
+      }
+    ]
+  },
+
+  "office_coworker": {
+    "id": "office_coworker",
+    "title": "同事",
+    "background_key": "office_pantry",
+    "atmosphere": "EERIE",
+    "entry_dialogue": "dialogue_coworker_talk",
+    "description": "他轉過頭來。\n\n你看不清楚他的臉——不是因為黑暗，日光燈很亮——就是看不清楚，像是你的大腦一直沒辦法把那個位置的資訊留住。\n\n他手裡拿著一個手機，螢幕對著你，是老婆的照片。\n\n照片是一張空白的白紙。",
+    "options": [
+      {
+        "id": "opt_agree_help",
+        "label": "「好，我幫你跑。」",
+        "effect_stat": [{ "stat": "inspiration", "delta": -15 }],
+        "effect_add_items": ["extra_excel"],
+        "next_scene": "office_pantry_after"
+      },
+      {
+        "id": "opt_refuse_help",
+        "label": "「我現在有事。」",
+        "next_scene": "office_coworker_refuse"
+      },
+      {
+        "id": "opt_invisible_escape",
+        "label": "安靜地側身走過去，不引起注意",
+        "req_tags": ["low_presence"],
+        "flavor_text": "你已經習慣了沒人注意到你。",
+        "next_scene": "office_pantry_after"
+      }
+    ]
+  },
+
+  "office_coworker_refuse": {
+    "id": "office_coworker_refuse",
+    "title": "同事",
+    "background_key": "office_pantry",
+    "atmosphere": "TENSE",
+    "description": "他點頭，沒有說話，轉回去繼續嚼。\n\n你準備離開，他突然說：\n\n「這個 Excel 其實不難，兩個小時搞定，你什麼時候有空？」\n\n你說你現在沒空。\n\n「那明天早上八點前呢？」\n\n你說你不確定。\n\n「那你大概什麼時候比較方便？」\n\n你意識到這個對話有辦法繼續下去。",
+    "options": [
+      {
+        "id": "opt_keep_refusing",
+        "label": "繼續拒絕",
+        "effect_stat": [{ "stat": "inspiration", "delta": -10 }],
+        "next_scene": "office_coworker_loop"
+      },
+      {
+        "id": "opt_just_leave",
+        "label": "不回應，直接走",
+        "next_scene": "office_pantry_after"
+      }
+    ]
+  },
+
+  "office_coworker_loop": {
+    "id": "office_coworker_loop",
+    "title": "同事",
+    "background_key": "office_pantry",
+    "atmosphere": "TENSE",
+    "description": "你拒絕了第六次。\n\n他還是在問。\n\n你注意到你站在茶水間已經不知道多久了，日光燈的滋滋聲越來越響，你的腳有點痠，但你不確定你能不能只是走掉。",
+    "options": [
+      {
+        "id": "opt_agree_finally",
+        "label": "「好啦。」",
+        "effect_stat": [{ "stat": "inspiration", "delta": -20 }],
+        "effect_add_items": ["extra_excel"],
+        "next_scene": "office_pantry_after"
+      },
+      {
+        "id": "opt_walk_away_anyway",
+        "label": "轉身走掉，不管他還在說話",
+        "effect_stat": [{ "stat": "constitution", "delta": 10 }],
+        "next_scene": "office_pantry_after"
+      }
+    ]
+  },
+
+  "office_fridge": {
+    "id": "office_fridge",
+    "title": "冰箱",
+    "background_key": "office_pantry",
+    "atmosphere": "EERIE",
+    "description": "你的便當是今天的日期，但你不記得你買過它。\n\n裡面是你平常叫的那家的雞腿飯。正常的便當，冰的，還沒加熱。\n\n你把它放進微波爐，按了兩分鐘。\n\n微波爐的燈亮起來，你透過那個小圓窗看裡面，看見便當在轉，然後你看見便當裡的東西。\n\n不是雞腿。",
+    "options": [
+      {
+        "id": "opt_take_out_anyway",
+        "label": "時間到了，把它拿出來",
+        "req_tags": ["seen_too_much"],
+        "next_scene": "office_bento_horror"
+      },
+      {
+        "id": "opt_stop_microwave",
+        "label": "在時間到之前把微波爐打開",
+        "next_scene": "office_bento_normal"
+      },
+      {
+        "id": "opt_ignore_microwave",
+        "label": "不看，走掉，讓它繼續轉",
+        "next_scene": "office_pantry_after"
+      }
+    ]
+  },
+
+  "office_bento_normal": {
+    "id": "office_bento_normal",
+    "title": "便當",
+    "background_key": "office_pantry",
+    "atmosphere": "NORMAL",
+    "description": "你打開微波爐。\n\n裡面是雞腿飯，正常的雞腿飯，半熱的，有點乾。\n\n你把它吃掉了。沒有味道，但是吃完之後你比較不暈。",
+    "effect_stat": [{ "stat": "constitution", "delta": 15 }],
+    "options": [
+      {
+        "id": "opt_after_bento",
+        "label": "繼續",
+        "next_scene": "office_corridor_explore"
+      }
+    ]
+  },
+
+  "office_bento_horror": {
+    "id": "office_bento_horror",
+    "title": "便當",
+    "background_key": "office_pantry",
+    "atmosphere": "TENSE",
+    "description": "你把便當拿出來了。\n\n裡面放的不是食物，是一疊名片，你的名字、你的職稱、你的分機。\n\n你數了一下，47 張。\n\n和你未讀 Email 的數字一樣。",
+    "effect_add_tags": ["seen_too_much"],
+    "options": [
+      {
+        "id": "opt_after_horror_bento",
+        "label": "繼續",
+        "next_scene": "office_corridor_explore"
+      }
+    ]
+  },
+
+  "office_pantry_after": {
+    "id": "office_pantry_after",
+    "title": "茶水間",
+    "background_key": "office_pantry",
+    "atmosphere": "NORMAL",
+    "description": "你離開茶水間。\n\n走廊的日光燈還在滋滋響，那管一直在響的那支。\n\n牆上貼著一張全公司的組織圖，很多格子裡的名字已經被立可白塗掉了。",
+    "options": [
+      {
+        "id": "opt_check_org_chart",
+        "label": "看組織圖",
+        "next_scene": "office_org_chart"
+      },
+      {
+        "id": "opt_go_meeting",
+        "label": "往會議室走",
+        "next_scene": "office_meeting_prep"
+      }
+    ]
+  },
+
+  "office_org_chart": {
+    "id": "office_org_chart",
+    "title": "組織圖",
+    "background_key": "office_corridor",
+    "atmosphere": "EERIE",
+    "description": "組織圖上，最上面那格寫著「萬年課長　許○德」，下面有七個人，六個名字被塗掉了。\n\n剩下的那格是你的名字。\n\n你的名字旁邊有一個紅色印章，歪歪的，上面寫「留用」。\n\n你把組織圖從牆上撕下來，想看背面，背面是一張出勤紀錄表。你的欄位從去年一月一直填到現在，每天都是九點進、凌晨離，中間沒有休假。\n\n你沒有印象。",
+    "options": [
+      {
+        "id": "opt_keep_chart",
+        "label": "把出勤紀錄帶走",
+        "req_tags": ["see_hidden"],
+        "effect_add_items": ["attendance_record"],
+        "next_scene": "office_meeting_prep"
+      },
+      {
+        "id": "opt_put_back",
+        "label": "放回去",
+        "next_scene": "office_meeting_prep"
+      }
+    ]
+  },
+
+  "office_meeting_prep": {
+    "id": "office_meeting_prep",
+    "title": "第三會議室外",
+    "background_key": "office_corridor",
+    "atmosphere": "TENSE",
+    "description": "第三會議室的玻璃是霧面的，你看不進去，但能看見裡面有人影在動。\n\n門縫下面透出橘色的光。\n\n白板上有人用粗字麥克筆寫了：「今晚 20:00 / 全員出席 / 請勿缺席 / 謝謝配合」\n\n再下面，用細字補了一行：「不要去。那個不是課長。」\n\n如果你有看過便利貼上的字，你認出了那個筆跡。",
+    "visit_variants": [
+      {
+        "min_visit": 2,
+        "description": "第三會議室外。\n\n白板還是那樣。橘色的光還在。\n\n你注意到門縫下面那行字，「不要去」，有人在旁邊又加了一行，字跡不同：\n\n「你已經去過了。」"
+      }
+    ],
+    "options": [
+      {
+        "id": "opt_enter_meeting",
+        "label": "推門進去",
+        "next_scene": "office_meeting_room"
+      },
+      {
+        "id": "opt_skip_meeting",
+        "label": "不進去，繼續找離職單",
+        "req_tags": ["knows_warning"],
+        "flavor_text": "便利貼說不要去。",
+        "next_scene": "office_archive_entrance"
+      },
+      {
+        "id": "opt_spy_first",
+        "label": "先趴在門縫旁邊聽",
+        "next_scene": "office_meeting_eavesdrop",
+        "max_visits": 1
+      }
+    ]
+  },
+
+  "office_meeting_eavesdrop": {
+    "id": "office_meeting_eavesdrop",
+    "title": "第三會議室外",
+    "background_key": "office_corridor",
+    "atmosphere": "EERIE",
+    "description": "你貼著牆壁，側耳傾聽。\n\n裡面有人在說話，是那種簡報的語氣，但你聽不清楚字。\n\n每隔幾秒會有掌聲，然後又是說話。\n\n你聽了大約三分鐘，然後你意識到那個掌聲的節奏完全一樣，每次剛好十七下，間隔剛好三秒。",
+    "options": [
+      {
+        "id": "opt_enter_after_spy",
+        "label": "進去",
+        "next_scene": "office_meeting_room"
+      },
+      {
+        "id": "opt_leave_meeting",
+        "label": "離開，去找離職單",
+        "effect_add_tags": ["knows_warning"],
+        "next_scene": "office_archive_entrance"
+      }
+    ]
+  },
+
+  "office_meeting_room": {
+    "id": "office_meeting_room",
+    "title": "第三會議室",
+    "background_key": "office_meeting",
+    "atmosphere": "TENSE",
+    "entry_dialogue": "dialogue_manager_welcome",
+    "description": "會議室裡有六個人坐著，都戴著一樣的深藍色領帶，頭都低著，在筆記本上寫字。\n\n站在白板前面的人穿著西裝，看起來五十幾歲，頭髮梳得很整齊。\n\n他沒有五官。\n\n不是說他的五官模糊，是說他的臉是一整片皮膚，光滑的，只有額頭上有一張嘴，嘴在動。",
+    "visit_variants": [
+      {
+        "min_visit": 2,
+        "description": "同一個會議室，同樣六個人，同樣的深藍色領帶。\n\n你坐下去，你的位置還在，椅子是暖的。\n\n他繼續說話，好像你上次沒有離開過。\n\n或者好像你上次根本沒有。"
+      }
+    ],
+    "options": [
+      {
+        "id": "opt_ignore_manager_face",
+        "label": "假裝沒注意，找個空位坐下",
+        "req_tags": ["corporate_drone"],
+        "flavor_text": "你早就不去看這些了。",
+        "next_scene": "office_meeting_survive"
+      },
+      {
+        "id": "opt_stare_at_manager",
+        "label": "盯著他看",
+        "next_scene": "office_meeting_stare"
+      },
+      {
+        "id": "opt_run_from_meeting",
+        "label": "退出去",
+        "next_scene": "office_meeting_escape"
+      }
+    ]
+  },
+
+  "office_meeting_stare": {
+    "id": "office_meeting_stare",
+    "title": "第三會議室",
+    "background_key": "office_meeting",
+    "atmosphere": "TENSE",
+    "description": "你看著他，他繼續說話，每句結尾停頓，那六個人就鼓掌，十七下，三秒。\n\n你注意到他口袋裡插著一疊 A4 紙，他每說完一段就抽出一張，隨手放到桌上。\n\n你離他最近，你可以看到那些紙。\n\n是空白的。",
+    "options": [
+      {
+        "id": "opt_grab_paper",
+        "label": "趁他在說話的時候拿走其中一張",
+        "req_tags": ["intern_mode"],
+        "flavor_text": "沒有人把你當人，所以你也可以不按規矩來。",
+        "effect_add_items": ["blank_paper"],
+        "next_scene": "office_meeting_chaos"
+      },
+      {
+        "id": "opt_sit_and_listen",
+        "label": "算了，坐下來聽",
+        "next_scene": "office_meeting_survive"
+      }
+    ]
+  },
+
+  "office_meeting_escape": {
+    "id": "office_meeting_escape",
+    "title": "第三會議室外",
+    "background_key": "office_corridor",
+    "atmosphere": "EERIE",
+    "description": "你往後退，把門拉開一道縫，側身出去。\n\n說話聲沒有停，掌聲沒有停。\n\n你在走廊裡站了一秒，背後的門輕輕關上了，像是有人從裡面帶上的。",
+    "options": [
+      {
+        "id": "opt_go_archive",
+        "label": "去找離職單",
+        "next_scene": "office_archive_entrance"
+      }
+    ]
+  },
+
+  "office_meeting_survive": {
+    "id": "office_meeting_survive",
+    "title": "會議",
+    "background_key": "office_meeting",
+    "atmosphere": "TENSE",
+    "entry_dialogue": "dialogue_meeting_content",
+    "description": "你坐在最後一排，把頭低下去。\n\n他說了很多，你記住的只有幾句：「我們是一個 family。」「大家辛苦了。」「這案子做完就安排大家去沖繩。」\n\n你不確定你在這裡待了多久，你的手機沒有訊號，牆上的時鐘指針沒有在動。\n\n但在某個時間點，你抬起頭，他突然面對著你，只有你，說：「你什麼時候要走？」",
+    "options": [
+      {
+        "id": "opt_say_date",
+        "label": "說一個日期",
+        "effect_stat": [{ "stat": "inspiration", "delta": -25 }],
+        "next_scene": "office_meeting_aftermath"
+      },
+      {
+        "id": "opt_say_nothing",
+        "label": "不說話",
+        "next_scene": "office_meeting_silence"
+      }
+    ]
+  },
+
+  "office_meeting_silence": {
+    "id": "office_meeting_silence",
+    "title": "會議",
+    "background_key": "office_meeting",
+    "atmosphere": "TENSE",
+    "description": "你沒有說話。\n\n他等了很久，然後點頭，說：「好，那就先這樣。」\n\n那六個人同時站起來，把椅子推回去，拿了東西，魚貫走出去，沒有人說話。\n\n你發現他們拿的東西全都是你的——你的外套、你的杯子、你的便利貼。\n\n會議室的門關上，只剩你和他。",
+    "options": [
+      {
+        "id": "opt_confront_manager",
+        "label": "「你是誰？」",
+        "next_scene": "office_manager_confrontation"
+      },
+      {
+        "id": "opt_stand_and_leave",
+        "label": "站起來走",
+        "next_scene": "office_meeting_aftermath"
+      }
+    ]
+  },
+
+  "office_manager_confrontation": {
+    "id": "office_manager_confrontation",
+    "title": "第三會議室",
+    "background_key": "office_meeting",
+    "atmosphere": "DIVINE",
+    "entry_dialogue": "dialogue_manager_truth",
+    "description": "他沉默了很長一段時間。\n\n然後他的嘴說：「你知道為什麼沒有人離職成功嗎？」\n\n他沒有等你回答。\n\n「因為他們都在最後一步忘記帶自己走。」",
+    "options": [
+      {
+        "id": "opt_understand",
+        "label": "你聽懂了",
+        "effect_add_tags": ["knows_exit_method"],
+        "next_scene": "office_meeting_aftermath"
+      }
+    ]
+  },
+
+  "office_meeting_aftermath": {
+    "id": "office_meeting_aftermath",
+    "title": "走廊",
+    "background_key": "office_corridor",
+    "atmosphere": "TENSE",
+    "description": "你走出會議室，走廊已經變窄了。\n\nOA 隔板在動，緩慢的，每隔幾分鐘就移動一點，重新排列，原本你記得的路已經不是原來那條了。\n\n走廊盡頭那台碎紙機的燈從紅色變成綠色。",
+    "options": [
+      {
+        "id": "opt_navigate_maze",
+        "label": "試著找出路",
+        "next_scene": "office_archive_entrance"
+      },
+      {
+        "id": "opt_wait_for_pattern",
+        "label": "等一下，觀察隔板移動的規律",
+        "req_tags": ["see_hidden"],
+        "flavor_text": "你已經熬過太多不合理的東西，這個算什麼。",
+        "effect_add_tags": ["knows_maze_pattern"],
+        "next_scene": "office_archive_shortcut"
+      }
+    ]
+  },
+
+  "office_archive_shortcut": {
+    "id": "office_archive_shortcut",
+    "title": "捷徑",
+    "background_key": "office_corridor",
+    "atmosphere": "NORMAL",
+    "description": "你看出來了——隔板每 40 秒移動一次，按照固定的順序，只要你在對的時間點走到對的位置，可以直接穿過去。\n\n你花了大約十分鐘，走到了檔案室的門口，沒有被碎紙機追到。",
+    "options": [
+      {
+        "id": "opt_enter_archive_smooth",
+        "label": "進檔案室",
+        "next_scene": "office_archive"
+      }
+    ]
+  },
+
+  "office_archive_entrance": {
+    "id": "office_archive_entrance",
+    "title": "走廊",
+    "background_key": "office_corridor_dark",
+    "atmosphere": "TENSE",
+    "description": "你在移動的隔板迷宮裡走，走廊越來越窄，你的肩膀開始碰到兩邊的牆。\n\n後面傳來碎紙機啟動的聲音，比在待機時響很多。\n\n你不確定它是不是在移動，但那個聲音越來越近。",
+    "options": [
+      {
+        "id": "opt_run_to_archive",
+        "label": "跑",
+        "next_scene": "office_archive_run"
+      },
+      {
+        "id": "opt_hide_in_gap",
+        "label": "擠進隔板縫隙躲起來",
+        "req_tags": ["low_presence"],
+        "flavor_text": "你已經很習慣讓自己消失在縫隙裡。",
+        "next_scene": "office_archive_hidden"
+      },
+      {
+        "id": "opt_smash_partition",
+        "label": "直接砸開隔板",
+        "req_tags": ["intern_mode"],
+        "flavor_text": "系統沒把你當人，規則對你是裝飾品。",
+        "next_scene": "office_archive"
+      }
+    ]
+  },
+
+  "office_archive_run": {
+    "id": "office_archive_run",
+    "title": "走廊",
+    "background_key": "office_corridor_dark",
+    "atmosphere": "TENSE",
+    "description": "你跑，撞開幾片隔板，聽見後面攪碎聲越來越響。\n\n你看見了一扇門，上面貼著「文件室（限授權人員）」，門沒有鎖。",
+    "options": [
+      {
+        "id": "opt_push_door",
+        "label": "推門",
+        "effect_stat": [{ "stat": "constitution", "delta": -20 }],
+        "next_scene": "office_archive"
+      }
+    ]
+  },
+
+  "office_archive_hidden": {
+    "id": "office_archive_hidden",
+    "title": "隔板縫",
+    "background_key": "office_corridor_dark",
+    "atmosphere": "EERIE",
+    "description": "你縮在隔板縫裡，幾乎沒有呼吸。\n\n碎紙機從走廊另一端滾過來——比你想像的大很多，輪子在地毯上壓出深深的痕跡，綠燈在閃。\n\n它從你面前五十公分的地方滾過去，沒有停。\n\n你等它走遠，側身擠出去，往文件室走。",
+    "options": [
+      {
+        "id": "opt_enter_archive_safe",
+        "label": "進文件室",
+        "next_scene": "office_archive"
+      }
+    ]
+  },
+
+  "office_archive": {
+    "id": "office_archive",
+    "title": "文件室",
+    "background_key": "office_archive",
+    "atmosphere": "NORMAL",
+    "description": "文件室比這層樓的其他地方都還安靜。\n\n四排鐵製文件架，從地板到天花板，每個抽屜都貼著標籤，密密麻麻的。\n\n最後一排架子的最底層，有一個抽屜的標籤是手寫的：「出口」。",
+    "visit_variants": [
+      {
+        "min_visit": 2,
+        "description": "文件室。還是那麼安靜。\n\n你直接走到最後一排，最底層，「出口」那個抽屜。\n\n你知道它在哪裡。\n\n你意識到這件事本身有點奇怪。"
+      }
+    ],
+    "options": [
+      {
+        "id": "opt_open_exit_drawer",
+        "label": "開「出口」那個抽屜",
+        "next_scene": "office_exit_drawer"
+      },
+      {
+        "id": "opt_search_systematically",
+        "label": "系統性地找，從第一排開始",
+        "req_tags": ["see_hidden"],
+        "next_scene": "office_archive_search"
+      }
+    ]
+  },
+
+  "office_archive_search": {
+    "id": "office_archive_search",
+    "title": "文件室",
+    "background_key": "office_archive",
+    "atmosphere": "EERIE",
+    "description": "你從第一排開始找，一個抽屜一個抽屜。\n\n大部分是正常的文件，報告、合約、簽核單，有些上面有你的名字，你不記得你簽過這些東西。\n\n在第三排的中間層，你找到一個標著「人事-離職」的抽屜，裡面有十幾份申請單，每份都填了一半，最後一格「主管核准」是空的。\n\n最上面那份，填表人是你的名字，日期是六個月前。",
+    "options": [
+      {
+        "id": "opt_take_own_form",
+        "label": "拿走那份你六個月前填的表",
+        "effect_add_items": ["old_resignation_form"],
+        "effect_add_tags": ["knows_history"],
+        "next_scene": "office_exit_drawer"
+      }
+    ]
+  },
+
+  "office_exit_drawer": {
+    "id": "office_exit_drawer",
+    "title": "出口",
+    "background_key": "office_archive",
+    "atmosphere": "DIVINE",
+    "description": "「出口」那個抽屜裡只有一樣東西：一張空白的離職申請單，和一支原子筆。\n\n表格很標準，四個欄位：姓名、離職日期、離職原因、簽名。\n\n你在姓名和日期那格填上去了。\n\n然後你停在「離職原因」那格。",
+    "visit_variants": [
+      {
+        "min_visit": 2,
+        "description": "「出口」那個抽屜。\n\n空白的離職申請單，一支原子筆。\n\n和上次一模一樣。\n\n你低頭看，你上次填的那份不在這裡。你不知道它去哪裡了。\n\n你重新拿起筆。"
+      }
+    ],
+    "options": [
+      {
+        "id": "opt_write_real_reason",
+        "label": "寫真正的原因",
+        "effect_add_tags": ["honest_resignation"],
+        "effect_add_items": ["completed_form"],
+        "next_scene": "office_final_corridor"
+      },
+      {
+        "id": "opt_write_generic",
+        "label": "寫「個人因素」",
+        "effect_add_items": ["completed_form"],
+        "next_scene": "office_final_corridor"
+      },
+      {
+        "id": "opt_leave_blank",
+        "label": "不寫，直接簽名",
+        "effect_add_items": ["completed_form"],
+        "effect_add_tags": ["silent_resignation"],
+        "next_scene": "office_final_corridor"
+      }
+    ]
+  },
+
+  "office_final_corridor": {
+    "id": "office_final_corridor",
+    "title": "走廊",
+    "background_key": "office_corridor",
+    "atmosphere": "TENSE",
+    "description": "你拿著離職申請單走出文件室。\n\n走廊已經恢復正常，隔板沒有在動，日光燈的滋滋聲停了，連那管一直在響的都停了。\n\n碎紙機還在走廊盡頭，但燈熄掉了。\n\n然後你意識到電梯在你旁邊，門開著，裡面的燈是亮的。\n\n按鈕面板上，12F 的按鈕亮著。",
+    "options": [
+      {
+        "id": "opt_submit_first",
+        "label": "找課長交離職單",
+        "next_scene": "office_submit"
+      },
+      {
+        "id": "opt_just_leave",
+        "label": "直接走進電梯",
+        "next_scene": "office_ending_silent"
+      }
+    ]
+  },
+
+  "office_submit": {
+    "id": "office_submit",
+    "title": "第三會議室",
+    "background_key": "office_meeting",
+    "atmosphere": "TENSE",
+    "description": "你回到第三會議室，那個人還站在白板前面。\n\n你把離職單放到桌上。\n\n他低頭看了一眼，然後說：「我需要兩個禮拜交接。」\n\n你說：「不。」\n\n他說：「那一個禮拜。」\n\n你說：「不。」\n\n他說：「那你不讓我怎麼辦？」",
+    "options": [
+      {
+        "id": "opt_say_not_my_problem",
+        "label": "「這不是我的問題。」",
+        "req_tags": ["knows_exit_method"],
+        "effect_add_tags": ["clean_exit"],
+        "next_scene": "office_ending_s"
+      },
+      {
+        "id": "opt_agree_one_week",
+        "label": "「一個禮拜。」",
+        "effect_stat": [{ "stat": "inspiration", "delta": -30 }],
+        "next_scene": "office_ending_a"
+      }
+    ]
+  },
+
+  "office_ending_s": {
+    "id": "office_ending_s",
+    "title": "S結局：帶自己走",
+    "background_key": "office_exterior",
+    "atmosphere": "DIVINE",
+    "entry_dialogue": "dialogue_ending_s",
+    "description": "你走進電梯，按了 1F。\n\n門關上。電梯下去了。\n\n1F 的門打開，是正常的大廳，有保全，有旋轉門，外面有陽光。\n\n你走出去。\n\n離職單的影本在口袋裡，正本留在那個沒有五官的人手裡。\n\n你也不在乎了。",
+    "options": [
+      {
+        "id": "opt_ending_s_done",
+        "label": "離開",
+        "effect_add_tags": ["cleared_office_clean"],
+        "next_scene": "ending_credits"
+      }
+    ]
+  },
+
+  "office_ending_a": {
+    "id": "office_ending_a",
+    "title": "普通結局：多一個禮拜",
+    "background_key": "office_desk",
+    "atmosphere": "EERIE",
+    "entry_dialogue": "dialogue_ending_a",
+    "description": "你又在那個辦公椅上坐了一個禮拜。\n\n離開的那天，你把桌子清空，和幾個同事說了再見，有人說「要保持聯絡」，你說好。\n\n你知道你們不會保持聯絡。\n\n你走進電梯，按了 1F，門打開是大廳，你走出去，轉身看了一眼大樓，12F 的燈還亮著。\n\n你轉回來，繼續走。",
+    "options": [
+      {
+        "id": "opt_ending_a_done",
+        "label": "離開",
+        "effect_add_tags": ["cleared_office_escaped"],
+        "next_scene": "ending_credits"
+      }
+    ]
+  },
+
+  "office_ending_silent": {
+    "id": "office_ending_silent",
+    "title": "靜默結局：什麼都沒說",
+    "background_key": "office_exterior",
+    "atmosphere": "NORMAL",
+    "description": "你走進電梯，按了 1F。\n\n離職單放在口袋裡，沒有交出去，沒有人知道你要走。\n\n1F 的門打開，你走出去。\n\n這也是一種走法。",
+    "options": [
+      {
+        "id": "opt_ending_silent_done",
+        "label": "離開",
+        "effect_add_tags": ["cleared_office_ghost"],
+        "next_scene": "ending_credits"
+      }
+    ]
+  },
+
+  "office_blackout": {
+    "id": "office_blackout",
+    "title": "全層斷電",
+    "background_key": "office_desk_dark",
+    "atmosphere": "EERIE",
+    "description": "整層樓的燈全滅了。\n\n完全的黑，連緊急照明都沒有。\n\n然後你的手機螢幕自動亮起來，鎖定畫面是一封 Line 訊息：\n\n「欸你電腦拔掉了喔，我的檔案在你那台，可以幫我開一下嗎，謝謝」\n\n發訊人是那個臉部模糊的同事。傳送時間是兩分鐘後。",
+    "options": [
+      {
+        "id": "opt_use_phone_light",
+        "label": "用手機照明找路",
+        "next_scene": "office_archive_entrance"
+      }
+    ]
+  },
+
+  "office_meeting_chaos": {
+    "id": "office_meeting_chaos",
+    "title": "第三會議室",
+    "background_key": "office_meeting",
+    "atmosphere": "TENSE",
+    "description": "你把那張空白的紙拿走了。\n\n他停下來，那六個人的頭同時抬起來。\n\n你把那張紙翻過來，背面有字：「文件室，第三排左四。」\n\n你把紙揉成一團放進口袋，然後走出會議室。\n\n身後的掌聲還在響，但節奏不一樣了。",
+    "effect_add_tags": ["has_archive_hint"],
+    "options": [
+      {
+        "id": "opt_use_hint",
+        "label": "去文件室",
+        "next_scene": "office_archive_entrance"
+      }
+    ]
+  },
+
+  "office_corridor_explore": {
+    "id": "office_corridor_explore",
+    "title": "走廊",
+    "background_key": "office_corridor",
+    "atmosphere": "NORMAL",
+    "description": "走廊比你以為的長，分成好幾個方向。\n\n你往左走，是一排小隔間，每個都有人，都低著頭，都在打字，節奏整齊得像是同一個人在控制。\n\n你往右走，是那個會議室。\n\n你往直走，走廊在遠處轉角，你不確定後面是什麼。",
+    "options": [
+      {
+        "id": "opt_go_cubicles",
+        "label": "走到那排小隔間",
+        "next_scene": "office_cubicles"
+      },
+      {
+        "id": "opt_go_meeting_from_corridor",
+        "label": "去會議室",
+        "next_scene": "office_meeting_prep"
+      },
+      {
+        "id": "opt_go_end_of_corridor",
+        "label": "走到走廊盡頭",
+        "next_scene": "office_corridor_end"
+      }
+    ]
+  },
+
+  "office_cubicles": {
+    "id": "office_cubicles",
+    "title": "小隔間",
+    "background_key": "office_corridor",
+    "atmosphere": "EERIE",
+    "description": "走近之後，你發現那些人都在打同一份文件。\n\n文件裡是密密麻麻的字，全部一樣：「麻煩看一下，謝謝。」\n\n你站在一個人旁邊，他沒有注意到你站在旁邊。\n\n你往更深的地方走，最後一個隔間是空的，椅子還是暖的。",
+    "options": [
+      {
+        "id": "opt_sit_last_cubicle",
+        "label": "坐在那個位置",
+        "next_scene": "office_last_cubicle"
+      },
+      {
+        "id": "opt_leave_cubicles",
+        "label": "離開",
+        "next_scene": "office_corridor_explore"
+      }
+    ]
+  },
+
+  "office_last_cubicle": {
+    "id": "office_last_cubicle",
+    "title": "最後一個隔間",
+    "background_key": "office_desk",
+    "atmosphere": "EERIE",
+    "description": "你坐下去，椅子沒有叫。\n\n桌上有一張便利貼：\n\n「你的座位在前面，你找錯地方了。\n\n但你能找到這裡，代表你還沒完全迷失。\n\n碎紙機 4 點整清場，現在 3:22。\n\n離職單在文件室，你可以去了。」",
+    "effect_add_tags": ["knows_schedule", "knows_warning"],
+    "options": [
+      {
+        "id": "opt_go_archive_now",
+        "label": "去文件室",
+        "next_scene": "office_archive_entrance"
+      }
+    ]
+  },
+
+  "office_corridor_end": {
+    "id": "office_corridor_end",
+    "title": "走廊盡頭",
+    "background_key": "office_corridor_dark",
+    "atmosphere": "EERIE",
+    "description": "走廊盡頭是一面牆，牆上有一個時鐘，時針和分針都指著 12。\n\n時鐘下面有一個洞，是碎紙機的出紙口，裡面堆了一些碎紙片，你可以拼湊出幾個字：「三月」、「績效」、「已處理」。\n\n再更下面，地板上有一個箭頭，用膠帶貼的，指著你來的方向。",
+    "options": [
+      {
+        "id": "opt_collect_shreds",
+        "label": "拿一把碎紙片",
+        "req_tags": ["see_hidden"],
+        "effect_add_items": ["shredded_paper"],
+        "next_scene": "office_meeting_prep"
+      },
+      {
+        "id": "opt_follow_arrow",
+        "label": "跟著箭頭走",
+        "next_scene": "office_meeting_prep"
+      }
+    ]
+  },
+
+  "ending_credits": {
+    "id": "ending_credits",
+    "title": "肝苦辦公室：在職中",
+    "background_key": "office_exterior",
+    "atmosphere": "NORMAL",
+    "description": "副本結束。",
+    "options": []
+  }
+}

@@ -32,7 +32,8 @@ export type RitualStyle =
   | 'STAR_CHART'        // 命盤星曜（中式）
   | 'OMIKUJI'           // 御神籤（日式）
   | 'TAROT'             // 塔羅牌（西式）
-  | 'COIN_DIVINATION';  // 骨卦／銅錢卦（古典）
+  | 'COIN_DIVINATION'   // 骨卦／銅錢卦（古典）
+  | 'PUNCH_CLOCK';      // 電子打卡機（職場）
 
 export interface FortuneCard {
   fortune_id: string;
@@ -155,6 +156,9 @@ export interface PuzzleNode {
   fail_scene?: string;
   hint_tag?: string;
   hint_text?: string;
+  hint_item?: string | null;        // 持有此道具時顯示進階提示
+  hint_text_with_item?: string;     // 有道具時的提示文字
+  hint_text_without_item?: string;  // 無道具時的基本提示文字
   on_solve: PuzzleReward;
   config: CodeInputConfig | SequenceConfig | SymbolMatchConfig;
 }
@@ -200,6 +204,7 @@ export interface Option {
   req_puzzle_solved?: string;
   effect_stat?: StatEffect[];
   effect_add_tags?: string[];
+  effect_add_global_tags?: string[];    // 跨副本永久 tags
   effect_remove_tags?: string[];
   effect_add_items?: string[];
   effect_remove_items?: string[];
@@ -217,6 +222,11 @@ export interface SceneNode {
   atmosphere?: 'NORMAL' | 'TENSE' | 'EERIE' | 'DIVINE';
   background_key?: string;
   entry_dialogue?: string;
+  /** 副本邏輯注入：顯示第幾天入場卡（由 wrapNavigateTo patch 寫入） */
+  day_number?: number;
+  /** 進入場景時自動套用的效果 */
+  effect_add_tags?: string[];
+  effect_stat?: StatEffect[];
   options: Option[];
 }
 
@@ -239,6 +249,12 @@ export interface InstanceManifest {
   puzzles: Record<string, PuzzleNode>;
   /** 每個副本可選的自訂邏輯模組，Engine 自動呼叫其生命週期 hook */
   hook?: import('../engine/InstanceHook').InstanceHook;
+  /** 副本載入時呼叫（重設內部狀態） */
+  onLoad?:         () => void;
+  /** 副本卸載時呼叫（清理內部狀態） */
+  onUnload?:       () => void;
+  /** 包裝 navigateTo，可在場景切換前插入自訂邏輯（如計數、patch scene） */
+  wrapNavigateTo?: (original: (sceneId: string) => void) => (sceneId: string) => void;
 }
 
 // ════════════════════════════════════════════════════
@@ -280,6 +296,7 @@ export interface GameState {
   localInventory: string[];
   globalInventory: string[];
   globalTags: string[];             // 跨副本永久 tags
+  clearedInstances: Record<string, { ending: string; clearedAt: string }>;  // 通關紀錄
 
   // 運勢
   instanceFortune: FortuneCard | null;
